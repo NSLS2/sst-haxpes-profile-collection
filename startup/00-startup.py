@@ -12,7 +12,10 @@ for path in paths:
     sys.path.append(str(path))
 
 import nslsii
-import haxpes
-from haxpes.startup import *
+#import haxpes
+#from haxpes.startup import *
+import sst_funcs
+import sst_funcs.hw
+from sst_funcs.startup import *
 
-nslsii.configure_base(get_ipython().user_ns, "haxpes", publish_documents_with_kafka=True)
+#nslsii.configure_base(get_ipython().user_ns, "haxpes", publish_documents_with_kafka=True)
