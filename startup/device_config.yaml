@@ -1,0 +1,150 @@
+detectors:
+  _default:
+    _target_: sst_base.detectors.scalar.ophScalar
+  I0:
+    prefix: "XF:07ID-BI[ADC:1-Ch:1]Volt"
+    name: "I0 ADC"
+    _extra_:
+      sets:
+        default: normalization
+  Idrain:
+    prefix: "XF:07ID-BI[ADC:1-Ch:0]Volt"
+    name: "Sample Drain Current"
+    _extra_:
+      sets:
+        default: primary
+  IK2600:
+    prefix: "XF:07ID1{K2601B:1}RB-MeasI"
+    name: "K2600_current"
+  PEY:
+    prefix: "XF:07ID-RBD:1:I"
+    name: "PEY_current"
+  BPM4cent:
+    prefix: "XF:07ID-BI{BPM:4}"
+    name: "BPM4 Centroid"
+    _target_: sst_base.detectors.hax_cam.simpleBPM
+  M4Adrain:
+    prefix: "XF:07ID-BI[ADC:1-Ch:2]Volt"
+    name: "M4A Drain Current"
+  Idm3:
+    prefix: "XF:07ID-BI{DM3:F4}Cur:I0-I"
+    name: "DM3 Photodiode"
+  Idm4:
+    prefix: "XF:07ID-BI{DM5:F4}Cur:I1-I"
+    name: "DM4 Photodiode"
+  Idm1:
+    prefix: "XF:07ID-BI{DM3:F4}Cur:I2-I"
+    name: "DM1 Photodiode"
+  haxSMU:
+    prefix: "XF:07ID1{K2601B:1}"
+    name: "K2601B"
+    _target_: haxpes.k2600b.SMU
+  ses:
+    prefix: "XF:07ID-ES-SES"
+    name: "ses"
+    _target_: haxpes.ses.SES
+feedback:
+  _default:
+    _target_: haxpes.pid_feedback.pid
+  fbvert:
+    prefix: "XF:07ID6-OP{Mono:DCM1-Fb:PF2}"
+    name: "vertical feedback"
+  fbhor:
+    prefix: "XF:07ID6-OP{Mono:DCM1-Fb:RF2}"
+    name: "horizontal feedback"
+manipulators:
+  manipulator:
+    _target_: sst_funcs.manipulators.ManipulatorBuilder
+    prefix: "XF:07ID1-BI{HAX-Ax:"
+    name: "haxpes_manipulator"
+motors:
+  _default:
+    _target_: sst_base.motors.PrettyMotor  # Updated default target to PrettyMotor
+  haxslt:
+    prefix: "XF:07ID2-OP{Slt:12-Ax:"
+    name: "HAXPES slits"
+    kind: "hinted"
+    concurrent: 1
+    _target_: haxpes.slits.Slits
+  slt_dm1:
+    prefix: "XF:07ID6-OP{Slt:03-Ax:"
+    name: "DM1_slits"
+    kind: "hinted"
+    concurrent: 1
+    _target_: haxpes.slits.Slits
+  dm1:
+    prefix: "XF:07ID6-BI{Diag:01-Ax:Y}Mtr"
+    name: "DM1/FS03-Y"
+  nBPM:
+    prefix: "XF:07ID6-BI{BPM:1-Ax:Y}Mtr"
+    name: "nBPM/C Filter"
+  dm3:
+    prefix: "XF:07ID3-BI{Diag:03-Ax:Y}Mtr"
+    name: "DM3/FS08-Y"
+  dm4:
+    prefix: "XF:07ID5-BI{Diag:04-Ax:Y}Mtr"
+    name: "DM4/FS09-Y"
+  SlitAB:
+    prefix: "XF:07ID3-OP{Slt:06-Ax:YGap}Mtr"
+    name: "Exit Slit AB"
+    kind: "hinted"
+    _target_: ophyd.EpicsMotor  # Explicitly setting _target_ to ophyd.EpicsMotor for SlitAB
+mirrors:
+  M4A:
+    prefix: "XF:07ID3-OP{Mir:M4A"
+    name: "M4A"
+    kind: "hinted"
+    _target_: sst_base.mirrors.FMBHexapodMirror
+shutters:
+  _default:
+    _target_: sst_base.shutters.EPS_Shutter
+  psh1:
+    prefix: "XF:07IDA-PPS{PSh:1}"
+    name: "SST-2 Branch Shutter"
+    kind: "hinted"
+    shutter_type: "PH"
+    openval: 0
+    closeval: 1
+  psh2:
+    prefix: "XF:07IDA-PPS{PSh:2}"
+    name: "Shutter 2"
+    kind: "hinted"
+    shutter_type: "PH"
+    openval: 0
+    closeval: 1
+  psh5:
+    prefix: "XF:07IDA-PPS{PSh:5}"
+    name: "Shutter 5"
+    kind: "hinted"
+    shutter_type: "PH"
+    openval: 0
+    closeval: 1
+  gv10:
+    prefix: "XF:07IDB-VA:1{HAXPES-GV:1}"
+    name: "downstream GV"
+    kind: "hinted"
+    shutter_type: "GV"
+    openval: 1
+    closeval: 0
+  fs4:
+    prefix: "XF:07IDB-VA:1{FS:4A}"
+    name: "FS 4"
+    kind: "hinted"
+    shutter_type: "FS"
+    openval: 1
+    closeval: 0
+signals:
+  softbeamenable:
+    prefix: "XF:07ID1-CT{Bl-Ctrl}Endstn-Sel"
+    kind: 'config'
+    string: True
+    _target_: ophyd.EpicsSignalRO
+  beamselection:
+    name: "Beam Selection"
+    kind: "config"
+    value: "none"
+    _target_: ophyd.signal
+  beamon:
+    _target_: haxpes.hax_monitors.beamstatus
+    prefix: "XF:07ID6-OP{Mono:DCM1-Fb:PF2}"
+    name: "beam on"
