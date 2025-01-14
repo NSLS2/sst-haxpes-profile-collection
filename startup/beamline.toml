@@ -18,11 +18,11 @@ modules = ["haxpes.startup"]
 [settings.plans]
 
 [settings.redis.md]
-host = "redis"
-prefix = "haxpes"
+host = "info.sst.nsls2.bnl.gov"
+prefix = "haxpes-"
 
 [settings.redis.info]
-host = "redisInfo"
-prefix = ""
+host = "info.sst.nsls2.bnl.gov"
+prefix = "haxpes-"
 port = 60737
-db = 4 
+db = 6

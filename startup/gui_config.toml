@@ -31,6 +31,7 @@ enpossoft = {"_role" = "energy", "load_order" = 1}
 "EnPosFactory" = "nbs_bl.qt.models.energy.EnergyModel"
 "I400SingleCh" = "nbs_gui.models.ScalarModel"
 "PrettyMotorFMBO" = "nbs_gui.models.MotorModel"
+"PrettyMotor" = "nbs_gui.models.MotorModel"
 "FMBHexapodMirror" = "nbs_gui.models.MotorTupleModel"
 "EpicsSignalRO" = "nbs_gui.models.PVModel"
 "EpicsSignal" = "nbs_gui.models.PVModel"
