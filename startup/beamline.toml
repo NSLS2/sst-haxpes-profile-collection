@@ -1,0 +1,28 @@
+[configuration]
+baseline = []
+has_slits = true
+has_motorized_samples = true
+has_motorized_eref = false
+has_polarization = false
+
+[detector_sets.default]
+primary = ""
+normalization = ""
+reference = ""
+
+[devices]
+
+[settings]
+modules = ["haxpes.startup"]
+
+[settings.plans]
+
+[settings.redis.md]
+host = "redis"
+prefix = "haxpes"
+
+[settings.redis.info]
+host = "redisInfo"
+prefix = ""
+port = 60737
+db = 4 
