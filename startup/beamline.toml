@@ -14,8 +14,10 @@ reference = ""
 
 [settings]
 modules = ["haxpes.startup"]
+beamline = ["sst2", "sst1"]
 
 [settings.plans]
+xps = ["xps_regions.toml"]
 
 [settings.redis.md]
 host = "info.sst.nsls2.bnl.gov"

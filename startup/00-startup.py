@@ -1,6 +1,6 @@
 import sys
 from pathlib import Path
-
+"""
 paths = [
     path
     for path in Path(
@@ -10,7 +10,7 @@ paths = [
 ]
 for path in paths:
     sys.path.append(str(path))
-
+"""
 import atexit
 import nslsii
 import haxpes
@@ -18,10 +18,12 @@ import os
 import redis
 import time as ttime
 from databroker import Broker
-from haxpes.startup import *
+#from haxpes.startup import *
+from nbs_bl.configuration import load_and_configure_everything
 from redis_json_dict import RedisJSONDict
 from tiled.client import from_profile
 
+load_and_configure_everything()
 
 class TiledInserter:
     def insert(self, name, doc):
@@ -40,22 +42,31 @@ class TiledInserter:
             # Out of attempts
             raise error
 
+print("making writing client")
 
 tiled_writing_client = from_profile(
     "nsls2", api_key=os.environ["TILED_BLUESKY_WRITING_API_KEY_HAXPES"]
 )["haxpes"]["raw"]
 tiled_inserter = TiledInserter()
-c = tiled_reading_client = from_profile("nsls2")["haxpes"]["raw"]
-db = Broker(c)
+#c = tiled_reading_client = from_profile("nsls2")["haxpes"]["raw"]
+#db = Broker(c)
+
+print("Before nslsii.configure_base")
 
 # nslsii.configure_base(get_ipython().user_ns, "haxpes", publish_documents_with_kafka=True)
 nslsii.configure_base(
     get_ipython().user_ns, tiled_inserter, publish_documents_with_kafka=True
 )
 
-RE.md = RedisJSONDict(redis.Redis("info.sst.nsls2.bnl.gov"), prefix="haxpes-")
+#RE.md = RedisJSONDict(redis.Redis("info.sst.nsls2.bnl.gov"), prefix="haxpes-")
 
+print("After configure_base")
 
+#from haxpes.xpswriter import catalog as xpswriter_catalog
+#from haxpes.xaswriter import catalog as xaswriter_catalog
+
+print("Got to end of 00-startup")
+"""
 def whoami():
     try:
         print(f"\nLogged in to Tiled as: {c.context.whoami()['identities'][0]['id']}\n")
@@ -64,10 +75,6 @@ def whoami():
 
 
 whoami()
-
-from haxpes.xpswriter import catalog as xpswriter_catalog
-from haxpes.xaswriter import catalog as xaswriter_catalog
-
 
 def logout():
     c.logout(clear_default=True)
@@ -116,3 +123,4 @@ def logout_on_exit(c=c):
 # need to pass kwargs to deal with ipython early deallocation
 # therefore, cannot user the atexit.register decorator
 atexit.register(logout_on_exit, c=c)
+"""

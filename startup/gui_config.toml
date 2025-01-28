@@ -1,8 +1,8 @@
 [gui]
-header = "nbs-gui-header"
+header = "sst-gui-header"
 
 [gui.tabs]
-include = ["nbs-gui-queue", "kafka-table-tab", "nbs-gui-console", "nbs-gui-monitor"]
+include = ["nbs-gui-queue", "kafka-table-tab", "nbs-gui-console", "nbs-gui-monitor", "sst-gui-samples"]
 
 [gui.plans]
 include = [
@@ -14,7 +14,7 @@ include = [
     "nbs-gui-flyscan",
     "manual-sample-move",
     "haxpes-xps",
-    "haxpes-respes"
+    "haxpes-xps-custom"
 ]
 
 [models.beamline]
@@ -24,11 +24,13 @@ loader = "nbs_bl.qt.models.beamline.SSTBeamlineModel"
 
 [devices]
 psh1 = { visible = false, view_only = true }
+FEsh1 = { view_only = true }
 psh4 = { visible = false }
-enpossoft = {"_role" = "energy", "load_order" = 1}
+enpostender = { "_role" = "energy", "load_order" = 1 }
 
 [loaders]
-"EnPosFactory" = "nbs_bl.qt.models.energy.EnergyModel"
+"EnPosFactory" = "sst_base.qt.models.energy.SST1EnergyModel"
+"energypos" = "haxpes.qt.models.energy.SST2EnergyModel"
 "I400SingleCh" = "nbs_gui.models.ScalarModel"
 "PrettyMotorFMBO" = "nbs_gui.models.MotorModel"
 "PrettyMotor" = "nbs_gui.models.MotorModel"
