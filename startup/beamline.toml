@@ -1,5 +1,5 @@
 [configuration]
-baseline = []
+baseline = ["manipulators", "mirrors", "blconf"]
 has_slits = true
 has_motorized_samples = true
 has_motorized_eref = false

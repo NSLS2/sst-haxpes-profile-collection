@@ -23,6 +23,8 @@ from nbs_bl.configuration import load_and_configure_everything
 from redis_json_dict import RedisJSONDict
 from tiled.client import from_profile
 
+from bluesky.plan_stubs import mv as _mv, mvr as _mvr
+
 load_and_configure_everything()
 
 class TiledInserter:
@@ -124,3 +126,12 @@ def logout_on_exit(c=c):
 # therefore, cannot user the atexit.register decorator
 atexit.register(logout_on_exit, c=c)
 """
+
+# A bug in bluesky 1.13 causes QueueServer validation to fail
+# for mv and mvr due to an unserializable type annotation (NamedMovable)
+# Redefine without type annotation to fix temporarily
+def mv(*args, group=None, **kwargs):
+    yield from _mv(*args, group=group, **kwargs)
+
+def mvr(*args, group=None, **kwargs):
+    yield from _mvr(*args, group=group, **kwargs)

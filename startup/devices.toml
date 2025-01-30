@@ -67,7 +67,7 @@ name = "SST2 Energy"
 
 [en]
 _alias = "enpostender.energy"
-_group = "motors"
+_group = ["motors", "blconf"]
 _role = "energy"
 
 [mono]
@@ -78,12 +78,15 @@ _alias = "enpostender.mono"
 
 [h]
 _alias = "enpostender.harmonic"
+_group = "blconf"
 
 [U42]
 _alias = "enpostender.u42"
+_group = "blconf"
 
 [gapoffset]
 _alias = "enpostender.offset_gap"
+_group = "blconf"
 
 [x2pitch]
 _alias = "enpostender.mono.x2pitch"
@@ -114,13 +117,13 @@ name = "en"
 
 [ensoft]
 _alias = "enpossoft.energy"
-_group = 'motors'
+_group = ['motors', 'blconf']
 _load_order = 2
 _role = "energy"
 
 [polsoft]
 _alias = "enpossoft.polarization"
-_group = 'motors'
+_group = ['motors', 'blconf']
 _load_order = 2
 _role = "polarization"
 
@@ -134,10 +137,12 @@ _load_order = 2
 
 [undulatorgapsoft]
 _alias = "enpossoft.epugap"
+_group = 'blconf'
 _load_order = 2
 
 [epuoffset]
 _alias = "enpossoft.offset_gap"
+_group = 'blconf'
 _load_order = 2
 
 [haxslt]
@@ -149,6 +154,22 @@ kind = "hinted"
 limits = { "vcenter" = [-20, 20], "vsize" = [-1, 40], "hcenter" = [-20, 20], "hsize" = [-1, 40] }
 concurrent = 1
 
+[haxslt_hsize]
+_alias = "haxslt.hsize"
+_group = ["motors", "blconf"]
+
+[haxslt_hcenter]
+_alias = "haxslt.hcenter"
+_group = ["motors", "blconf"]
+
+[haxslt_vsize]
+_alias = "haxslt.vsize"
+_group = ["motors", "blconf"]
+
+[haxslt_vcenter]
+_alias = "haxslt.vcenter"
+_group = ["motors", "blconf"]
+
 [slt_dm1]
 _target = "sst_base.slits.QuadSlits"
 prefix = "XF:07ID6-OP{Slt:03-Ax:"
@@ -158,7 +179,7 @@ concurrent = 1
 
 [ring_current]
 _target = "ophyd.EpicsSignalRO"
-_group = "signals"
+_group = ["signals","blconf"]
 _role = "beam_current"
 prefix = "SR:OPS-BI{DCCT:1}I:Real-I"
 name = "ring_current"
@@ -183,7 +204,7 @@ name = "DM4/FS09-Y"
 
 [nBPM]
 _target = "sst_base.motors.PrettyMotor"
-_group = "motors"
+_group = ["motors", "blconf"]
 prefix = "XF:07ID6-BI{BPM:1-Ax:Y}Mtr"
 name = "nBPM/C Filter"
 
@@ -224,7 +245,7 @@ kind = "hinted"
 
 [SlitAB]
 _target = "ophyd.EpicsMotor"
-_group = "motors"
+_group = ["motors", "blconf"]
 _role = "slits"
 prefix = "XF:07ID3-OP{Slt:06-Ax:YGap}Mtr"
 name = "Exit Slit AB"
@@ -326,6 +347,7 @@ name = "FS 4"
 [floodgun]
 _target = "haxpes.devices.floodgun.FloodGun"
 prefix = "XF:07ID-EGPS:1:"
+_group = "blconf"
 name = "FloodGun"
 
 [sampx]
@@ -346,7 +368,6 @@ _group = 'motors'
 
 [eslit]
 _alias = "haxslt.vsize"
-_group = "motors"
 
 [fbhor]
 _target = "haxpes.devices.pid_feedback.pid"
@@ -374,6 +395,11 @@ _defer_loading = true
 _target = "haxpes.devices.k2600b.SMU"
 prefix = "XF:07ID1{K2601B:1}"
 name = "K2601B"
+
+[dcm_crystal]
+_target = "ophyd.EpicsSignalRO"
+prefix = "XF:07ID6-OP{Mono:DCM1-Ax::XTAL_SEL"
+_group = "blconf"
 
 [gonilateral]
 _target = "sst_base.motors.PrettyMotor"
