@@ -23,9 +23,10 @@ primary_manipulator = "manipulator"
 loader = "nbs_bl.qt.models.beamline.SSTBeamlineModel"
 
 [devices]
-psh1 = { visible = false, view_only = true }
+psh4 = { visible = false, view_only = true }
+psh5 = { visible = false}
+psh1 = { view_only = true }
 FEsh1 = { view_only = true }
-psh4 = { visible = false }
 enpostender = { "_role" = "energy", "load_order" = 1 }
 
 [loaders]
