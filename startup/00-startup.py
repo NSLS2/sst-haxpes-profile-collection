@@ -20,6 +20,7 @@ import time as ttime
 from databroker import Broker
 #from haxpes.startup import *
 from nbs_bl.configuration import load_and_configure_everything
+from nslsii import configure_kafka_publisher
 from redis_json_dict import RedisJSONDict
 from tiled.client import from_profile
 
@@ -57,8 +58,10 @@ print("Before nslsii.configure_base")
 
 # nslsii.configure_base(get_ipython().user_ns, "haxpes", publish_documents_with_kafka=True)
 nslsii.configure_base(
-    get_ipython().user_ns, tiled_inserter, publish_documents_with_kafka=True
+    get_ipython().user_ns, tiled_inserter, publish_documents_with_kafka=False
 )
+
+configure_kafka_publisher(RE, beamline_name="haxpes")
 
 #RE.md = RedisJSONDict(redis.Redis("info.sst.nsls2.bnl.gov"), prefix="haxpes-")
 

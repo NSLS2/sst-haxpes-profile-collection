@@ -1,0 +1,3 @@
+au4f_xps = { core_line = "Au4f", energy_type = "binding", energy_start = 78, energy_stop = 98, energy_step = 0.05, region_name = "Au4f" }
+vb_xps = { core_line = "VB", energy_type = "binding", energy_start = -5, energy_stop = 20, energy_step = 0.05, region_name = "VB" }
+survey_xps = { core_line = "Survey", energy_type = "binding", energy_start = -2, energy_stop = 1500, energy_step = 0.75, region_name = "Survey" }
