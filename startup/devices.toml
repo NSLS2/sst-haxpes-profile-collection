@@ -383,13 +383,19 @@ _defer_loading = true
 
 [ses]
 _target = "haxpes.devices.ses.SES"
+_group = "detectors"
 prefix = "XF:07ID-ES-SES"
 name = "SES"
 _defer_loading = true
 
+[xps_analyzer]
+_target = "ophyd.EpicsSignal"
+prefix = "XF:07ID2-HAXMonitor:xps_analyzer"
+
 [haxSMU]
 _target = "haxpes.devices.k2600b.SMU"
 prefix = "XF:07ID1{K2601B:1}"
+_group = "blconf"
 name = "K2601B"
 
 [dcm_crystal]
