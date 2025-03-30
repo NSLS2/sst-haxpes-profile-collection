@@ -114,7 +114,7 @@ name = "en"
 
 [ensoft]
 _alias = "enpossoft.energy"
-_group = 'motors'
+_group = ['motors', 'blconf']
 _load_order = 2
 _role = "energy"
 
@@ -241,7 +241,7 @@ kind = "hinted"
 
 [SlitAB]
 _target = "ophyd.EpicsMotor"
-_group = "motors"
+_group = ["motors", "blconf"]
 _role = "slits"
 prefix = "XF:07ID3-OP{Slt:06-Ax:YGap}Mtr"
 name = "Exit Slit AB"
@@ -256,9 +256,9 @@ string = true
 
 [beamselection]
 _target = "ophyd.EpicsSignal"
-_group = "signals"
+_group = ["signals", "blconf"]
 prefix = "XF:07ID2-HAXMonitor:beamselect"
-name = "beam selection"
+name = "beam_selection"
 string = true
 
 [beamon]
