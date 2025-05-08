@@ -144,27 +144,11 @@ _load_order = 2
 _target = "sst_base.slits.QuadSlitsLimitFactory"
 prefix = "XF:07ID2-OP{Slt:12-Ax:"
 _role = "slits"
-_group = "blconf"
+_group = ["motors", "blconf"]
 name = "HAXPES slits"
 kind = "hinted"
 limits = { "vcenter" = [-20, 20], "vsize" = [-1, 40], "hcenter" = [-20, 20], "hsize" = [-1, 40] }
 concurrent = 1
-
-[haxslt_hsize]
-_alias = "haxslt.hsize"
-_group = ["motors"]
-
-[haxslt_hcenter]
-_alias = "haxslt.hcenter"
-_group = ["motors"]
-
-[haxslt_vsize]
-_alias = "haxslt.vsize"
-_group = ["motors"]
-
-[haxslt_vcenter]
-_alias = "haxslt.vcenter"
-_group = ["motors"]
 
 [slt_dm1]
 _target = "sst_base.slits.QuadSlits"
