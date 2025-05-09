@@ -5373,82 +5373,6 @@ existing_devices:
     is_movable: true
     is_readable: true
     module: sst_base.slits
-  haxslt_hcenter:
-    classname: PseudoSingle
-    components:
-      readback:
-        classname: AttributeSignal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: ophyd.signal
-      setpoint:
-        classname: AttributeSignal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: ophyd.signal
-    is_flyable: false
-    is_movable: true
-    is_readable: true
-    module: ophyd.pseudopos
-  haxslt_hsize:
-    classname: PseudoSingle
-    components:
-      readback:
-        classname: AttributeSignal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: ophyd.signal
-      setpoint:
-        classname: AttributeSignal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: ophyd.signal
-    is_flyable: false
-    is_movable: true
-    is_readable: true
-    module: ophyd.pseudopos
-  haxslt_vcenter:
-    classname: PseudoSingle
-    components:
-      readback:
-        classname: AttributeSignal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: ophyd.signal
-      setpoint:
-        classname: AttributeSignal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: ophyd.signal
-    is_flyable: false
-    is_movable: true
-    is_readable: true
-    module: ophyd.pseudopos
-  haxslt_vsize:
-    classname: PseudoSingle
-    components:
-      readback:
-        classname: AttributeSignal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: ophyd.signal
-      setpoint:
-        classname: AttributeSignal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: ophyd.signal
-    is_flyable: false
-    is_movable: true
-    is_readable: true
-    module: ophyd.pseudopos
   manipulator:
     classname: Manipulator
     components:
@@ -8963,7 +8887,7 @@ existing_plans:
         value: 1
       name: analyzer_settings
     - annotation:
-        type: typing.Union[float, typing.Iterable[float]]
+        type: typing.Union[float, collections.abc.Iterable[float]]
       default: '0.0'
       description: Time delay in seconds between successive readings; default is 0.
       kind:
@@ -9088,8 +9012,7 @@ existing_plans:
     name: mv
     parameters:
     - annotation:
-        type: typing.Tuple[typing.Union[__MOVABLE__, bluesky.protocols.NamedMovable,
-          typing.Any], ...]
+        type: typing.Union[__MOVABLE__, typing.Any]
       convert_device_names: true
       description: device1, value1, device2, value2, ...
       kind:
@@ -9097,7 +9020,7 @@ existing_plans:
         value: 2
       name: args
     - annotation:
-        type: typing.Optional[typing.Hashable]
+        type: typing.Optional[collections.abc.Hashable]
       default: None
       description: Used to mark these as a unit to be waited on.
       kind:
@@ -9118,8 +9041,7 @@ existing_plans:
     name: mvr
     parameters:
     - annotation:
-        type: typing.Tuple[typing.Union[__MOVABLE__, bluesky.protocols.NamedMovable,
-          typing.Any], ...]
+        type: typing.Union[__MOVABLE__, typing.Any]
       convert_device_names: true
       description: device1, value1, device2, value2, ...
       kind:
@@ -9127,7 +9049,7 @@ existing_plans:
         value: 2
       name: args
     - annotation:
-        type: typing.Optional[typing.Hashable]
+        type: typing.Optional[collections.abc.Hashable]
       default: None
       description: Used to mark these as a unit to be waited on.
       kind:
@@ -9153,13 +9075,15 @@ existing_plans:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: obj
-    - description: passed to obj.set()
+    - annotation:
+        type: typing.Any
+      description: passed to obj.set()
       kind:
         name: VAR_POSITIONAL
         value: 2
       name: args
     - annotation:
-        type: typing.Optional[typing.Hashable]
+        type: typing.Optional[collections.abc.Hashable]
       default: None
       description: identifier used by 'wait'
       kind:
@@ -9189,7 +9113,7 @@ existing_plans:
     name: adaptive_scan
     parameters:
     - annotation:
-        type: typing.Sequence[__READABLE__]
+        type: collections.abc.Sequence[__READABLE__]
       convert_device_names: true
       description: list of 'readable' objects
       kind:
@@ -9261,7 +9185,7 @@ existing_plans:
         value: 1
       name: threshold
     - annotation:
-        type: typing.Optional[typing.Dict[str, typing.Any]]
+        type: typing.Optional[dict[str, typing.Any]]
       default: None
       description: metadata
       kind:
@@ -9319,7 +9243,7 @@ existing_plans:
         value: 1
       name: analyzer_settings
     - annotation:
-        type: typing.Union[float, typing.Iterable[float]]
+        type: typing.Union[float, collections.abc.Iterable[float]]
       default: '0.0'
       description: Time delay in seconds between successive readings; default is 0.
       kind:
@@ -9450,7 +9374,7 @@ existing_plans:
         value: 1
       name: command
     - annotation:
-        type: typing.Iterable[typing.Any]
+        type: collections.abc.Iterable[typing.Any]
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
@@ -9671,7 +9595,7 @@ existing_plans:
         value: 1
       name: obj
     - annotation:
-        type: typing.Optional[typing.Hashable]
+        type: typing.Optional[collections.abc.Hashable]
       default: None
       description: identifier used by 'wait'
       kind:
@@ -9707,7 +9631,7 @@ existing_plans:
         value: 2
       name: args
     - annotation:
-        type: typing.Optional[typing.Hashable]
+        type: typing.Optional[collections.abc.Hashable]
       default: None
       description: identifier used by 'wait'
       kind:
@@ -9762,7 +9686,7 @@ existing_plans:
     name: count
     parameters:
     - annotation:
-        type: typing.Sequence[__READABLE__]
+        type: collections.abc.Sequence[__READABLE__]
       convert_device_names: true
       description: list of 'readable' objects
       kind:
@@ -9781,7 +9705,7 @@ existing_plans:
         value: 1
       name: num
     - annotation:
-        type: typing.Union[float, typing.Iterable[float]]
+        type: typing.Union[float, collections.abc.Iterable[float]]
       default: '0.0'
       description: Time delay in seconds between successive readings; default is 0.
       kind:
@@ -9797,7 +9721,7 @@ existing_plans:
         value: 3
       name: per_shot
     - annotation:
-        type: typing.Optional[typing.Dict[str, typing.Any]]
+        type: typing.Optional[dict[str, typing.Any]]
       default: None
       description: metadata
       kind:
@@ -9957,7 +9881,7 @@ existing_plans:
     name: fly
     parameters:
     - annotation:
-        type: typing.List[__FLYABLE__]
+        type: list[__FLYABLE__]
       convert_device_names: true
       description: objects that support the flyer interface
       kind:
@@ -9965,7 +9889,7 @@ existing_plans:
         value: 1
       name: flyers
     - annotation:
-        type: typing.Optional[typing.Dict[str, typing.Any]]
+        type: typing.Optional[dict[str, typing.Any]]
       default: None
       description: metadata
       kind:
@@ -9980,7 +9904,7 @@ existing_plans:
     name: grid_scan
     parameters:
     - annotation:
-        type: typing.Sequence[__READABLE__]
+        type: collections.abc.Sequence[__READABLE__]
       convert_device_names: true
       description: list of 'readable' objects
       kind:
@@ -9992,7 +9916,7 @@ existing_plans:
         value: 2
       name: args
     - annotation:
-        type: typing.Union[typing.Iterable, bool, NoneType]
+        type: typing.Union[collections.abc.Iterable, bool, NoneType]
       default: None
       description: 'which axes should be snaked, either ``False`` (do not snake any
         axes),
@@ -10021,7 +9945,7 @@ existing_plans:
         value: 3
       name: per_step
     - annotation:
-        type: typing.Optional[typing.Dict[str, typing.Any]]
+        type: typing.Optional[dict[str, typing.Any]]
       default: None
       description: metadata
       kind:
@@ -10035,7 +9959,7 @@ existing_plans:
     name: inner_product_scan
     parameters:
     - annotation:
-        type: typing.Sequence[__READABLE__]
+        type: collections.abc.Sequence[__READABLE__]
       convert_device_names: true
       kind:
         name: POSITIONAL_OR_KEYWORD
@@ -10060,7 +9984,7 @@ existing_plans:
         value: 3
       name: per_step
     - annotation:
-        type: typing.Optional[typing.Dict[str, typing.Any]]
+        type: typing.Optional[dict[str, typing.Any]]
       default: None
       kind:
         name: KEYWORD_ONLY
@@ -10114,7 +10038,7 @@ existing_plans:
         value: 1
       name: obj
     - annotation:
-        type: typing.Optional[typing.Hashable]
+        type: typing.Optional[collections.abc.Hashable]
       default: None
       description: identifier used by 'wait'.
       kind:
@@ -10149,7 +10073,7 @@ existing_plans:
         value: 2
       name: args
     - annotation:
-        type: typing.Optional[typing.Hashable]
+        type: typing.Optional[collections.abc.Hashable]
       default: None
       description: identifier used by 'wait'.
       kind:
@@ -10179,7 +10103,7 @@ existing_plans:
     name: list_grid_scan
     parameters:
     - annotation:
-        type: typing.Sequence[__READABLE__]
+        type: collections.abc.Sequence[__READABLE__]
       convert_device_names: true
       description: list of 'readable' objects
       kind:
@@ -10229,7 +10153,7 @@ existing_plans:
         value: 3
       name: per_step
     - annotation:
-        type: typing.Optional[typing.Dict[str, typing.Any]]
+        type: typing.Optional[dict[str, typing.Any]]
       default: None
       description: metadata
       kind:
@@ -10244,7 +10168,7 @@ existing_plans:
     name: list_scan
     parameters:
     - annotation:
-        type: typing.Sequence[__READABLE__]
+        type: collections.abc.Sequence[__READABLE__]
       convert_device_names: true
       description: list of 'readable' objects
       kind:
@@ -10252,7 +10176,7 @@ existing_plans:
         value: 1
       name: detectors
     - annotation:
-        type: typing.Tuple[typing.Union[__MOVABLE__, typing.Any], typing.List[typing.Any]]
+        type: tuple[typing.Union[__MOVABLE__, typing.Any], list[typing.Any]]
       convert_device_names: true
       description: "For one dimension, ``motor, [point1, point2, ....]``.\nIn general:\n\
         \n.. code-block:: python\n\n    motor1, [point1, point2, ...],\n    motor2,\
@@ -10273,7 +10197,7 @@ existing_plans:
         value: 3
       name: per_step
     - annotation:
-        type: typing.Optional[typing.Dict[str, typing.Any]]
+        type: typing.Optional[dict[str, typing.Any]]
       default: None
       description: metadata
       kind:
@@ -10304,7 +10228,7 @@ existing_plans:
     name: log_scan
     parameters:
     - annotation:
-        type: typing.Sequence[__READABLE__]
+        type: collections.abc.Sequence[__READABLE__]
       convert_device_names: true
       description: list of 'readable' objects
       kind:
@@ -10407,8 +10331,7 @@ existing_plans:
     name: mv
     parameters:
     - annotation:
-        type: typing.Tuple[typing.Union[__MOVABLE__, bluesky.protocols.NamedMovable,
-          typing.Any], ...]
+        type: typing.Union[__MOVABLE__, typing.Any]
       convert_device_names: true
       description: device1, value1, device2, value2, ...
       kind:
@@ -10416,7 +10339,7 @@ existing_plans:
         value: 2
       name: args
     - annotation:
-        type: typing.Optional[typing.Hashable]
+        type: typing.Optional[collections.abc.Hashable]
       default: None
       description: Used to mark these as a unit to be waited on.
       kind:
@@ -10436,7 +10359,7 @@ existing_plans:
     name: move_per_step
     parameters:
     - annotation:
-        type: typing.Mapping[__MOVABLE__, typing.Any]
+        type: collections.abc.Mapping[__MOVABLE__, typing.Any]
       convert_device_names: true
       description: mapping motors to positions in this step
       kind:
@@ -10444,7 +10367,7 @@ existing_plans:
         value: 1
       name: step
     - annotation:
-        type: typing.Dict[__MOVABLE__, typing.Any]
+        type: dict[__MOVABLE__, typing.Any]
       convert_device_names: true
       description: mapping motors to their last-set positions
       kind:
@@ -10477,8 +10400,7 @@ existing_plans:
     name: mvr
     parameters:
     - annotation:
-        type: typing.Tuple[typing.Union[__MOVABLE__, bluesky.protocols.NamedMovable,
-          typing.Any], ...]
+        type: typing.Union[__MOVABLE__, typing.Any]
       convert_device_names: true
       description: device1, value1, device2, value2, ...
       kind:
@@ -10486,7 +10408,7 @@ existing_plans:
         value: 2
       name: args
     - annotation:
-        type: typing.Optional[typing.Hashable]
+        type: typing.Optional[collections.abc.Hashable]
       default: None
       description: Used to mark these as a unit to be waited on.
       kind:
@@ -10555,7 +10477,7 @@ existing_plans:
         value: 1
       name: num
     - annotation:
-        type: typing.Union[float, typing.Iterable[float]]
+        type: typing.Union[float, collections.abc.Iterable[float]]
       default: '0.0'
       description: Time delay in seconds between successive readings; default is 0.
       kind:
@@ -11015,7 +10937,7 @@ existing_plans:
         value: 2
       name: args
     - annotation:
-        type: typing.Union[typing.Iterable, bool, NoneType]
+        type: typing.Union[collections.abc.Iterable, bool, NoneType]
       default: None
       description: 'which axes should be snaked, either ``False`` (do not snake any
         axes),
@@ -11486,7 +11408,7 @@ existing_plans:
     name: nbs_list_scan
     parameters:
     - annotation:
-        type: typing.Tuple[typing.Union[__MOVABLE__, typing.Any], typing.List[typing.Any]]
+        type: tuple[typing.Union[__MOVABLE__, typing.Any], list[typing.Any]]
       convert_device_names: true
       description: "For one dimension, ``motor, [point1, point2, ....]``.\nIn general:\n\
         \n.. code-block:: python\n\n    motor1, [point1, point2, ...],\n    motor2,\
@@ -11784,7 +11706,7 @@ existing_plans:
         value: 2
       name: args
     - annotation:
-        type: typing.Union[typing.Iterable, bool, NoneType]
+        type: typing.Union[collections.abc.Iterable, bool, NoneType]
       default: None
       description: 'which axes should be snaked, either ``False`` (do not snake any
         axes),
@@ -13945,7 +13867,7 @@ existing_plans:
     name: one_1d_step
     parameters:
     - annotation:
-        type: typing.Sequence[__READABLE__]
+        type: collections.abc.Sequence[__READABLE__]
       convert_device_names: true
       description: devices to read
       kind:
@@ -13986,7 +13908,7 @@ existing_plans:
     name: one_nd_step
     parameters:
     - annotation:
-        type: typing.Sequence[__READABLE__]
+        type: collections.abc.Sequence[__READABLE__]
       convert_device_names: true
       description: devices to read
       kind:
@@ -13994,7 +13916,7 @@ existing_plans:
         value: 1
       name: detectors
     - annotation:
-        type: typing.Mapping[__MOVABLE__, typing.Any]
+        type: collections.abc.Mapping[__MOVABLE__, typing.Any]
       convert_device_names: true
       description: mapping motors to positions in this step
       kind:
@@ -14002,7 +13924,7 @@ existing_plans:
         value: 1
       name: step
     - annotation:
-        type: typing.Dict[__MOVABLE__, typing.Any]
+        type: dict[__MOVABLE__, typing.Any]
       convert_device_names: true
       description: mapping motors to their last-set positions
       kind:
@@ -14028,7 +13950,7 @@ existing_plans:
     name: one_shot
     parameters:
     - annotation:
-        type: typing.Sequence[__READABLE__]
+        type: collections.abc.Sequence[__READABLE__]
       convert_device_names: true
       description: devices to read
       kind:
@@ -14054,7 +13976,7 @@ existing_plans:
     name: open_run
     parameters:
     - annotation:
-        type: typing.Optional[typing.Dict[str, typing.Any]]
+        type: typing.Optional[dict[str, typing.Any]]
       default: None
       description: metadata
       kind:
@@ -14094,7 +14016,7 @@ existing_plans:
     name: grid_scan
     parameters:
     - annotation:
-        type: typing.Sequence[__READABLE__]
+        type: collections.abc.Sequence[__READABLE__]
       convert_device_names: true
       description: list of 'readable' objects
       kind:
@@ -14106,7 +14028,7 @@ existing_plans:
         value: 2
       name: args
     - annotation:
-        type: typing.Union[typing.Iterable, bool, NoneType]
+        type: typing.Union[collections.abc.Iterable, bool, NoneType]
       default: None
       description: 'which axes should be snaked, either ``False`` (do not snake any
         axes),
@@ -14135,7 +14057,7 @@ existing_plans:
         value: 3
       name: per_step
     - annotation:
-        type: typing.Optional[typing.Dict[str, typing.Any]]
+        type: typing.Optional[dict[str, typing.Any]]
       default: None
       description: metadata
       kind:
@@ -14166,7 +14088,7 @@ existing_plans:
         value: 2
       name: args
     - annotation:
-        type: typing.Optional[typing.Hashable]
+        type: typing.Optional[collections.abc.Hashable]
       default: None
       description: identifier used by 'wait'
       kind:
@@ -14273,7 +14195,7 @@ existing_plans:
         value: 1
       name: period
     - annotation:
-        type: typing.Optional[typing.Dict[str, typing.Any]]
+        type: typing.Optional[dict[str, typing.Any]]
       default: None
       kind:
         name: POSITIONAL_OR_KEYWORD
@@ -14327,7 +14249,7 @@ existing_plans:
     name: rel_adaptive_scan
     parameters:
     - annotation:
-        type: typing.Sequence[__READABLE__]
+        type: collections.abc.Sequence[__READABLE__]
       convert_device_names: true
       description: list of 'readable' objects
       kind:
@@ -14402,7 +14324,7 @@ existing_plans:
         value: 1
       name: threshold
     - annotation:
-        type: typing.Optional[typing.Dict[str, typing.Any]]
+        type: typing.Optional[dict[str, typing.Any]]
       default: None
       description: metadata
       kind:
@@ -14417,7 +14339,7 @@ existing_plans:
     name: rel_grid_scan
     parameters:
     - annotation:
-        type: typing.Sequence[__READABLE__]
+        type: collections.abc.Sequence[__READABLE__]
       convert_device_names: true
       description: list of 'readable' objects
       kind:
@@ -14432,7 +14354,7 @@ existing_plans:
         value: 2
       name: args
     - annotation:
-        type: typing.Union[typing.Iterable, bool, NoneType]
+        type: typing.Union[collections.abc.Iterable, bool, NoneType]
       default: None
       description: 'which axes should be snaked, either ``False`` (do not snake any
         axes),
@@ -14461,7 +14383,7 @@ existing_plans:
         value: 3
       name: per_step
     - annotation:
-        type: typing.Optional[typing.Dict[str, typing.Any]]
+        type: typing.Optional[dict[str, typing.Any]]
       default: None
       description: metadata
       kind:
@@ -14479,7 +14401,7 @@ existing_plans:
     name: rel_list_grid_scan
     parameters:
     - annotation:
-        type: typing.Sequence[__READABLE__]
+        type: collections.abc.Sequence[__READABLE__]
       convert_device_names: true
       description: list of 'readable' objects
       kind:
@@ -14529,7 +14451,7 @@ existing_plans:
         value: 3
       name: per_step
     - annotation:
-        type: typing.Optional[typing.Dict[str, typing.Any]]
+        type: typing.Optional[dict[str, typing.Any]]
       default: None
       description: metadata
       kind:
@@ -14544,7 +14466,7 @@ existing_plans:
     name: rel_list_scan
     parameters:
     - annotation:
-        type: typing.Sequence[__READABLE__]
+        type: collections.abc.Sequence[__READABLE__]
       convert_device_names: true
       description: list of 'readable' objects
       kind:
@@ -14572,7 +14494,7 @@ existing_plans:
         value: 3
       name: per_step
     - annotation:
-        type: typing.Optional[typing.Dict[str, typing.Any]]
+        type: typing.Optional[dict[str, typing.Any]]
       default: None
       description: metadata
       kind:
@@ -14587,7 +14509,7 @@ existing_plans:
     name: rel_log_scan
     parameters:
     - annotation:
-        type: typing.Sequence[__READABLE__]
+        type: collections.abc.Sequence[__READABLE__]
       convert_device_names: true
       description: list of 'readable' objects
       kind:
@@ -14632,7 +14554,7 @@ existing_plans:
         value: 3
       name: per_step
     - annotation:
-        type: typing.Optional[typing.Dict[str, typing.Any]]
+        type: typing.Optional[dict[str, typing.Any]]
       default: None
       description: metadata
       kind:
@@ -14647,7 +14569,7 @@ existing_plans:
     name: rel_scan
     parameters:
     - annotation:
-        type: typing.Sequence[__READABLE__]
+        type: collections.abc.Sequence[__READABLE__]
       convert_device_names: true
       description: list of 'readable' objects
       kind:
@@ -14682,7 +14604,7 @@ existing_plans:
         value: 3
       name: per_step
     - annotation:
-        type: typing.Optional[typing.Dict[str, typing.Any]]
+        type: typing.Optional[dict[str, typing.Any]]
       default: None
       description: metadata
       kind:
@@ -14703,13 +14625,15 @@ existing_plans:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: obj
-    - description: passed to obj.set()
+    - annotation:
+        type: typing.Any
+      description: passed to obj.set()
       kind:
         name: VAR_POSITIONAL
         value: 2
       name: args
     - annotation:
-        type: typing.Optional[typing.Hashable]
+        type: typing.Optional[collections.abc.Hashable]
       default: None
       description: identifier used by 'wait'; None by default
       kind:
@@ -14739,7 +14663,7 @@ existing_plans:
     name: rel_spiral
     parameters:
     - annotation:
-        type: typing.Sequence[__READABLE__]
+        type: collections.abc.Sequence[__READABLE__]
       convert_device_names: true
       kind:
         name: POSITIONAL_OR_KEYWORD
@@ -14818,7 +14742,7 @@ existing_plans:
         value: 3
       name: per_step
     - annotation:
-        type: typing.Optional[typing.Dict[str, typing.Any]]
+        type: typing.Optional[dict[str, typing.Any]]
       default: None
       description: metadata
       kind:
@@ -14833,7 +14757,7 @@ existing_plans:
     name: rel_spiral_fermat
     parameters:
     - annotation:
-        type: typing.Sequence[__READABLE__]
+        type: collections.abc.Sequence[__READABLE__]
       convert_device_names: true
       description: list of 'readable' objects
       kind:
@@ -14913,7 +14837,7 @@ existing_plans:
         value: 3
       name: per_step
     - annotation:
-        type: typing.Optional[typing.Dict[str, typing.Any]]
+        type: typing.Optional[dict[str, typing.Any]]
       default: None
       description: metadata
       kind:
@@ -14928,7 +14852,7 @@ existing_plans:
     name: rel_spiral_square
     parameters:
     - annotation:
-        type: typing.Sequence[__READABLE__]
+        type: collections.abc.Sequence[__READABLE__]
       convert_device_names: true
       description: list of 'readable' objects
       kind:
@@ -14990,7 +14914,7 @@ existing_plans:
         value: 3
       name: per_step
     - annotation:
-        type: typing.Optional[typing.Dict[str, typing.Any]]
+        type: typing.Optional[dict[str, typing.Any]]
       default: None
       description: metadata
       kind:
@@ -15005,7 +14929,7 @@ existing_plans:
     name: rel_adaptive_scan
     parameters:
     - annotation:
-        type: typing.Sequence[__READABLE__]
+        type: collections.abc.Sequence[__READABLE__]
       convert_device_names: true
       description: list of 'readable' objects
       kind:
@@ -15080,7 +15004,7 @@ existing_plans:
         value: 1
       name: threshold
     - annotation:
-        type: typing.Optional[typing.Dict[str, typing.Any]]
+        type: typing.Optional[dict[str, typing.Any]]
       default: None
       description: metadata
       kind:
@@ -15094,7 +15018,7 @@ existing_plans:
     name: relative_inner_product_scan
     parameters:
     - annotation:
-        type: typing.Sequence[__READABLE__]
+        type: collections.abc.Sequence[__READABLE__]
       convert_device_names: true
       kind:
         name: POSITIONAL_OR_KEYWORD
@@ -15119,7 +15043,7 @@ existing_plans:
         value: 3
       name: per_step
     - annotation:
-        type: typing.Optional[typing.Dict[str, typing.Any]]
+        type: typing.Optional[dict[str, typing.Any]]
       default: None
       kind:
         name: KEYWORD_ONLY
@@ -15133,7 +15057,7 @@ existing_plans:
     name: rel_list_scan
     parameters:
     - annotation:
-        type: typing.Sequence[__READABLE__]
+        type: collections.abc.Sequence[__READABLE__]
       convert_device_names: true
       description: list of 'readable' objects
       kind:
@@ -15161,7 +15085,7 @@ existing_plans:
         value: 3
       name: per_step
     - annotation:
-        type: typing.Optional[typing.Dict[str, typing.Any]]
+        type: typing.Optional[dict[str, typing.Any]]
       default: None
       description: metadata
       kind:
@@ -15176,7 +15100,7 @@ existing_plans:
     name: rel_log_scan
     parameters:
     - annotation:
-        type: typing.Sequence[__READABLE__]
+        type: collections.abc.Sequence[__READABLE__]
       convert_device_names: true
       description: list of 'readable' objects
       kind:
@@ -15221,7 +15145,7 @@ existing_plans:
         value: 3
       name: per_step
     - annotation:
-        type: typing.Optional[typing.Dict[str, typing.Any]]
+        type: typing.Optional[dict[str, typing.Any]]
       default: None
       description: metadata
       kind:
@@ -15236,7 +15160,7 @@ existing_plans:
     name: rel_grid_scan
     parameters:
     - annotation:
-        type: typing.Sequence[__READABLE__]
+        type: collections.abc.Sequence[__READABLE__]
       convert_device_names: true
       description: list of 'readable' objects
       kind:
@@ -15251,7 +15175,7 @@ existing_plans:
         value: 2
       name: args
     - annotation:
-        type: typing.Union[typing.Iterable, bool, NoneType]
+        type: typing.Union[collections.abc.Iterable, bool, NoneType]
       default: None
       description: 'which axes should be snaked, either ``False`` (do not snake any
         axes),
@@ -15280,7 +15204,7 @@ existing_plans:
         value: 3
       name: per_step
     - annotation:
-        type: typing.Optional[typing.Dict[str, typing.Any]]
+        type: typing.Optional[dict[str, typing.Any]]
       default: None
       description: metadata
       kind:
@@ -15295,7 +15219,7 @@ existing_plans:
     name: rel_scan
     parameters:
     - annotation:
-        type: typing.Sequence[__READABLE__]
+        type: collections.abc.Sequence[__READABLE__]
       convert_device_names: true
       description: list of 'readable' objects
       kind:
@@ -15330,7 +15254,7 @@ existing_plans:
         value: 3
       name: per_step
     - annotation:
-        type: typing.Optional[typing.Dict[str, typing.Any]]
+        type: typing.Optional[dict[str, typing.Any]]
       default: None
       description: metadata
       kind:
@@ -15345,7 +15269,7 @@ existing_plans:
     name: rel_spiral
     parameters:
     - annotation:
-        type: typing.Sequence[__READABLE__]
+        type: collections.abc.Sequence[__READABLE__]
       convert_device_names: true
       kind:
         name: POSITIONAL_OR_KEYWORD
@@ -15424,7 +15348,7 @@ existing_plans:
         value: 3
       name: per_step
     - annotation:
-        type: typing.Optional[typing.Dict[str, typing.Any]]
+        type: typing.Optional[dict[str, typing.Any]]
       default: None
       description: metadata
       kind:
@@ -15439,7 +15363,7 @@ existing_plans:
     name: rel_spiral_fermat
     parameters:
     - annotation:
-        type: typing.Sequence[__READABLE__]
+        type: collections.abc.Sequence[__READABLE__]
       convert_device_names: true
       description: list of 'readable' objects
       kind:
@@ -15519,7 +15443,7 @@ existing_plans:
         value: 3
       name: per_step
     - annotation:
-        type: typing.Optional[typing.Dict[str, typing.Any]]
+        type: typing.Optional[dict[str, typing.Any]]
       default: None
       description: metadata
       kind:
@@ -15568,7 +15492,7 @@ existing_plans:
         value: 1
       name: num
     - annotation:
-        type: typing.Union[float, typing.Iterable[float]]
+        type: typing.Union[float, collections.abc.Iterable[float]]
       default: '0.0'
       description: time delay between successive readings; default is 0
       kind:
@@ -15682,7 +15606,7 @@ existing_plans:
     name: scan
     parameters:
     - annotation:
-        type: typing.Sequence[__READABLE__]
+        type: collections.abc.Sequence[__READABLE__]
       convert_device_names: true
       description: list of 'readable' objects
       kind:
@@ -15719,7 +15643,7 @@ existing_plans:
         value: 3
       name: per_step
     - annotation:
-        type: typing.Optional[typing.Dict[str, typing.Any]]
+        type: typing.Optional[dict[str, typing.Any]]
       default: None
       description: metadata
       kind:
@@ -15734,7 +15658,7 @@ existing_plans:
     name: scan_nd
     parameters:
     - annotation:
-        type: typing.Sequence[__READABLE__]
+        type: collections.abc.Sequence[__READABLE__]
       convert_device_names: true
       kind:
         name: POSITIONAL_OR_KEYWORD
@@ -15756,7 +15680,7 @@ existing_plans:
         value: 3
       name: per_step
     - annotation:
-        type: typing.Optional[typing.Dict[str, typing.Any]]
+        type: typing.Optional[dict[str, typing.Any]]
       default: None
       description: metadata
       kind:
@@ -16013,7 +15937,7 @@ existing_plans:
     name: spiral
     parameters:
     - annotation:
-        type: typing.Sequence[__READABLE__]
+        type: collections.abc.Sequence[__READABLE__]
       convert_device_names: true
       kind:
         name: POSITIONAL_OR_KEYWORD
@@ -16101,7 +16025,7 @@ existing_plans:
         value: 3
       name: per_step
     - annotation:
-        type: typing.Optional[typing.Dict[str, typing.Any]]
+        type: typing.Optional[dict[str, typing.Any]]
       default: None
       description: metadata
       kind:
@@ -16116,7 +16040,7 @@ existing_plans:
     name: spiral_fermat
     parameters:
     - annotation:
-        type: typing.Sequence[__READABLE__]
+        type: collections.abc.Sequence[__READABLE__]
       convert_device_names: true
       description: list of 'readable' objects
       kind:
@@ -16204,7 +16128,7 @@ existing_plans:
         value: 3
       name: per_step
     - annotation:
-        type: typing.Optional[typing.Dict[str, typing.Any]]
+        type: typing.Optional[dict[str, typing.Any]]
       default: None
       description: metadata
       kind:
@@ -16219,7 +16143,7 @@ existing_plans:
     name: spiral_square
     parameters:
     - annotation:
-        type: typing.Sequence[__READABLE__]
+        type: collections.abc.Sequence[__READABLE__]
       convert_device_names: true
       description: list of 'readable' objects
       kind:
@@ -16289,7 +16213,7 @@ existing_plans:
         value: 3
       name: per_step
     - annotation:
-        type: typing.Optional[typing.Dict[str, typing.Any]]
+        type: typing.Optional[dict[str, typing.Any]]
       default: None
       description: metadata
       kind:
@@ -16311,7 +16235,7 @@ existing_plans:
         value: 1
       name: obj
     - annotation:
-        type: typing.Optional[typing.Hashable]
+        type: typing.Optional[collections.abc.Hashable]
       default: None
       description: identifier used by 'wait'; None by default
       kind:
@@ -16345,7 +16269,7 @@ existing_plans:
         value: 2
       name: args
     - annotation:
-        type: typing.Optional[typing.Hashable]
+        type: typing.Optional[collections.abc.Hashable]
       default: None
       description: identifier used by 'wait'; None by default
       kind:
@@ -16411,7 +16335,7 @@ existing_plans:
         value: 1
       name: analyzer_settings
     - annotation:
-        type: typing.Union[float, typing.Iterable[float]]
+        type: typing.Union[float, collections.abc.Iterable[float]]
       default: '0.0'
       description: Time delay in seconds between successive readings; default is 0.
       kind:
@@ -16543,7 +16467,7 @@ existing_plans:
         value: 1
       name: obj
     - annotation:
-        type: typing.Optional[typing.Hashable]
+        type: typing.Optional[collections.abc.Hashable]
       default: None
       description: identifier used by 'wait'; None by default
       kind:
@@ -16569,7 +16493,7 @@ existing_plans:
     name: trigger_and_read
     parameters:
     - annotation:
-        type: typing.Sequence[__READABLE__]
+        type: collections.abc.Sequence[__READABLE__]
       convert_device_names: true
       description: devices to trigger (if they have a trigger method) and then read
       kind:
@@ -16594,7 +16518,7 @@ existing_plans:
     name: tune_centroid
     parameters:
     - annotation:
-        type: typing.Sequence[__READABLE__]
+        type: collections.abc.Sequence[__READABLE__]
       convert_device_names: true
       description: list of 'readable' objects
       kind:
@@ -16662,7 +16586,7 @@ existing_plans:
         value: 1
       name: snake
     - annotation:
-        type: typing.Optional[typing.Dict[str, typing.Any]]
+        type: typing.Optional[dict[str, typing.Any]]
       default: None
       description: metadata
       kind:
@@ -16708,7 +16632,7 @@ existing_plans:
         value: 1
       name: step
     - annotation:
-        type: typing.Optional[typing.Dict[str, typing.Any]]
+        type: typing.Optional[dict[str, typing.Any]]
       default: None
       description: metadata
       kind:
@@ -16744,7 +16668,7 @@ existing_plans:
         value: 1
       name: obj
     - annotation:
-        type: typing.Optional[typing.Hashable]
+        type: typing.Optional[collections.abc.Hashable]
       default: None
       description: identifier used by 'wait'; None by default
       kind:
@@ -16778,7 +16702,7 @@ existing_plans:
         value: 2
       name: args
     - annotation:
-        type: typing.Optional[typing.Hashable]
+        type: typing.Optional[collections.abc.Hashable]
       default: None
       description: identifier used by 'wait'; None by default
       kind:
@@ -16813,7 +16737,7 @@ existing_plans:
         value: 1
       name: analyzer_settings
     - annotation:
-        type: typing.Union[float, typing.Iterable[float]]
+        type: typing.Union[float, collections.abc.Iterable[float]]
       default: '0.0'
       description: Time delay in seconds between successive readings; default is 0.
       kind:
@@ -16938,7 +16862,7 @@ existing_plans:
     name: wait
     parameters:
     - annotation:
-        type: typing.Optional[typing.Hashable]
+        type: typing.Optional[collections.abc.Hashable]
       default: None
       description: Identifier given to `abs_set`, `rel_set`, `trigger`; None by default
       kind:
@@ -16948,17 +16872,28 @@ existing_plans:
     - annotation:
         type: typing.Optional[float]
       default: None
+      description: 'The maximum duration, in seconds, to wait for all objects in the
+        group to complete.
+
+        If the timeout expires and `error_on_timeout` is set to True, a TimeoutError
+        is raised.'
       kind:
         name: KEYWORD_ONLY
         value: 3
       name: timeout
     - annotation:
         type: bool
-      default: 'False'
+      default: 'True'
+      description: 'Specifies the behavior when the timeout is reached:
+
+        - If True, a TimeoutError is raised if the operations do not complete within
+        the specified timeout.
+
+        - If False, the method returns once all objects are done.'
       kind:
         name: KEYWORD_ONLY
         value: 3
-      name: move_on
+      name: error_on_timeout
     properties:
       is_generator: false
   wait_for:
@@ -16968,7 +16903,7 @@ existing_plans:
     name: wait_for
     parameters:
     - annotation:
-        type: typing.Iterable[__CALLABLE__]
+        type: collections.abc.Iterable[__CALLABLE__]
       description: iterable collection of coroutine functions that take no arguments
       eval_expressions: true
       kind:
@@ -17001,7 +16936,7 @@ existing_plans:
     name: x2x_scan
     parameters:
     - annotation:
-        type: typing.Sequence[__READABLE__]
+        type: collections.abc.Sequence[__READABLE__]
       convert_device_names: true
       description: list of 'readable' objects
       kind:
@@ -17054,7 +16989,7 @@ existing_plans:
         value: 3
       name: per_step
     - annotation:
-        type: typing.Optional[typing.Dict[str, typing.Any]]
+        type: typing.Optional[dict[str, typing.Any]]
       default: None
       description: metadata
       kind:
