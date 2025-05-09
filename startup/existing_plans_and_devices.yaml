@@ -638,6 +638,12 @@ existing_devices:
     is_movable: false
     is_readable: true
     module: sst_base.mirrors
+  L1stripe:
+    classname: EpicsSignal
+    is_flyable: false
+    is_movable: true
+    is_readable: true
+    module: ophyd.signal
   L2AB:
     classname: FMBHexapodMirror
     components:
@@ -867,6 +873,18 @@ existing_devices:
     is_movable: false
     is_readable: true
     module: sst_base.mirrors
+  L2stripe:
+    classname: EpicsSignal
+    is_flyable: false
+    is_movable: true
+    is_readable: true
+    module: ophyd.signal
+  L2type:
+    classname: EpicsSignal
+    is_flyable: false
+    is_movable: true
+    is_readable: true
+    module: ophyd.signal
   L2wedge:
     classname: EpicsMotor
     components:
@@ -15533,6 +15551,21 @@ existing_plans:
     module: haxpes.tender.funcs
     name: reset_feedback
     parameters: []
+    properties:
+      is_generator: true
+  run_XPS:
+    module: haxpes.tender.tender_ops
+    name: run_XPS_tender
+    parameters:
+    - kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: sample_list
+    - default: 'False'
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: close_shutter
     properties:
       is_generator: true
   run_XPS_soft:

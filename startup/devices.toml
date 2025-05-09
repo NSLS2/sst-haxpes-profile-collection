@@ -195,12 +195,33 @@ prefix = "XF:07IDA-OP{Mir:L1"
 name = "L1"
 kind = "hinted"
 
+[L1stripe]
+_target = "ophyd.EpicsSignal"
+_group = "blconf"
+prefix = "XF:07ID2-HAXMonitor:L1_stripe"
+name = "L1_stripe"
+string = true
+
 [L2AB]
 _target = "sst_base.mirrors.FMBHexapodMirror"
 _group = "mirrors"
 prefix = "XF:07IDA6-OP{Mir:L2AB"
 name = "L2AB"
 kind = "hinted"
+
+[L2stripe]
+_target = "ophyd.EpicsSignal"
+_group = "blconf"
+prefix = "XF:07ID2-HAXMonitor:L2_stripe"
+name = "L2_stripe"
+string = true
+
+[L2type]
+_target = "ophyd.EpicsSignal"
+_group = "blconf"
+prefix = "XF:07ID2-HAXMonitor:L2_type"
+name = "L2_mirror_type"
+string = true
 
 [M3AB]
 _target = "sst_base.mirrors.FMBHexapodMirror"
