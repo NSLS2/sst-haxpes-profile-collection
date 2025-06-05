@@ -101,6 +101,12 @@ existing_devices:
         is_movable: true
         is_readable: true
         module: ophyd.signal
+      gain:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
       mean:
         classname: Signal
         is_flyable: false
@@ -157,6 +163,12 @@ existing_devices:
     classname: ADCBuffer
     components:
       exposure_time:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      gain:
         classname: Signal
         is_flyable: false
         is_movable: true
@@ -281,8 +293,8 @@ existing_devices:
     is_movable: false
     is_readable: true
     module: nbs_bl.devices.detectors
-  Idm1:
-    classname: ophScalar
+  Idrain:
+    classname: ADCBuffer
     components:
       exposure_time:
         classname: Signal
@@ -291,67 +303,6 @@ existing_devices:
         is_readable: true
         module: ophyd.signal
       gain:
-        classname: Signal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: ophyd.signal
-      mean:
-        classname: Signal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: ophyd.signal
-      median:
-        classname: Signal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: ophyd.signal
-      npts:
-        classname: Signal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: ophyd.signal
-      offset:
-        classname: Signal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: ophyd.signal
-      rescale:
-        classname: Signal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: ophyd.signal
-      std:
-        classname: Signal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: ophyd.signal
-      sum:
-        classname: Signal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: ophyd.signal
-      target:
-        classname: EpicsSignal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: ophyd.signal
-    is_flyable: true
-    is_movable: false
-    is_readable: true
-    module: nbs_bl.devices.detectors
-  Idrain:
-    classname: ADCBuffer
-    components:
-      exposure_time:
         classname: Signal
         is_flyable: false
         is_movable: true
@@ -1731,7 +1682,7 @@ existing_devices:
     is_readable: true
     module: ophyd.signal
   bragg:
-    classname: EpicsMotor
+    classname: DeadbandEpicsMotor
     components:
       acceleration:
         classname: EpicsSignal
@@ -1805,6 +1756,12 @@ existing_devices:
         is_movable: true
         is_readable: true
         module: ophyd.signal
+      move_latch:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
       offset_freeze_switch:
         classname: EpicsSignal
         is_flyable: false
@@ -1813,6 +1770,12 @@ existing_devices:
         module: ophyd.signal
       set_use_switch:
         classname: EpicsSignal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      tolerance:
+        classname: Signal
         is_flyable: false
         is_movable: true
         is_readable: true
@@ -1850,7 +1813,7 @@ existing_devices:
     is_flyable: false
     is_movable: true
     is_readable: true
-    module: ophyd.epics_motor
+    module: nbs_bl.devices.motors
   dcm:
     classname: DCM
     components:
@@ -1861,7 +1824,7 @@ existing_devices:
         is_readable: true
         module: ophyd.signal
       bragg:
-        classname: EpicsMotor
+        classname: DeadbandEpicsMotor
         components:
           acceleration:
             classname: EpicsSignal
@@ -1935,6 +1898,12 @@ existing_devices:
             is_movable: true
             is_readable: true
             module: ophyd.signal
+          move_latch:
+            classname: Signal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
           offset_freeze_switch:
             classname: EpicsSignal
             is_flyable: false
@@ -1943,6 +1912,12 @@ existing_devices:
             module: ophyd.signal
           set_use_switch:
             classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          tolerance:
+            classname: Signal
             is_flyable: false
             is_movable: true
             is_readable: true
@@ -1980,7 +1955,7 @@ existing_devices:
         is_flyable: false
         is_movable: true
         is_readable: true
-        module: ophyd.epics_motor
+        module: nbs_bl.devices.motors
       crystal:
         classname: EpicsSignal
         is_flyable: false
@@ -2055,7 +2030,7 @@ existing_devices:
         is_readable: true
         module: ophyd.signal
       x2finepitch:
-        classname: EpicsMotor
+        classname: DeadbandEpicsMotor
         components:
           acceleration:
             classname: EpicsSignal
@@ -2129,6 +2104,12 @@ existing_devices:
             is_movable: true
             is_readable: true
             module: ophyd.signal
+          move_latch:
+            classname: Signal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
           offset_freeze_switch:
             classname: EpicsSignal
             is_flyable: false
@@ -2137,6 +2118,12 @@ existing_devices:
             module: ophyd.signal
           set_use_switch:
             classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          tolerance:
+            classname: Signal
             is_flyable: false
             is_movable: true
             is_readable: true
@@ -2174,9 +2161,9 @@ existing_devices:
         is_flyable: false
         is_movable: true
         is_readable: true
-        module: ophyd.epics_motor
+        module: nbs_bl.devices.motors
       x2fineroll:
-        classname: EpicsMotor
+        classname: DeadbandEpicsMotor
         components:
           acceleration:
             classname: EpicsSignal
@@ -2250,6 +2237,12 @@ existing_devices:
             is_movable: true
             is_readable: true
             module: ophyd.signal
+          move_latch:
+            classname: Signal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
           offset_freeze_switch:
             classname: EpicsSignal
             is_flyable: false
@@ -2258,6 +2251,12 @@ existing_devices:
             module: ophyd.signal
           set_use_switch:
             classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          tolerance:
+            classname: Signal
             is_flyable: false
             is_movable: true
             is_readable: true
@@ -2295,9 +2294,9 @@ existing_devices:
         is_flyable: false
         is_movable: true
         is_readable: true
-        module: ophyd.epics_motor
+        module: nbs_bl.devices.motors
       x2para:
-        classname: EpicsMotor
+        classname: DeadbandEpicsMotor
         components:
           acceleration:
             classname: EpicsSignal
@@ -2371,6 +2370,12 @@ existing_devices:
             is_movable: true
             is_readable: true
             module: ophyd.signal
+          move_latch:
+            classname: Signal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
           offset_freeze_switch:
             classname: EpicsSignal
             is_flyable: false
@@ -2379,6 +2384,12 @@ existing_devices:
             module: ophyd.signal
           set_use_switch:
             classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          tolerance:
+            classname: Signal
             is_flyable: false
             is_movable: true
             is_readable: true
@@ -2416,9 +2427,9 @@ existing_devices:
         is_flyable: false
         is_movable: true
         is_readable: true
-        module: ophyd.epics_motor
+        module: nbs_bl.devices.motors
       x2perp:
-        classname: EpicsMotor
+        classname: DeadbandEpicsMotor
         components:
           acceleration:
             classname: EpicsSignal
@@ -2492,6 +2503,12 @@ existing_devices:
             is_movable: true
             is_readable: true
             module: ophyd.signal
+          move_latch:
+            classname: Signal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
           offset_freeze_switch:
             classname: EpicsSignal
             is_flyable: false
@@ -2500,6 +2517,12 @@ existing_devices:
             module: ophyd.signal
           set_use_switch:
             classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          tolerance:
+            classname: Signal
             is_flyable: false
             is_movable: true
             is_readable: true
@@ -2537,9 +2560,9 @@ existing_devices:
         is_flyable: false
         is_movable: true
         is_readable: true
-        module: ophyd.epics_motor
+        module: nbs_bl.devices.motors
       x2pitch:
-        classname: EpicsMotor
+        classname: DeadbandEpicsMotor
         components:
           acceleration:
             classname: EpicsSignal
@@ -2613,6 +2636,12 @@ existing_devices:
             is_movable: true
             is_readable: true
             module: ophyd.signal
+          move_latch:
+            classname: Signal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
           offset_freeze_switch:
             classname: EpicsSignal
             is_flyable: false
@@ -2621,6 +2650,12 @@ existing_devices:
             module: ophyd.signal
           set_use_switch:
             classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          tolerance:
+            classname: Signal
             is_flyable: false
             is_movable: true
             is_readable: true
@@ -2658,9 +2693,9 @@ existing_devices:
         is_flyable: false
         is_movable: true
         is_readable: true
-        module: ophyd.epics_motor
+        module: nbs_bl.devices.motors
       x2roll:
-        classname: EpicsMotor
+        classname: DeadbandEpicsMotor
         components:
           acceleration:
             classname: EpicsSignal
@@ -2734,6 +2769,12 @@ existing_devices:
             is_movable: true
             is_readable: true
             module: ophyd.signal
+          move_latch:
+            classname: Signal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
           offset_freeze_switch:
             classname: EpicsSignal
             is_flyable: false
@@ -2742,6 +2783,12 @@ existing_devices:
             module: ophyd.signal
           set_use_switch:
             classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          tolerance:
+            classname: Signal
             is_flyable: false
             is_movable: true
             is_readable: true
@@ -2779,7 +2826,7 @@ existing_devices:
         is_flyable: false
         is_movable: true
         is_readable: true
-        module: ophyd.epics_motor
+        module: nbs_bl.devices.motors
     is_flyable: false
     is_movable: true
     is_readable: true
@@ -3210,7 +3257,7 @@ existing_devices:
             is_readable: true
             module: ophyd.signal
           bragg:
-            classname: EpicsMotor
+            classname: DeadbandEpicsMotor
             components:
               acceleration:
                 classname: EpicsSignal
@@ -3284,6 +3331,12 @@ existing_devices:
                 is_movable: true
                 is_readable: true
                 module: ophyd.signal
+              move_latch:
+                classname: Signal
+                is_flyable: false
+                is_movable: true
+                is_readable: true
+                module: ophyd.signal
               offset_freeze_switch:
                 classname: EpicsSignal
                 is_flyable: false
@@ -3292,6 +3345,12 @@ existing_devices:
                 module: ophyd.signal
               set_use_switch:
                 classname: EpicsSignal
+                is_flyable: false
+                is_movable: true
+                is_readable: true
+                module: ophyd.signal
+              tolerance:
+                classname: Signal
                 is_flyable: false
                 is_movable: true
                 is_readable: true
@@ -3329,7 +3388,7 @@ existing_devices:
             is_flyable: false
             is_movable: true
             is_readable: true
-            module: ophyd.epics_motor
+            module: nbs_bl.devices.motors
           crystal:
             classname: EpicsSignal
             is_flyable: false
@@ -3404,7 +3463,7 @@ existing_devices:
             is_readable: true
             module: ophyd.signal
           x2finepitch:
-            classname: EpicsMotor
+            classname: DeadbandEpicsMotor
             components:
               acceleration:
                 classname: EpicsSignal
@@ -3478,6 +3537,12 @@ existing_devices:
                 is_movable: true
                 is_readable: true
                 module: ophyd.signal
+              move_latch:
+                classname: Signal
+                is_flyable: false
+                is_movable: true
+                is_readable: true
+                module: ophyd.signal
               offset_freeze_switch:
                 classname: EpicsSignal
                 is_flyable: false
@@ -3486,6 +3551,12 @@ existing_devices:
                 module: ophyd.signal
               set_use_switch:
                 classname: EpicsSignal
+                is_flyable: false
+                is_movable: true
+                is_readable: true
+                module: ophyd.signal
+              tolerance:
+                classname: Signal
                 is_flyable: false
                 is_movable: true
                 is_readable: true
@@ -3523,9 +3594,9 @@ existing_devices:
             is_flyable: false
             is_movable: true
             is_readable: true
-            module: ophyd.epics_motor
+            module: nbs_bl.devices.motors
           x2fineroll:
-            classname: EpicsMotor
+            classname: DeadbandEpicsMotor
             components:
               acceleration:
                 classname: EpicsSignal
@@ -3599,6 +3670,12 @@ existing_devices:
                 is_movable: true
                 is_readable: true
                 module: ophyd.signal
+              move_latch:
+                classname: Signal
+                is_flyable: false
+                is_movable: true
+                is_readable: true
+                module: ophyd.signal
               offset_freeze_switch:
                 classname: EpicsSignal
                 is_flyable: false
@@ -3607,6 +3684,12 @@ existing_devices:
                 module: ophyd.signal
               set_use_switch:
                 classname: EpicsSignal
+                is_flyable: false
+                is_movable: true
+                is_readable: true
+                module: ophyd.signal
+              tolerance:
+                classname: Signal
                 is_flyable: false
                 is_movable: true
                 is_readable: true
@@ -3644,9 +3727,9 @@ existing_devices:
             is_flyable: false
             is_movable: true
             is_readable: true
-            module: ophyd.epics_motor
+            module: nbs_bl.devices.motors
           x2para:
-            classname: EpicsMotor
+            classname: DeadbandEpicsMotor
             components:
               acceleration:
                 classname: EpicsSignal
@@ -3720,6 +3803,12 @@ existing_devices:
                 is_movable: true
                 is_readable: true
                 module: ophyd.signal
+              move_latch:
+                classname: Signal
+                is_flyable: false
+                is_movable: true
+                is_readable: true
+                module: ophyd.signal
               offset_freeze_switch:
                 classname: EpicsSignal
                 is_flyable: false
@@ -3728,6 +3817,12 @@ existing_devices:
                 module: ophyd.signal
               set_use_switch:
                 classname: EpicsSignal
+                is_flyable: false
+                is_movable: true
+                is_readable: true
+                module: ophyd.signal
+              tolerance:
+                classname: Signal
                 is_flyable: false
                 is_movable: true
                 is_readable: true
@@ -3765,9 +3860,9 @@ existing_devices:
             is_flyable: false
             is_movable: true
             is_readable: true
-            module: ophyd.epics_motor
+            module: nbs_bl.devices.motors
           x2perp:
-            classname: EpicsMotor
+            classname: DeadbandEpicsMotor
             components:
               acceleration:
                 classname: EpicsSignal
@@ -3841,6 +3936,12 @@ existing_devices:
                 is_movable: true
                 is_readable: true
                 module: ophyd.signal
+              move_latch:
+                classname: Signal
+                is_flyable: false
+                is_movable: true
+                is_readable: true
+                module: ophyd.signal
               offset_freeze_switch:
                 classname: EpicsSignal
                 is_flyable: false
@@ -3849,6 +3950,12 @@ existing_devices:
                 module: ophyd.signal
               set_use_switch:
                 classname: EpicsSignal
+                is_flyable: false
+                is_movable: true
+                is_readable: true
+                module: ophyd.signal
+              tolerance:
+                classname: Signal
                 is_flyable: false
                 is_movable: true
                 is_readable: true
@@ -3886,9 +3993,9 @@ existing_devices:
             is_flyable: false
             is_movable: true
             is_readable: true
-            module: ophyd.epics_motor
+            module: nbs_bl.devices.motors
           x2pitch:
-            classname: EpicsMotor
+            classname: DeadbandEpicsMotor
             components:
               acceleration:
                 classname: EpicsSignal
@@ -3962,6 +4069,12 @@ existing_devices:
                 is_movable: true
                 is_readable: true
                 module: ophyd.signal
+              move_latch:
+                classname: Signal
+                is_flyable: false
+                is_movable: true
+                is_readable: true
+                module: ophyd.signal
               offset_freeze_switch:
                 classname: EpicsSignal
                 is_flyable: false
@@ -3970,6 +4083,12 @@ existing_devices:
                 module: ophyd.signal
               set_use_switch:
                 classname: EpicsSignal
+                is_flyable: false
+                is_movable: true
+                is_readable: true
+                module: ophyd.signal
+              tolerance:
+                classname: Signal
                 is_flyable: false
                 is_movable: true
                 is_readable: true
@@ -4007,9 +4126,9 @@ existing_devices:
             is_flyable: false
             is_movable: true
             is_readable: true
-            module: ophyd.epics_motor
+            module: nbs_bl.devices.motors
           x2roll:
-            classname: EpicsMotor
+            classname: DeadbandEpicsMotor
             components:
               acceleration:
                 classname: EpicsSignal
@@ -4083,6 +4202,12 @@ existing_devices:
                 is_movable: true
                 is_readable: true
                 module: ophyd.signal
+              move_latch:
+                classname: Signal
+                is_flyable: false
+                is_movable: true
+                is_readable: true
+                module: ophyd.signal
               offset_freeze_switch:
                 classname: EpicsSignal
                 is_flyable: false
@@ -4091,6 +4216,12 @@ existing_devices:
                 module: ophyd.signal
               set_use_switch:
                 classname: EpicsSignal
+                is_flyable: false
+                is_movable: true
+                is_readable: true
+                module: ophyd.signal
+              tolerance:
+                classname: Signal
                 is_flyable: false
                 is_movable: true
                 is_readable: true
@@ -4128,7 +4259,7 @@ existing_devices:
             is_flyable: false
             is_movable: true
             is_readable: true
-            module: ophyd.epics_motor
+            module: nbs_bl.devices.motors
         is_flyable: false
         is_movable: true
         is_readable: true
@@ -4301,6 +4432,12 @@ existing_devices:
     is_movable: true
     is_readable: true
     module: ophyd.pseudopos
+  exposureMotor:
+    classname: SoftPositioner
+    is_flyable: false
+    is_movable: true
+    is_readable: true
+    module: ophyd.positioner
   fbhor:
     classname: pid
     components:
@@ -5968,7 +6105,7 @@ existing_devices:
         is_readable: true
         module: ophyd.signal
       bragg:
-        classname: EpicsMotor
+        classname: DeadbandEpicsMotor
         components:
           acceleration:
             classname: EpicsSignal
@@ -6042,6 +6179,12 @@ existing_devices:
             is_movable: true
             is_readable: true
             module: ophyd.signal
+          move_latch:
+            classname: Signal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
           offset_freeze_switch:
             classname: EpicsSignal
             is_flyable: false
@@ -6050,6 +6193,12 @@ existing_devices:
             module: ophyd.signal
           set_use_switch:
             classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          tolerance:
+            classname: Signal
             is_flyable: false
             is_movable: true
             is_readable: true
@@ -6087,7 +6236,7 @@ existing_devices:
         is_flyable: false
         is_movable: true
         is_readable: true
-        module: ophyd.epics_motor
+        module: nbs_bl.devices.motors
       crystal:
         classname: EpicsSignal
         is_flyable: false
@@ -6162,7 +6311,7 @@ existing_devices:
         is_readable: true
         module: ophyd.signal
       x2finepitch:
-        classname: EpicsMotor
+        classname: DeadbandEpicsMotor
         components:
           acceleration:
             classname: EpicsSignal
@@ -6236,6 +6385,12 @@ existing_devices:
             is_movable: true
             is_readable: true
             module: ophyd.signal
+          move_latch:
+            classname: Signal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
           offset_freeze_switch:
             classname: EpicsSignal
             is_flyable: false
@@ -6244,6 +6399,12 @@ existing_devices:
             module: ophyd.signal
           set_use_switch:
             classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          tolerance:
+            classname: Signal
             is_flyable: false
             is_movable: true
             is_readable: true
@@ -6281,9 +6442,9 @@ existing_devices:
         is_flyable: false
         is_movable: true
         is_readable: true
-        module: ophyd.epics_motor
+        module: nbs_bl.devices.motors
       x2fineroll:
-        classname: EpicsMotor
+        classname: DeadbandEpicsMotor
         components:
           acceleration:
             classname: EpicsSignal
@@ -6357,6 +6518,12 @@ existing_devices:
             is_movable: true
             is_readable: true
             module: ophyd.signal
+          move_latch:
+            classname: Signal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
           offset_freeze_switch:
             classname: EpicsSignal
             is_flyable: false
@@ -6365,6 +6532,12 @@ existing_devices:
             module: ophyd.signal
           set_use_switch:
             classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          tolerance:
+            classname: Signal
             is_flyable: false
             is_movable: true
             is_readable: true
@@ -6402,9 +6575,9 @@ existing_devices:
         is_flyable: false
         is_movable: true
         is_readable: true
-        module: ophyd.epics_motor
+        module: nbs_bl.devices.motors
       x2para:
-        classname: EpicsMotor
+        classname: DeadbandEpicsMotor
         components:
           acceleration:
             classname: EpicsSignal
@@ -6478,6 +6651,12 @@ existing_devices:
             is_movable: true
             is_readable: true
             module: ophyd.signal
+          move_latch:
+            classname: Signal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
           offset_freeze_switch:
             classname: EpicsSignal
             is_flyable: false
@@ -6486,6 +6665,12 @@ existing_devices:
             module: ophyd.signal
           set_use_switch:
             classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          tolerance:
+            classname: Signal
             is_flyable: false
             is_movable: true
             is_readable: true
@@ -6523,9 +6708,9 @@ existing_devices:
         is_flyable: false
         is_movable: true
         is_readable: true
-        module: ophyd.epics_motor
+        module: nbs_bl.devices.motors
       x2perp:
-        classname: EpicsMotor
+        classname: DeadbandEpicsMotor
         components:
           acceleration:
             classname: EpicsSignal
@@ -6599,6 +6784,12 @@ existing_devices:
             is_movable: true
             is_readable: true
             module: ophyd.signal
+          move_latch:
+            classname: Signal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
           offset_freeze_switch:
             classname: EpicsSignal
             is_flyable: false
@@ -6607,6 +6798,12 @@ existing_devices:
             module: ophyd.signal
           set_use_switch:
             classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          tolerance:
+            classname: Signal
             is_flyable: false
             is_movable: true
             is_readable: true
@@ -6644,9 +6841,9 @@ existing_devices:
         is_flyable: false
         is_movable: true
         is_readable: true
-        module: ophyd.epics_motor
+        module: nbs_bl.devices.motors
       x2pitch:
-        classname: EpicsMotor
+        classname: DeadbandEpicsMotor
         components:
           acceleration:
             classname: EpicsSignal
@@ -6720,6 +6917,12 @@ existing_devices:
             is_movable: true
             is_readable: true
             module: ophyd.signal
+          move_latch:
+            classname: Signal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
           offset_freeze_switch:
             classname: EpicsSignal
             is_flyable: false
@@ -6728,6 +6931,12 @@ existing_devices:
             module: ophyd.signal
           set_use_switch:
             classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          tolerance:
+            classname: Signal
             is_flyable: false
             is_movable: true
             is_readable: true
@@ -6765,9 +6974,9 @@ existing_devices:
         is_flyable: false
         is_movable: true
         is_readable: true
-        module: ophyd.epics_motor
+        module: nbs_bl.devices.motors
       x2roll:
-        classname: EpicsMotor
+        classname: DeadbandEpicsMotor
         components:
           acceleration:
             classname: EpicsSignal
@@ -6841,6 +7050,12 @@ existing_devices:
             is_movable: true
             is_readable: true
             module: ophyd.signal
+          move_latch:
+            classname: Signal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
           offset_freeze_switch:
             classname: EpicsSignal
             is_flyable: false
@@ -6849,6 +7064,12 @@ existing_devices:
             module: ophyd.signal
           set_use_switch:
             classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          tolerance:
+            classname: Signal
             is_flyable: false
             is_movable: true
             is_readable: true
@@ -6886,7 +7107,7 @@ existing_devices:
         is_flyable: false
         is_movable: true
         is_readable: true
-        module: ophyd.epics_motor
+        module: nbs_bl.devices.motors
     is_flyable: false
     is_movable: true
     is_readable: true
@@ -8219,7 +8440,7 @@ existing_devices:
     is_readable: true
     module: ophyd.signal
   x2finepitch:
-    classname: EpicsMotor
+    classname: DeadbandEpicsMotor
     components:
       acceleration:
         classname: EpicsSignal
@@ -8293,6 +8514,12 @@ existing_devices:
         is_movable: true
         is_readable: true
         module: ophyd.signal
+      move_latch:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
       offset_freeze_switch:
         classname: EpicsSignal
         is_flyable: false
@@ -8301,6 +8528,12 @@ existing_devices:
         module: ophyd.signal
       set_use_switch:
         classname: EpicsSignal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      tolerance:
+        classname: Signal
         is_flyable: false
         is_movable: true
         is_readable: true
@@ -8338,9 +8571,9 @@ existing_devices:
     is_flyable: false
     is_movable: true
     is_readable: true
-    module: ophyd.epics_motor
+    module: nbs_bl.devices.motors
   x2fineroll:
-    classname: EpicsMotor
+    classname: DeadbandEpicsMotor
     components:
       acceleration:
         classname: EpicsSignal
@@ -8414,6 +8647,12 @@ existing_devices:
         is_movable: true
         is_readable: true
         module: ophyd.signal
+      move_latch:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
       offset_freeze_switch:
         classname: EpicsSignal
         is_flyable: false
@@ -8422,6 +8661,12 @@ existing_devices:
         module: ophyd.signal
       set_use_switch:
         classname: EpicsSignal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      tolerance:
+        classname: Signal
         is_flyable: false
         is_movable: true
         is_readable: true
@@ -8459,9 +8704,9 @@ existing_devices:
     is_flyable: false
     is_movable: true
     is_readable: true
-    module: ophyd.epics_motor
+    module: nbs_bl.devices.motors
   x2perp:
-    classname: EpicsMotor
+    classname: DeadbandEpicsMotor
     components:
       acceleration:
         classname: EpicsSignal
@@ -8535,6 +8780,12 @@ existing_devices:
         is_movable: true
         is_readable: true
         module: ophyd.signal
+      move_latch:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
       offset_freeze_switch:
         classname: EpicsSignal
         is_flyable: false
@@ -8543,6 +8794,12 @@ existing_devices:
         module: ophyd.signal
       set_use_switch:
         classname: EpicsSignal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      tolerance:
+        classname: Signal
         is_flyable: false
         is_movable: true
         is_readable: true
@@ -8580,9 +8837,9 @@ existing_devices:
     is_flyable: false
     is_movable: true
     is_readable: true
-    module: ophyd.epics_motor
+    module: nbs_bl.devices.motors
   x2pitch:
-    classname: EpicsMotor
+    classname: DeadbandEpicsMotor
     components:
       acceleration:
         classname: EpicsSignal
@@ -8656,6 +8913,12 @@ existing_devices:
         is_movable: true
         is_readable: true
         module: ophyd.signal
+      move_latch:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
       offset_freeze_switch:
         classname: EpicsSignal
         is_flyable: false
@@ -8664,6 +8927,12 @@ existing_devices:
         module: ophyd.signal
       set_use_switch:
         classname: EpicsSignal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      tolerance:
+        classname: Signal
         is_flyable: false
         is_movable: true
         is_readable: true
@@ -8701,9 +8970,9 @@ existing_devices:
     is_flyable: false
     is_movable: true
     is_readable: true
-    module: ophyd.epics_motor
+    module: nbs_bl.devices.motors
   x2roll:
-    classname: EpicsMotor
+    classname: DeadbandEpicsMotor
     components:
       acceleration:
         classname: EpicsSignal
@@ -8777,6 +9046,12 @@ existing_devices:
         is_movable: true
         is_readable: true
         module: ophyd.signal
+      move_latch:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
       offset_freeze_switch:
         classname: EpicsSignal
         is_flyable: false
@@ -8785,6 +9060,12 @@ existing_devices:
         module: ophyd.signal
       set_use_switch:
         classname: EpicsSignal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      tolerance:
+        classname: Signal
         is_flyable: false
         is_movable: true
         is_readable: true
@@ -8822,7 +9103,7 @@ existing_devices:
     is_flyable: false
     is_movable: true
     is_readable: true
-    module: ophyd.epics_motor
+    module: nbs_bl.devices.motors
   xps_analyzer:
     classname: EpicsSignal
     is_flyable: false
@@ -8937,6 +9218,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_shot
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -9250,7 +9537,15 @@ existing_plans:
     properties:
       is_generator: true
   au4f_xps:
-    description: Perform an in-place XPS scan for Au4f
+    description: 'Au4f
+
+      Perform a binding energy XPS scan for Au4f
+
+      Start: 78.0 eV
+
+      Stop: 98.0 eV
+
+      Step size: 0.05 eV'
     module: nbs_bl.plans.preprocessors
     name: au4f_xps
     parameters:
@@ -9293,6 +9588,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_shot
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -9370,6 +9671,292 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: repeat
+    - annotation:
+        type: typing.Optional[dict]
+      default: None
+      description: metadata
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: md
+    properties:
+      is_generator: true
+  aum5_short:
+    description: 'Perform an in-place xas scan for  with energy pattern [2275, 2285,
+      0.5] '
+    module: nbs_bl.plans.preprocessors
+    name: aum5_short
+    parameters:
+    - default: None
+      description: 'hook for customizing action of inner loop (messages per step)
+
+        Expected signature:
+
+        ``f(detectors, motor, step) -> plan (a generator)``'
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
+    - annotation:
+        type: typing.Optional[str]
+      default: None
+      description: A comment that will be added into the run metadata. If not provided,
+        no comment will be added.
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: comment
+    - annotation:
+        type: typing.Optional[str]
+      default: None
+      description: A group name label that will be added into the run metadata.
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: group_name
+    - annotation:
+        type: list
+      default: None
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: plot_detectors
+    - annotation:
+        type: typing.Optional[float]
+      default: None
+      description: 'The exposure time in seconds for all detectors, by default None.
+
+        If None, do not set any exposure time, and assume that detectors are already
+        set'
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: dwell
+    - annotation:
+        type: typing.Optional[float]
+      default: None
+      description: If not None, will set the beamline exit slit prior to the plan
+        start.
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: eslit
+    - annotation:
+        type: typing.Optional[str]
+      default: None
+      description: The sample id. If given, the selected sample metadata is set
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: sample
+    - annotation:
+        type: typing.Optional[dict]
+      default: '{}'
+      description: 'A dictionary of positions relative to the sample center. Parameters
+        not given will be assumed to
+
+        be the default for the sampleholder (typically moving the sample into the
+        beam at a typical angle)'
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: sample_position
+    - annotation:
+        type: typing.Optional[str]
+      default: None
+      description: The energy reference sample. If given, the selected reference sample
+        is set
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: eref_sample
+    - annotation:
+        type: typing.Optional[float]
+      default: None
+      description: If not None, will set the beamline energy prior to the plan start.
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: energy
+    - annotation:
+        type: typing.Optional[float]
+      default: None
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: polarization
+    - annotation:
+        type: int
+      default: '1'
+      description: The number of times to repeat the entire scan
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: repeat
+    - default: '[]'
+      description: A list of extra detectors to be activated for the scan, by default
+        [].
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: extra_dets
+    - annotation:
+        type: float
+      default: '0'
+      description: A value to shift all start/stop positions by
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: shift
+    - annotation:
+        type: typing.Optional[dict]
+      default: None
+      description: metadata
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: md
+    properties:
+      is_generator: true
+  aum5_xas:
+    description: 'Perform an in-place xas scan for  with energy pattern [2185, 2285,
+      0.5] '
+    module: nbs_bl.plans.preprocessors
+    name: aum5_xas
+    parameters:
+    - default: None
+      description: 'hook for customizing action of inner loop (messages per step)
+
+        Expected signature:
+
+        ``f(detectors, motor, step) -> plan (a generator)``'
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
+    - annotation:
+        type: typing.Optional[str]
+      default: None
+      description: A comment that will be added into the run metadata. If not provided,
+        no comment will be added.
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: comment
+    - annotation:
+        type: typing.Optional[str]
+      default: None
+      description: A group name label that will be added into the run metadata.
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: group_name
+    - annotation:
+        type: list
+      default: None
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: plot_detectors
+    - annotation:
+        type: typing.Optional[float]
+      default: None
+      description: 'The exposure time in seconds for all detectors, by default None.
+
+        If None, do not set any exposure time, and assume that detectors are already
+        set'
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: dwell
+    - annotation:
+        type: typing.Optional[float]
+      default: None
+      description: If not None, will set the beamline exit slit prior to the plan
+        start.
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: eslit
+    - annotation:
+        type: typing.Optional[str]
+      default: None
+      description: The sample id. If given, the selected sample metadata is set
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: sample
+    - annotation:
+        type: typing.Optional[dict]
+      default: '{}'
+      description: 'A dictionary of positions relative to the sample center. Parameters
+        not given will be assumed to
+
+        be the default for the sampleholder (typically moving the sample into the
+        beam at a typical angle)'
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: sample_position
+    - annotation:
+        type: typing.Optional[str]
+      default: None
+      description: The energy reference sample. If given, the selected reference sample
+        is set
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: eref_sample
+    - annotation:
+        type: typing.Optional[float]
+      default: None
+      description: If not None, will set the beamline energy prior to the plan start.
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: energy
+    - annotation:
+        type: typing.Optional[float]
+      default: None
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: polarization
+    - annotation:
+        type: int
+      default: '1'
+      description: The number of times to repeat the entire scan
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: repeat
+    - default: '[]'
+      description: A list of extra detectors to be activated for the scan, by default
+        [].
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: extra_dets
+    - annotation:
+        type: float
+      default: '0'
+      description: A value to shift all start/stop positions by
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: shift
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -10510,6 +11097,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_shot
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -10661,6 +11254,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -10832,6 +11431,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: stream
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -10983,6 +11588,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -11139,6 +11750,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -11307,6 +11924,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -11446,6 +12069,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -11598,6 +12227,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -11752,6 +12387,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -11912,6 +12553,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -12050,6 +12697,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -12205,6 +12858,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -12350,6 +13009,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -12540,6 +13205,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -12730,6 +13401,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -12902,6 +13579,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -13049,6 +13732,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -13182,6 +13871,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -13381,6 +14076,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -13579,6 +14280,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -13759,6 +14466,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_step
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -15553,21 +16266,6 @@ existing_plans:
     parameters: []
     properties:
       is_generator: true
-  run_XPS:
-    module: haxpes.tender.tender_ops
-    name: run_XPS_tender
-    parameters:
-    - kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: sample_list
-    - default: 'False'
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: close_shutter
-    properties:
-      is_generator: true
   run_XPS_soft:
     module: haxpes.soft.soft_ops
     name: wrapper
@@ -16357,7 +17055,15 @@ existing_plans:
     properties:
       is_generator: false
   survey_xps:
-    description: Perform an in-place XPS scan for Survey
+    description: 'Survey
+
+      Perform a binding energy XPS scan for Survey
+
+      Start: -2.0 eV
+
+      Stop: 1500.0 eV
+
+      Step size: 0.75 eV'
     module: nbs_bl.plans.preprocessors
     name: survey_xps
     parameters:
@@ -16400,6 +17106,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_shot
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -16759,7 +17471,15 @@ existing_plans:
     properties:
       is_generator: false
   vb_xps:
-    description: Perform an in-place XPS scan for VB
+    description: 'VB
+
+      Perform a binding energy XPS scan for VB
+
+      Start: -5.0 eV
+
+      Stop: 20.0 eV
+
+      Step size: 0.05 eV'
     module: nbs_bl.plans.preprocessors
     name: vb_xps
     parameters:
@@ -16802,6 +17522,12 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: per_shot
+    - default: 'False'
+      description: If True, do not install suspenders
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: skip_suspenders
     - annotation:
         type: typing.Optional[str]
       default: None

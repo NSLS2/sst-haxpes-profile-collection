@@ -21,6 +21,7 @@ name = "K2600_current"
 [Idm1]
 _target = "nbs_bl.devices.ophScalar"
 _group = "detectors"
+_defer_loading = true
 prefix = "XF:07ID-BI{DM3:F4}Cur:I2-I"
 name = "DM1 Photodiode"
 
@@ -418,3 +419,8 @@ _target = "haxpes.devices.hax_cam.simpleBPM"
 prefix = "XF:07ID-BI{BPM:4}"
 name  = "BPM4 Centroid"
 
+[exposureMotor]
+_target = "ophyd.positioner.SoftPositioner"
+_group = "motors"
+init_pos = 0
+name = "Exposure"
