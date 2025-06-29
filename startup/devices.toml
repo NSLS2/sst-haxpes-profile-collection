@@ -1,16 +1,20 @@
 # Define your beamline-specific devices here
 [I0]
-_target = "sst_base.detectors.ADCBuffer"
+_target = "sst_base.srs570.SRSADCFactory"
 _group = "detectors"
 _role = "intensity_detector"
 prefix = "XF:07ID-BI[ADC:1-Ch:1]"
+srs_prefix = "XF:07ID-ES{SR570:14}SR1:"
 name = "I0 ADC"
 
+###
 [Idrain]
-_target = "sst_base.detectors.ADCBuffer"
+_target = "sst_base.srs570.SRSADCFactory"
 _group = "detectors"
+_role = "intensity_detector"
 prefix = "XF:07ID-BI[ADC:1-Ch:0]"
-name="Sample Drain Current"
+srs_prefix = "XF:07ID-ES{SR570:16}SR1:"
+name = "Sample Drain Current"
 
 [IK2600]
 _target = "nbs_bl.devices.ophScalar"
@@ -47,10 +51,18 @@ prefix = "XF:07ID-BI[ADC:1-Ch:2]"
 name="M4A Drain Current"
 
 [I1]
-_target = "sst_base.detectors.ADCBuffer"
 _group = "detectors"
+_role = "intensity_detector"
 prefix = "XF:07ID-BI[ADC:1-Ch:2]"
+srs_prefix = "XF:07ID-ES{SR570:15}SR1:"
 name = "I1 ADC"
+
+[PEY]
+_target = "sst_base.rbd9103.RBDFactory"
+_group = "detectors"
+prefix = "XF:07ID1-ES{RBD9103:01}"
+rescale = -1
+name = "PEY"
 
 [manipulator]
 _target = "sst_base.manipulator.ManipulatorBuilder"
@@ -82,6 +94,7 @@ _alias = "enpostender.harmonic"
 
 [U42]
 _alias = "enpostender.u42"
+_gropu = "motors"
 
 [gapoffset]
 _alias = "enpostender.offset_gap"

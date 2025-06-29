@@ -13,6 +13,7 @@ include = [
     "nbs-gui-varscan",
     "nbs-gui-flyscan",
     "manual-sample-move",
+    "haxpes-respes-custom",
     "haxpes-xps",
     "haxpes-xps-custom"
 ]
@@ -43,6 +44,8 @@ enpostender = { "_role" = "energy", "load_order" = 1 }
 "ManipulatorBuilder" = "nbs_gui.models.PseudoPositionerModel"
 "ophScalar" = "nbs_gui.models.ScalarModel"
 "ADCBuffer" = "nbs_gui.models.ScalarModel"
+"SRSADCFactory" = "nbs_gui.models.ScalarModel"
+"RBDFactory" = "nbs_gui.models.ScalarModel"
 "EpicsMotor" = "nbs_gui.models.MotorModel"
 "MultiMeshBuilder" = "nbs_gui.models.PseudoPositionerModel"
 "QuadSlits" = "sst_base.qt.models.quadSlits.QuadSlitsModel"

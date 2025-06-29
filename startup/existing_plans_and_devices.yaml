@@ -93,7 +93,7 @@ existing_devices:
     is_readable: true
     module: sst_base.shutters
   I0:
-    classname: ADCBuffer
+    classname: SRSADC
     components:
       exposure_time:
         classname: Signal
@@ -137,6 +137,73 @@ existing_devices:
         is_movable: true
         is_readable: true
         module: ophyd.signal
+      srs570:
+        classname: SRS570
+        components:
+          filter_reset:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          filter_type:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          gain_mode:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          gain_num:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          gain_unit:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          high_freq:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          invert:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          low_freq:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          reset:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          send_all:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+        is_flyable: false
+        is_movable: false
+        is_readable: true
+        module: sst_base.srs570
       std:
         classname: Signal
         is_flyable: false
@@ -158,74 +225,7 @@ existing_devices:
     is_flyable: true
     is_movable: false
     is_readable: true
-    module: sst_base.detectors.scalar
-  I1:
-    classname: ADCBuffer
-    components:
-      exposure_time:
-        classname: Signal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: ophyd.signal
-      gain:
-        classname: Signal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: ophyd.signal
-      mean:
-        classname: Signal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: ophyd.signal
-      median:
-        classname: Signal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: ophyd.signal
-      npts:
-        classname: Signal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: ophyd.signal
-      offset:
-        classname: Signal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: ophyd.signal
-      rescale:
-        classname: Signal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: ophyd.signal
-      std:
-        classname: Signal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: ophyd.signal
-      sum:
-        classname: Signal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: ophyd.signal
-      target:
-        classname: EpicsSignal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: ophyd.signal
-    is_flyable: true
-    is_movable: false
-    is_readable: true
-    module: sst_base.detectors.scalar
+    module: sst_base.srs570
   IK2600:
     classname: ophScalar
     components:
@@ -294,7 +294,7 @@ existing_devices:
     is_readable: true
     module: nbs_bl.devices.detectors
   Idrain:
-    classname: ADCBuffer
+    classname: SRSADC
     components:
       exposure_time:
         classname: Signal
@@ -338,6 +338,73 @@ existing_devices:
         is_movable: true
         is_readable: true
         module: ophyd.signal
+      srs570:
+        classname: SRS570
+        components:
+          filter_reset:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          filter_type:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          gain_mode:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          gain_num:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          gain_unit:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          high_freq:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          invert:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          low_freq:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          reset:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          send_all:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+        is_flyable: false
+        is_movable: false
+        is_readable: true
+        module: sst_base.srs570
       std:
         classname: Signal
         is_flyable: false
@@ -359,7 +426,7 @@ existing_devices:
     is_flyable: true
     is_movable: false
     is_readable: true
-    module: sst_base.detectors.scalar
+    module: sst_base.srs570
   L1:
     classname: FMBHexapodMirror
     components:
@@ -1415,6 +1482,86 @@ existing_devices:
     is_movable: false
     is_readable: true
     module: sst_base.mirrors
+  PEY:
+    classname: RBDSignal
+    components:
+      exposure_time:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      gain:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      mean:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      median:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      npts:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      offset:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      rbd9103:
+        classname: RBD9103
+        components:
+          meas_unit:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+        is_flyable: false
+        is_movable: false
+        is_readable: true
+        module: sst_base.rbd9103
+      rescale:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      std:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      sum:
+        classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      target:
+        classname: EpicsSignal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+    is_flyable: true
+    is_movable: false
+    is_readable: true
+    module: sst_base.rbd9103
   SlitAB:
     classname: EpicsMotor
     components:
@@ -9249,15 +9396,6 @@ existing_plans:
         value: 3
       name: plot_detectors
     - annotation:
-        type: typing.Optional[float]
-      default: None
-      description: If not None, will set the beamline exit slit prior to the plan
-        start.
-      kind:
-        name: KEYWORD_ONLY
-        value: 3
-      name: eslit
-    - annotation:
         type: typing.Optional[str]
       default: None
       description: The sample id. If given, the selected sample metadata is set
@@ -9619,15 +9757,6 @@ existing_plans:
         value: 3
       name: plot_detectors
     - annotation:
-        type: typing.Optional[float]
-      default: None
-      description: If not None, will set the beamline exit slit prior to the plan
-        start.
-      kind:
-        name: KEYWORD_ONLY
-        value: 3
-      name: eslit
-    - annotation:
         type: typing.Optional[str]
       default: None
       description: The sample id. If given, the selected sample metadata is set
@@ -9738,15 +9867,6 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: dwell
-    - annotation:
-        type: typing.Optional[float]
-      default: None
-      description: If not None, will set the beamline exit slit prior to the plan
-        start.
-      kind:
-        name: KEYWORD_ONLY
-        value: 3
-      name: eslit
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -9881,15 +10001,6 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: dwell
-    - annotation:
-        type: typing.Optional[float]
-      default: None
-      description: If not None, will set the beamline exit slit prior to the plan
-        start.
-      kind:
-        name: KEYWORD_ONLY
-        value: 3
-      name: eslit
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -11146,15 +11257,6 @@ existing_plans:
         value: 3
       name: dwell
     - annotation:
-        type: typing.Optional[float]
-      default: None
-      description: If not None, will set the beamline exit slit prior to the plan
-        start.
-      kind:
-        name: KEYWORD_ONLY
-        value: 3
-      name: eslit
-    - annotation:
         type: typing.Optional[str]
       default: None
       description: The sample id. If given, the selected sample metadata is set
@@ -11295,15 +11397,6 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: dwell
-    - annotation:
-        type: typing.Optional[float]
-      default: None
-      description: If not None, will set the beamline exit slit prior to the plan
-        start.
-      kind:
-        name: KEYWORD_ONLY
-        value: 3
-      name: eslit
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -11480,15 +11573,6 @@ existing_plans:
         value: 3
       name: dwell
     - annotation:
-        type: typing.Optional[float]
-      default: None
-      description: If not None, will set the beamline exit slit prior to the plan
-        start.
-      kind:
-        name: KEYWORD_ONLY
-        value: 3
-      name: eslit
-    - annotation:
         type: typing.Optional[str]
       default: None
       description: The sample id. If given, the selected sample metadata is set
@@ -11637,15 +11721,6 @@ existing_plans:
         value: 3
       name: dwell
     - annotation:
-        type: typing.Optional[float]
-      default: None
-      description: If not None, will set the beamline exit slit prior to the plan
-        start.
-      kind:
-        name: KEYWORD_ONLY
-        value: 3
-      name: eslit
-    - annotation:
         type: typing.Optional[str]
       default: None
       description: The sample id. If given, the selected sample metadata is set
@@ -11791,15 +11866,6 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: dwell
-    - annotation:
-        type: typing.Optional[float]
-      default: None
-      description: If not None, will set the beamline exit slit prior to the plan
-        start.
-      kind:
-        name: KEYWORD_ONLY
-        value: 3
-      name: eslit
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -11973,15 +12039,6 @@ existing_plans:
         value: 3
       name: dwell
     - annotation:
-        type: typing.Optional[float]
-      default: None
-      description: If not None, will set the beamline exit slit prior to the plan
-        start.
-      kind:
-        name: KEYWORD_ONLY
-        value: 3
-      name: eslit
-    - annotation:
         type: typing.Optional[str]
       default: None
       description: The sample id. If given, the selected sample metadata is set
@@ -12117,15 +12174,6 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: dwell
-    - annotation:
-        type: typing.Optional[float]
-      default: None
-      description: If not None, will set the beamline exit slit prior to the plan
-        start.
-      kind:
-        name: KEYWORD_ONLY
-        value: 3
-      name: eslit
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -12275,15 +12323,6 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: dwell
-    - annotation:
-        type: typing.Optional[float]
-      default: None
-      description: If not None, will set the beamline exit slit prior to the plan
-        start.
-      kind:
-        name: KEYWORD_ONLY
-        value: 3
-      name: eslit
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -12435,15 +12474,6 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: dwell
-    - annotation:
-        type: typing.Optional[float]
-      default: None
-      description: If not None, will set the beamline exit slit prior to the plan
-        start.
-      kind:
-        name: KEYWORD_ONLY
-        value: 3
-      name: eslit
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -12602,15 +12632,6 @@ existing_plans:
         value: 3
       name: dwell
     - annotation:
-        type: typing.Optional[float]
-      default: None
-      description: If not None, will set the beamline exit slit prior to the plan
-        start.
-      kind:
-        name: KEYWORD_ONLY
-        value: 3
-      name: eslit
-    - annotation:
         type: typing.Optional[str]
       default: None
       description: The sample id. If given, the selected sample metadata is set
@@ -12745,15 +12766,6 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: dwell
-    - annotation:
-        type: typing.Optional[float]
-      default: None
-      description: If not None, will set the beamline exit slit prior to the plan
-        start.
-      kind:
-        name: KEYWORD_ONLY
-        value: 3
-      name: eslit
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -12907,15 +12919,6 @@ existing_plans:
         value: 3
       name: dwell
     - annotation:
-        type: typing.Optional[float]
-      default: None
-      description: If not None, will set the beamline exit slit prior to the plan
-        start.
-      kind:
-        name: KEYWORD_ONLY
-        value: 3
-      name: eslit
-    - annotation:
         type: typing.Optional[str]
       default: None
       description: The sample id. If given, the selected sample metadata is set
@@ -13057,15 +13060,6 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: dwell
-    - annotation:
-        type: typing.Optional[float]
-      default: None
-      description: If not None, will set the beamline exit slit prior to the plan
-        start.
-      kind:
-        name: KEYWORD_ONLY
-        value: 3
-      name: eslit
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -13254,15 +13248,6 @@ existing_plans:
         value: 3
       name: dwell
     - annotation:
-        type: typing.Optional[float]
-      default: None
-      description: If not None, will set the beamline exit slit prior to the plan
-        start.
-      kind:
-        name: KEYWORD_ONLY
-        value: 3
-      name: eslit
-    - annotation:
         type: typing.Optional[str]
       default: None
       description: The sample id. If given, the selected sample metadata is set
@@ -13450,15 +13435,6 @@ existing_plans:
         value: 3
       name: dwell
     - annotation:
-        type: typing.Optional[float]
-      default: None
-      description: If not None, will set the beamline exit slit prior to the plan
-        start.
-      kind:
-        name: KEYWORD_ONLY
-        value: 3
-      name: eslit
-    - annotation:
         type: typing.Optional[str]
       default: None
       description: The sample id. If given, the selected sample metadata is set
@@ -13628,15 +13604,6 @@ existing_plans:
         value: 3
       name: dwell
     - annotation:
-        type: typing.Optional[float]
-      default: None
-      description: If not None, will set the beamline exit slit prior to the plan
-        start.
-      kind:
-        name: KEYWORD_ONLY
-        value: 3
-      name: eslit
-    - annotation:
         type: typing.Optional[str]
       default: None
       description: The sample id. If given, the selected sample metadata is set
@@ -13781,15 +13748,6 @@ existing_plans:
         value: 3
       name: dwell
     - annotation:
-        type: typing.Optional[float]
-      default: None
-      description: If not None, will set the beamline exit slit prior to the plan
-        start.
-      kind:
-        name: KEYWORD_ONLY
-        value: 3
-      name: eslit
-    - annotation:
         type: typing.Optional[str]
       default: None
       description: The sample id. If given, the selected sample metadata is set
@@ -13919,15 +13877,6 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: dwell
-    - annotation:
-        type: typing.Optional[float]
-      default: None
-      description: If not None, will set the beamline exit slit prior to the plan
-        start.
-      kind:
-        name: KEYWORD_ONLY
-        value: 3
-      name: eslit
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -14125,15 +14074,6 @@ existing_plans:
         value: 3
       name: dwell
     - annotation:
-        type: typing.Optional[float]
-      default: None
-      description: If not None, will set the beamline exit slit prior to the plan
-        start.
-      kind:
-        name: KEYWORD_ONLY
-        value: 3
-      name: eslit
-    - annotation:
         type: typing.Optional[str]
       default: None
       description: The sample id. If given, the selected sample metadata is set
@@ -14329,15 +14269,6 @@ existing_plans:
         value: 3
       name: dwell
     - annotation:
-        type: typing.Optional[float]
-      default: None
-      description: If not None, will set the beamline exit slit prior to the plan
-        start.
-      kind:
-        name: KEYWORD_ONLY
-        value: 3
-      name: eslit
-    - annotation:
         type: typing.Optional[str]
       default: None
       description: The sample id. If given, the selected sample metadata is set
@@ -14514,15 +14445,6 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: dwell
-    - annotation:
-        type: typing.Optional[float]
-      default: None
-      description: If not None, will set the beamline exit slit prior to the plan
-        start.
-      kind:
-        name: KEYWORD_ONLY
-        value: 3
-      name: eslit
     - annotation:
         type: typing.Optional[str]
       default: None
@@ -17137,15 +17059,6 @@ existing_plans:
         value: 3
       name: plot_detectors
     - annotation:
-        type: typing.Optional[float]
-      default: None
-      description: If not None, will set the beamline exit slit prior to the plan
-        start.
-      kind:
-        name: KEYWORD_ONLY
-        value: 3
-      name: eslit
-    - annotation:
         type: typing.Optional[str]
       default: None
       description: The sample id. If given, the selected sample metadata is set
@@ -17552,15 +17465,6 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: plot_detectors
-    - annotation:
-        type: typing.Optional[float]
-      default: None
-      description: If not None, will set the beamline exit slit prior to the plan
-        start.
-      kind:
-        name: KEYWORD_ONLY
-        value: 3
-      name: eslit
     - annotation:
         type: typing.Optional[str]
       default: None
