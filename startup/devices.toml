@@ -51,6 +51,7 @@ prefix = "XF:07ID-BI[ADC:1-Ch:2]"
 name="M4A Drain Current"
 
 [I1]
+_target = "sst_base.srs570.SRSADCFactory"
 _group = "detectors"
 _role = "intensity_detector"
 prefix = "XF:07ID-BI[ADC:1-Ch:2]"
