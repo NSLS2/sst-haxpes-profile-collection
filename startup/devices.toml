@@ -95,7 +95,7 @@ _alias = "enpostender.harmonic"
 
 [U42]
 _alias = "enpostender.u42"
-_gropu = "motors"
+_group = "motors"
 
 [gapoffset]
 _alias = "enpostender.offset_gap"
