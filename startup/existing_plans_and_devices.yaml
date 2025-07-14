@@ -7663,6 +7663,12 @@ existing_devices:
     is_movable: false
     is_readable: true
     module: haxpes.hax_monitors
+  sample_bias:
+    classname: EpicsSignal
+    is_flyable: false
+    is_movable: true
+    is_readable: true
+    module: ophyd.signal
   sampr:
     classname: FlyableMotor
     components:

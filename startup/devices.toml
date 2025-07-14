@@ -418,6 +418,10 @@ prefix = "XF:07ID1{K2601B:1}"
 _group = "blconf"
 name = "K2601B"
 
+[sample_bias]
+_alias = "haxSMU.VSource"
+_group = "motors"
+
 [dcm_crystal]
 _target = "ophyd.EpicsSignalRO"
 prefix = "XF:07ID6-OP{Mono:DCM1-Ax::XTAL_SEL"
