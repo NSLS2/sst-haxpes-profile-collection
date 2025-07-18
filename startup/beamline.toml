@@ -16,6 +16,7 @@ reference = ""
 modules = ["haxpes.startup"]
 beamline = ["sst2", "sst1"]
 suspenders = ["haxpes-suspenders"]
+plan_decorators = ["haxpes-shutter"]
 
 [settings.plans]
 xps = ["xps_regions.toml"]

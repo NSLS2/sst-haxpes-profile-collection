@@ -58,7 +58,7 @@ print("Before nslsii.configure_base")
 
 # nslsii.configure_base(get_ipython().user_ns, "haxpes", publish_documents_with_kafka=True)
 nslsii.configure_base(
-    get_ipython().user_ns, tiled_inserter, publish_documents_with_kafka=False
+    get_ipython().user_ns, tiled_inserter, bec=False, pbar=False, publish_documents_with_kafka=False
 )
 
 configure_kafka_publisher(RE, beamline_name="haxpes")

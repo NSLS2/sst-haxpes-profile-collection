@@ -1,2 +1,2 @@
-aum5_xas = { edge = "AuM5", region = [2185, 2285, 0.5] , name = "Au M5-edge XAS"}
-aum5_short = { edge = "AuM5", region = [2275, 2285, 0.5] , name = "Au M5-edge XAS Short"}
+aum5_xas = { edge = "AuM5", region = [2185, 0.5, 2285] , name = "Au M5-edge XAS"}
+aum5_short = { edge = "AuM5", region = [2275, 0.5, 2285] , name = "Au M5-edge XAS Short"}

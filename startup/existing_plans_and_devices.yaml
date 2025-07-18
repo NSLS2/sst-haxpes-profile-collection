@@ -1658,7 +1658,85 @@ existing_devices:
       rbd9103:
         classname: RBD9103
         components:
-          meas_unit:
+          in_range:
+            classname: EpicsSignalRO
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          num_samples:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          num_samples_rbv:
+            classname: EpicsSignalRO
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          range_actual:
+            classname: EpicsSignalRO
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          range_ctrl:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          sample:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          sample_counter:
+            classname: EpicsSignalRO
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          sampling_mode:
+            classname: EpicsSignalRO
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          sampling_mode_ctrl:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          sampling_rate:
+            classname: EpicsSignalRO
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          sampling_rate_ctrl:
+            classname: EpicsSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          sampling_status:
+            classname: EpicsSignalRO
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          stable:
+            classname: EpicsSignalRO
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          unit:
             classname: EpicsSignal
             is_flyable: false
             is_movable: true
@@ -9579,6 +9657,11 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: repeat
+    - default: 'True'
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: open_shutter
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -9940,6 +10023,11 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: repeat
+    - default: 'True'
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: open_shutter
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -9951,8 +10039,8 @@ existing_plans:
     properties:
       is_generator: true
   aum5_short:
-    description: 'Perform an in-place xas scan for  with energy pattern [2275, 2285,
-      0.5] '
+    description: 'Perform an in-place xas scan for  with energy pattern [2275, 0.5,
+      2285] '
     module: nbs_bl.plans.preprocessors
     name: aum5_short
     parameters:
@@ -10059,6 +10147,11 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: repeat
+    - default: 'True'
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: open_shutter
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -10085,8 +10178,8 @@ existing_plans:
     properties:
       is_generator: true
   aum5_xas:
-    description: 'Perform an in-place xas scan for  with energy pattern [2185, 2285,
-      0.5] '
+    description: 'Perform an in-place xas scan for  with energy pattern [2185, 0.5,
+      2285] '
     module: nbs_bl.plans.preprocessors
     name: aum5_xas
     parameters:
@@ -10193,6 +10286,11 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: repeat
+    - default: 'True'
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: open_shutter
     - default: '[]'
       description: A list of extra detectors to be activated for the scan, by default
         [].
@@ -11448,6 +11546,11 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: repeat
+    - default: 'True'
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: open_shutter
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -11589,6 +11692,11 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: repeat
+    - default: 'True'
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: open_shutter
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -11764,6 +11872,11 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: repeat
+    - default: 'True'
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: open_shutter
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -11772,6 +11885,10 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: md
+    - kind:
+        name: VAR_KEYWORD
+        value: 4
+      name: kwargs
     properties:
       is_generator: true
   nbs_grid_scan:
@@ -11912,6 +12029,11 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: repeat
+    - default: 'True'
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: open_shutter
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -12058,6 +12180,11 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: repeat
+    - default: 'True'
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: open_shutter
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -12230,6 +12357,11 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: repeat
+    - default: 'True'
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: open_shutter
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -12366,6 +12498,11 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: repeat
+    - default: 'True'
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: open_shutter
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -12515,6 +12652,11 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: repeat
+    - default: 'True'
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: open_shutter
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -12666,6 +12808,11 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: repeat
+    - default: 'True'
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: open_shutter
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -12823,6 +12970,11 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: repeat
+    - default: 'True'
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: open_shutter
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -12958,6 +13110,11 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: repeat
+    - default: 'True'
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: open_shutter
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -13110,6 +13267,11 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: repeat
+    - default: 'True'
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: open_shutter
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -13252,6 +13414,11 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: repeat
+    - default: 'True'
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: open_shutter
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -13439,6 +13606,11 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: repeat
+    - default: 'True'
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: open_shutter
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -13626,6 +13798,11 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: repeat
+    - default: 'True'
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: open_shutter
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -13795,6 +13972,11 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: repeat
+    - default: 'True'
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: open_shutter
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -13939,6 +14121,11 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: repeat
+    - default: 'True'
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: open_shutter
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -14069,6 +14256,11 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: repeat
+    - default: 'True'
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: open_shutter
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -14265,6 +14457,11 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: repeat
+    - default: 'True'
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: open_shutter
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -14460,6 +14657,11 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: repeat
+    - default: 'True'
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: open_shutter
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -14637,6 +14839,11 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: repeat
+    - default: 'True'
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: open_shutter
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -16294,6 +16501,95 @@ existing_plans:
       name: delay
     properties:
       is_generator: false
+  repeat_plan_sequence_for_duration:
+    description: Repeat a sequence of plans for a specified duration.
+    module: nbs_bl.plans.metaplans
+    name: repeat_plan_sequence_for_duration
+    parameters:
+    - annotation:
+        type: typing.List[__PLAN__]
+      convert_plan_names: true
+      description: List of plan names or callables to run in sequence.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: plans
+    - annotation:
+        type: typing.List[typing.List]
+      description: List of argument lists, one for each plan.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: plan_args_list
+    - annotation:
+        type: typing.List[typing.Dict]
+      description: List of kwargs dicts, one for each plan.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: plan_kwargs_list
+    - annotation:
+        type: float
+      description: Total duration to repeat the sequence (seconds).
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: duration
+    properties:
+      is_generator: true
+  repeat_plan_sequence_while_condition:
+    description: Repeat a sequence of plans while a condition plan returns True.
+    module: nbs_bl.plans.metaplans
+    name: repeat_plan_sequence_while_condition
+    parameters:
+    - annotation:
+        type: typing.List[__PLAN__]
+      convert_plan_names: true
+      description: List of plan names or callables to run in sequence.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: plans
+    - annotation:
+        type: typing.List[typing.List]
+      description: List of argument lists, one for each plan.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: plan_args_list
+    - annotation:
+        type: typing.List[typing.Dict]
+      description: List of kwargs dicts, one for each plan.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: plan_kwargs_list
+    - annotation:
+        type: __PLAN__
+      convert_plan_names: true
+      description: A plan that returns a boolean; controls loop continuation.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: condition
+    - annotation:
+        type: typing.List
+      default: None
+      description: Arguments for the condition plan.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: condition_args
+    - annotation:
+        type: typing.Dict
+      default: None
+      description: Keyword arguments for the condition plan.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: condition_kwargs
+    properties:
+      is_generator: true
   repeater:
     description: Generate n chained copies of the messages from gen_func
     module: bluesky.plan_stubs
@@ -17242,6 +17538,11 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: repeat
+    - default: 'True'
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: open_shutter
     - annotation:
         type: typing.Optional[dict]
       default: None
@@ -17649,6 +17950,11 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: repeat
+    - default: 'True'
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: open_shutter
     - annotation:
         type: typing.Optional[dict]
       default: None

@@ -238,12 +238,12 @@ prefix = "XF:07ID2-HAXMonitor:L2_type"
 name = "L2_mirror_type"
 string = true
 
-[M3AB]
-_target = "sst_base.mirrors.FMBHexapodMirror"
-_group = "mirrors"
-prefix = "XF:07ID1-OP{Mir:M3ABC"
-name = "M3AB"
-kind = "hinted"
+#[M3AB]
+#_target = "sst_base.mirrors.FMBHexapodMirror"
+#_group = "mirrors"
+#prefix = "XF:07ID1-OP{Mir:M3ABC"
+#name = "M3AB"
+#kind = "hinted"
 
 [M4A]
 _target = "sst_base.mirrors.FMBHexapodMirror"
@@ -442,3 +442,4 @@ _target = "ophyd.positioner.SoftPositioner"
 _group = "motors"
 init_pos = 0
 name = "Exposure"
+kind = "hinted"
