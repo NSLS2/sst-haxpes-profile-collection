@@ -1,0 +1,14 @@
+[[catalog]]
+label = "HAXPES Tiled"
+source_type = "uri"
+url = "https://tiled.nsls2.bnl.gov"
+catalog_keys = ["haxpes", "raw"]
+catalog_model = "nbscatalog"
+cache_credentials = false
+
+[[catalog]]
+label = "HAXPES Kafka"
+source_type = "kafka"
+config_file = "/etc/bluesky/kafka.yml"
+beamline_acronym = "haxpes"
+autoload = true

@@ -1158,235 +1158,6 @@ existing_devices:
     is_movable: true
     is_readable: true
     module: ophyd.epics_motor
-  M3AB:
-    classname: FMBHexapodMirror
-    components:
-      pitch:
-        classname: FMBHexapodMirrorAxis
-        components:
-          actuate:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          done:
-            classname: EpicsSignalRO
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          readback:
-            classname: EpicsSignalRO
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          setpoint:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          stop_signal:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: sst_base.mirrors
-      roll:
-        classname: FMBHexapodMirrorAxis
-        components:
-          actuate:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          done:
-            classname: EpicsSignalRO
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          readback:
-            classname: EpicsSignalRO
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          setpoint:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          stop_signal:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: sst_base.mirrors
-      x:
-        classname: FMBHexapodMirrorAxis
-        components:
-          actuate:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          done:
-            classname: EpicsSignalRO
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          readback:
-            classname: EpicsSignalRO
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          setpoint:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          stop_signal:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: sst_base.mirrors
-      y:
-        classname: FMBHexapodMirrorAxis
-        components:
-          actuate:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          done:
-            classname: EpicsSignalRO
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          readback:
-            classname: EpicsSignalRO
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          setpoint:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          stop_signal:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: sst_base.mirrors
-      yaw:
-        classname: FMBHexapodMirrorAxis
-        components:
-          actuate:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          done:
-            classname: EpicsSignalRO
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          readback:
-            classname: EpicsSignalRO
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          setpoint:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          stop_signal:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: sst_base.mirrors
-      z:
-        classname: FMBHexapodMirrorAxis
-        components:
-          actuate:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          done:
-            classname: EpicsSignalRO
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          readback:
-            classname: EpicsSignalRO
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          setpoint:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          stop_signal:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: sst_base.mirrors
-    is_flyable: false
-    is_movable: false
-    is_readable: true
-    module: sst_base.mirrors
   M4A:
     classname: FMBHexapodMirror
     components:
@@ -10316,6 +10087,37 @@ existing_plans:
       name: md
     properties:
       is_generator: true
+  bias_scan:
+    module: haxpes.plans.scans
+    name: bias_scan
+    parameters:
+    - kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: start_bias
+    - kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: stop_bias
+    - kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: n_steps
+    - kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: exposure_time
+    - default: '0.5'
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: settle_time
+    - kind:
+        name: VAR_KEYWORD
+        value: 4
+      name: kwargs
+    properties:
+      is_generator: true
   broadcast_msg:
     description: Generate many copies of a message, applying it to a list of devices.
     module: bluesky.plan_stubs
@@ -10827,6 +10629,12 @@ existing_plans:
         name: VAR_KEYWORD
         value: 4
       name: kwargs
+    properties:
+      is_generator: true
+  fine_align_beam:
+    module: haxpes.tender.tender_ops
+    name: fine_align_beam
+    parameters: []
     properties:
       is_generator: true
   fly:
