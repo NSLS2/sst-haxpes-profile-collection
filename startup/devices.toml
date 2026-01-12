@@ -3,7 +3,7 @@
 _target = "sst_base.srs570.SRSADCFactory"
 _group = "detectors"
 _role = "intensity_detector"
-prefix = "XF:07ID-BI[ADC:1-Ch:1]"
+prefix = "XF:07ID-BI[ADC:4-Ch:1]"
 srs_prefix = "XF:07ID-ES{SR570:14}SR1:"
 name = "I0 ADC"
 
@@ -12,7 +12,7 @@ name = "I0 ADC"
 _target = "sst_base.srs570.SRSADCFactory"
 _group = "detectors"
 _role = "intensity_detector"
-prefix = "XF:07ID-BI[ADC:1-Ch:0]"
+prefix = "XF:07ID-BI[ADC:4-Ch:0]"
 srs_prefix = "XF:07ID-ES{SR570:16}SR1:"
 name = "Sample Drain Current"
 
@@ -44,17 +44,17 @@ prefix = "XF:07ID-BI{DM5:F4}Cur:I1-I"
 name = "DM4 Photodiode"
 
 [M4Adrain]
-_target = "sst_base.detectors.ADCBuffer"
+_target = "nbs_bl.devices.ophScalar"
 _group = "detectors"
 _defer_loading = true
-prefix = "XF:07ID-BI[ADC:1-Ch:2]"
+prefix = "XF:07ID-BI{DM7:I400-1}:IC1_MON"
 name="M4A Drain Current"
 
 [I1]
 _target = "sst_base.srs570.SRSADCFactory"
 _group = "detectors"
 _role = "intensity_detector"
-prefix = "XF:07ID-BI[ADC:1-Ch:2]"
+prefix = "XF:07ID-BI[ADC:4-Ch:2]"
 srs_prefix = "XF:07ID-ES{SR570:15}SR1:"
 name = "I1 ADC"
 
@@ -238,12 +238,12 @@ prefix = "XF:07ID2-HAXMonitor:L2_type"
 name = "L2_mirror_type"
 string = true
 
-#[M3AB]
-#_target = "sst_base.mirrors.FMBHexapodMirror"
-#_group = "mirrors"
-#prefix = "XF:07ID1-OP{Mir:M3ABC"
-#name = "M3AB"
-#kind = "hinted"
+[M3AB]
+_target = "sst_base.mirrors.FMBHexapodMirror"
+_group = "mirrors"
+prefix = "XF:07ID1-OP{Mir:M3ABC"
+name = "M3AB"
+kind = "hinted"
 
 [M4A]
 _target = "sst_base.mirrors.FMBHexapodMirror"
@@ -443,3 +443,8 @@ _group = "motors"
 init_pos = 0
 name = "Exposure"
 kind = "hinted"
+
+[dcm_energy_rbv]
+_target = "ophyd.EpicsSignalRO"
+_group = "detectors"
+prefix = "XF:07ID6-OP{Mono:DCM1-Ax::ENERGY_MON"
