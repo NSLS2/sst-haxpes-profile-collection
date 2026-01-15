@@ -1896,20 +1896,8 @@ existing_devices:
     is_readable: true
     module: ophyd.epics_motor
   U42:
-    classname: U42
+    classname: UndulatorMotor
     components:
-      _enabledTD:
-        classname: EpicsSignalRO
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: ophyd.signal
-      _enabledTU:
-        classname: EpicsSignalRO
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: ophyd.signal
       acceleration:
         classname: EpicsSignal
         is_flyable: false
@@ -2039,7 +2027,7 @@ existing_devices:
     is_flyable: true
     is_movable: true
     is_readable: true
-    module: haxpes.devices.energy_tender
+    module: sst_base.energy
   beamon:
     classname: EpicsSignalRO
     is_flyable: false
@@ -2351,6 +2339,25 @@ existing_devices:
         is_movable: true
         is_readable: true
         module: ophyd.signal
+      energy:
+        classname: PseudoSingle
+        components:
+          readback:
+            classname: AttributeSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          setpoint:
+            classname: AttributeSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.pseudopos
       hc:
         classname: EpicsSignalRO
         is_flyable: false
@@ -2358,13 +2365,25 @@ existing_devices:
         is_readable: true
         module: ophyd.signal
       mode:
-        classname: EpicsSignal
+        classname: Signal
         is_flyable: false
         is_movable: true
         is_readable: true
         module: ophyd.signal
       para_default:
         classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      readback:
+        classname: EpicsSignalRO
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      stop_signal:
+        classname: EpicsSignal
         is_flyable: false
         is_movable: true
         is_readable: true
@@ -3168,7 +3187,7 @@ existing_devices:
         is_readable: true
         module: nbs_bl.devices.motors
     is_flyable: false
-    is_movable: false
+    is_movable: true
     is_readable: true
     module: haxpes.devices.dcm
   dcm_crystal:
@@ -3759,6 +3778,25 @@ existing_devices:
             is_movable: true
             is_readable: true
             module: ophyd.signal
+          energy:
+            classname: PseudoSingle
+            components:
+              readback:
+                classname: AttributeSignal
+                is_flyable: false
+                is_movable: true
+                is_readable: true
+                module: ophyd.signal
+              setpoint:
+                classname: AttributeSignal
+                is_flyable: false
+                is_movable: true
+                is_readable: true
+                module: ophyd.signal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.pseudopos
           hc:
             classname: EpicsSignalRO
             is_flyable: false
@@ -3766,13 +3804,25 @@ existing_devices:
             is_readable: true
             module: ophyd.signal
           mode:
-            classname: EpicsSignal
+            classname: Signal
             is_flyable: false
             is_movable: true
             is_readable: true
             module: ophyd.signal
           para_default:
             classname: Signal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          readback:
+            classname: EpicsSignalRO
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          stop_signal:
+            classname: EpicsSignal
             is_flyable: false
             is_movable: true
             is_readable: true
@@ -4576,43 +4626,6 @@ existing_devices:
             is_readable: true
             module: nbs_bl.devices.motors
         is_flyable: false
-        is_movable: false
-        is_readable: true
-        module: haxpes.devices.dcm
-      mono_en:
-        classname: DCM_energy
-        components:
-          _enable_cmd:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          done:
-            classname: EpicsSignalRO
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          readback:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          setpoint:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          stop_signal:
-            classname: EpicsSignal
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-        is_flyable: false
         is_movable: true
         is_readable: true
         module: haxpes.devices.dcm
@@ -4623,20 +4636,8 @@ existing_devices:
         is_readable: true
         module: ophyd.signal
       u42:
-        classname: U42
+        classname: UndulatorMotor
         components:
-          _enabledTD:
-            classname: EpicsSignalRO
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
-          _enabledTU:
-            classname: EpicsSignalRO
-            is_flyable: false
-            is_movable: true
-            is_readable: true
-            module: ophyd.signal
           acceleration:
             classname: EpicsSignal
             is_flyable: false
@@ -4766,7 +4767,7 @@ existing_devices:
         is_flyable: true
         is_movable: true
         is_readable: true
-        module: haxpes.devices.energy_tender
+        module: sst_base.energy
       u42val:
         classname: Signal
         is_flyable: false
@@ -6625,6 +6626,25 @@ existing_devices:
         is_movable: true
         is_readable: true
         module: ophyd.signal
+      energy:
+        classname: PseudoSingle
+        components:
+          readback:
+            classname: AttributeSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+          setpoint:
+            classname: AttributeSignal
+            is_flyable: false
+            is_movable: true
+            is_readable: true
+            module: ophyd.signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.pseudopos
       hc:
         classname: EpicsSignalRO
         is_flyable: false
@@ -6632,13 +6652,25 @@ existing_devices:
         is_readable: true
         module: ophyd.signal
       mode:
-        classname: EpicsSignal
+        classname: Signal
         is_flyable: false
         is_movable: true
         is_readable: true
         module: ophyd.signal
       para_default:
         classname: Signal
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      readback:
+        classname: EpicsSignalRO
+        is_flyable: false
+        is_movable: true
+        is_readable: true
+        module: ophyd.signal
+      stop_signal:
+        classname: EpicsSignal
         is_flyable: false
         is_movable: true
         is_readable: true
@@ -7442,7 +7474,7 @@ existing_devices:
         is_readable: true
         module: nbs_bl.devices.motors
     is_flyable: false
-    is_movable: false
+    is_movable: true
     is_readable: true
     module: haxpes.devices.dcm
   nBPM:
@@ -7702,19 +7734,6 @@ existing_devices:
     is_movable: true
     is_readable: true
     module: ophyd.signal
-  run_mode:
-    classname: current_run_mode
-    components:
-      current_mode:
-        classname: Signal
-        is_flyable: false
-        is_movable: true
-        is_readable: true
-        module: ophyd.signal
-    is_flyable: false
-    is_movable: false
-    is_readable: true
-    module: haxpes.hax_monitors
   sample_bias:
     classname: EpicsSignal
     is_flyable: false
@@ -9450,64 +9469,6 @@ existing_devices:
     is_readable: true
     module: ophyd.signal
 existing_plans:
-  FG_off:
-    module: haxpes.plans.bl_op_plans
-    name: FG_off
-    parameters:
-    - annotation:
-        type: float
-      default: '10'
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: delay_seconds
-    properties:
-      is_generator: true
-  FG_on:
-    module: haxpes.plans.bl_op_plans
-    name: FG_on
-    parameters:
-    - annotation:
-        type: float
-      default: '11'
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: energy
-    - annotation:
-        type: float
-      default: '75'
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: Vgrid
-    - annotation:
-        type: float
-      default: '10'
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: delay_seconds
-    properties:
-      is_generator: true
-  SES_XPSScan:
-    module: haxpes.plans.scans
-    name: SES_XPSScan
-    parameters:
-    - kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: filename
-    - kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: core_line
-    - kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: en_cal
-    properties:
-      is_generator: true
   XPSScan:
     module: nbs_bl.plans.preprocessors
     name: XPSScan
@@ -9667,6 +9628,14 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: group
+    - annotation:
+        type: typing.Optional[float]
+      default: None
+      description: Specify a maximum time that the move(s) can be waited for.
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: timeout
     - description: passed to obj.set()
       kind:
         name: VAR_KEYWORD
@@ -9696,6 +9665,14 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: group
+    - annotation:
+        type: typing.Optional[float]
+      default: None
+      description: Specify a maximum time that the move(s) can be waited for.
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: timeout
     - description: passed to obj.set()
       kind:
         name: VAR_KEYWORD
@@ -9767,7 +9744,10 @@ existing_plans:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: target_field
-    - description: any 'settable' object (motor, temp controller, etc.)
+    - annotation:
+        type: __MOVABLE__
+      convert_device_names: true
+      description: any 'settable' object (motor, temp controller, etc.)
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
@@ -9795,7 +9775,7 @@ existing_plans:
       name: min_step
     - annotation:
         type: float
-      description: largest step for slow-chaning regions
+      description: largest step for slow-changing regions
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
@@ -9832,43 +9812,6 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: md
-    properties:
-      is_generator: true
-  align_beam_xps:
-    module: haxpes.tender.tender_ops
-    name: align_beam_xps
-    parameters:
-    - default: 'False'
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: PlaneMirror
-    properties:
-      is_generator: true
-  align_sample_xps:
-    description: 'function for aligning sample x position with analyzer counts.
-
-      optimization_paramter weights the centering of the detector image vs. intensity.
-
-      it probably needs to be quite large to actually matter ... REQUIRES TESTING.
-
-      Only works for PEAK analyzer, not for SES.'
-    module: haxpes.hax_ops
-    name: align_sample_xps
-    parameters:
-    - kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: analyzer_KE
-    - kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: anset
-    - default: '10'
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: optimization_parameter
     properties:
       is_generator: true
   au4f_xps:
@@ -10290,37 +10233,6 @@ existing_plans:
       name: md
     properties:
       is_generator: true
-  bias_scan:
-    module: haxpes.plans.scans
-    name: bias_scan
-    parameters:
-    - kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: start_bias
-    - kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: stop_bias
-    - kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: n_steps
-    - kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: exposure_time
-    - default: '0.5'
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: settle_time
-    - kind:
-        name: VAR_KEYWORD
-        value: 4
-      name: kwargs
-    properties:
-      is_generator: true
   broadcast_msg:
     description: Generate many copies of a message, applying it to a list of devices.
     module: bluesky.plan_stubs
@@ -10346,20 +10258,6 @@ existing_plans:
         name: VAR_KEYWORD
         value: 4
       name: kwargs
-    properties:
-      is_generator: false
-  bsleep:
-    description: Tell the RunEngine to sleep, while asynchronously doing other processing.
-    module: bluesky.plan_stubs
-    name: sleep
-    parameters:
-    - annotation:
-        type: float
-      description: seconds
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: time
     properties:
       is_generator: false
   caching_repeater:
@@ -10434,19 +10332,6 @@ existing_plans:
       name: reason
     properties:
       is_generator: false
-  close_shutter:
-    module: haxpes.plans.bl_op_plans
-    name: close_shutter
-    parameters:
-    - annotation:
-        type: str
-      default: '''default'''
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: shutter
-    properties:
-      is_generator: true
   collect:
     description: Collect data cached by one or more fly-scanning devices and emit
       documents.
@@ -10538,6 +10423,14 @@ existing_plans:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: stream_name
+    - annotation:
+        type: collections.abc.Sequence[str]
+      default: ()
+      description: Additional groups to monitor while collecting from flyers.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: watch
     properties:
       is_generator: false
   complete:
@@ -10754,92 +10647,6 @@ existing_plans:
     parameters: []
     properties:
       is_generator: false
-  find_centerofmass:
-    module: haxpes.optimizers_test
-    name: find_centerofmass
-    parameters:
-    - kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: plan
-    - kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: dets
-    - kind:
-        name: VAR_POSITIONAL
-        value: 2
-      name: args
-    - default: None
-      kind:
-        name: KEYWORD_ONLY
-        value: 3
-      name: max_channel
-    - default: 'False'
-      kind:
-        name: KEYWORD_ONLY
-        value: 3
-      name: hysteresis_correct
-    - default: 'False'
-      kind:
-        name: KEYWORD_ONLY
-        value: 3
-      name: hexapod
-    - kind:
-        name: VAR_KEYWORD
-        value: 4
-      name: kwargs
-    properties:
-      is_generator: true
-  find_max:
-    description: invert turns find_max into find_min
-    module: haxpes.optimizers_test
-    name: find_max
-    parameters:
-    - kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: plan
-    - kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: dets
-    - kind:
-        name: VAR_POSITIONAL
-        value: 2
-      name: args
-    - default: None
-      kind:
-        name: KEYWORD_ONLY
-        value: 3
-      name: max_channel
-    - default: 'False'
-      kind:
-        name: KEYWORD_ONLY
-        value: 3
-      name: invert
-    - default: 'False'
-      kind:
-        name: KEYWORD_ONLY
-        value: 3
-      name: hysteresis_correct
-    - default: 'False'
-      kind:
-        name: KEYWORD_ONLY
-        value: 3
-      name: hexapod
-    - kind:
-        name: VAR_KEYWORD
-        value: 4
-      name: kwargs
-    properties:
-      is_generator: true
-  fine_align_beam:
-    module: haxpes.tender.tender_ops
-    name: fine_align_beam
-    parameters: []
-    properties:
-      is_generator: true
   fly:
     description: Perform a fly scan with one or more 'flyers'.
     module: bluesky.plans
@@ -10881,7 +10688,7 @@ existing_plans:
         value: 2
       name: args
     - annotation:
-        type: typing.Union[collections.abc.Iterable, bool, NoneType]
+        type: typing.Union[collections.abc.Iterable[typing.Any], bool, NoneType]
       default: None
       description: 'which axes should be snaked, either ``False`` (do not snake any
         axes),
@@ -10972,24 +10779,89 @@ existing_plans:
       name: prompt
     properties:
       is_generator: false
-  insert_filter:
-    module: haxpes.plans.bl_op_plans
-    name: insert_filter
-    parameters: []
-    properties:
-      is_generator: true
   install_suspender:
     description: Install a suspender during a plan.
     module: bluesky.plan_stubs
     name: install_suspender
     parameters:
-    - description: The suspender to install
+    - annotation:
+        type: bluesky.suspenders.SuspenderBase
+      description: The suspender to install
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: suspender
     properties:
       is_generator: false
+  is_signal_above:
+    description: Check if a readable object is above a threshold value.
+    module: nbs_bl.plans.conditions
+    name: is_signal_above
+    parameters:
+    - annotation:
+        type: __READABLE__
+      convert_device_names: true
+      description: Any object that implements the Readable protocol (can be read with
+        rd()).
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: sig
+    - annotation:
+        type: float
+      description: The threshold value to wait for.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: val
+    properties:
+      is_generator: true
+  is_signal_below:
+    description: Check if a readable object is below a threshold value.
+    module: nbs_bl.plans.conditions
+    name: is_signal_below
+    parameters:
+    - annotation:
+        type: __READABLE__
+      convert_device_names: true
+      description: Any object that implements the Readable protocol (can be read with
+        rd()).
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: sig
+    - annotation:
+        type: float
+      description: The threshold value to wait for.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: val
+    properties:
+      is_generator: true
+  is_signal_equals:
+    description: Check if a readable object equals a target value.
+    module: nbs_bl.plans.conditions
+    name: is_signal_equals
+    parameters:
+    - annotation:
+        type: __READABLE__
+      convert_device_names: true
+      description: Any object that implements the Readable protocol (can be read with
+        rd()).
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: sig
+    - annotation:
+        type: float
+      description: The target value to wait for.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: val
+    properties:
+      is_generator: true
   kickoff:
     description: Kickoff one fly-scanning device.
     module: bluesky.plan_stubs
@@ -11200,7 +11072,10 @@ existing_plans:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: detectors
-    - description: any 'settable' object (motor, temp controller, etc.)
+    - annotation:
+        type: __MOVABLE__
+      convert_device_names: true
+      description: any 'settable' object (motor, temp controller, etc.)
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
@@ -11240,27 +11115,6 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: md
-    properties:
-      is_generator: true
-  measure_offsets:
-    description: take dark counts and set detector offsets
-    module: haxpes.plans.bl_op_plans
-    name: measure_offsets
-    parameters:
-    - annotation:
-        type: str
-      default: '''default'''
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: shutter
-    - annotation:
-        type: int
-      default: '10'
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: n_counts
     properties:
       is_generator: true
   monitor:
@@ -11311,6 +11165,14 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: group
+    - annotation:
+        type: typing.Optional[float]
+      default: None
+      description: Specify a maximum time that the move(s) can be waited for.
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: timeout
     - description: passed to obj.set()
       kind:
         name: VAR_KEYWORD
@@ -11341,23 +11203,6 @@ existing_plans:
       name: pos_cache
     properties:
       is_generator: false
-  move_sample:
-    description: Move to a sample position and set it as the current sample.
-    module: nbs_bl.samples
-    name: move_sample
-    parameters:
-    - description: Identifier of the sample to move to
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: sample_id
-    - description: Additional offset position parameters (x, y, r, etc.)
-      kind:
-        name: VAR_KEYWORD
-        value: 4
-      name: position
-    properties:
-      is_generator: true
   movr:
     description: Move one or more devices to a relative setpoint. Wait for all to
       complete.
@@ -11380,6 +11225,14 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: group
+    - annotation:
+        type: typing.Optional[float]
+      default: None
+      description: Specify a maximum time that the move(s) can be waited for.
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: timeout
     - description: passed to obj.set()
       kind:
         name: VAR_KEYWORD
@@ -11577,21 +11430,13 @@ existing_plans:
     module: nbs_bl.plans.scans
     name: nbs_energy_scan
     parameters:
-    - description: Starting position for the scan
+    - annotation:
+        type: float
+      description: Starting position for the scan
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: start
-    - description: First stopping position
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: stop
-    - description: Step size for first region
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: step
     - description: "For one dimension, ``motor, [point1, point2, ....]``.\nIn general:\n\
         \n.. code-block:: python\n\n    motor1, [point1, point2, ...],\n    motor2,\
         \ [point1, point2, ...],\n    ...,\n    motorN, [point1, point2, ...]\n\n\
@@ -11912,7 +11757,7 @@ existing_plans:
         value: 2
       name: args
     - annotation:
-        type: typing.Union[collections.abc.Iterable, bool, NoneType]
+        type: typing.Union[collections.abc.Iterable[typing.Any], bool, NoneType]
       default: None
       description: 'which axes should be snaked, either ``False`` (do not snake any
         axes),
@@ -12065,21 +11910,13 @@ existing_plans:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: motor
-    - description: Starting position for the scan
+    - annotation:
+        type: float
+      description: Starting position for the scan
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: start
-    - description: First stopping position
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: stop
-    - description: Step size for first region
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: step
     - description: "For one dimension, ``motor, [point1, point2, ....]``.\nIn general:\n\
         \n.. code-block:: python\n\n    motor1, [point1, point2, ...],\n    motor2,\
         \ [point1, point2, ...],\n    ...,\n    motorN, [point1, point2, ...]\n\n\
@@ -12529,7 +12366,10 @@ existing_plans:
     module: nbs_bl.plans.preprocessors
     name: nbs_log_scan
     parameters:
-    - description: any 'settable' object (motor, temp controller, etc.)
+    - annotation:
+        type: __MOVABLE__
+      convert_device_names: true
+      description: any 'settable' object (motor, temp controller, etc.)
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
@@ -12691,7 +12531,7 @@ existing_plans:
         value: 2
       name: args
     - annotation:
-        type: typing.Union[collections.abc.Iterable, bool, NoneType]
+        type: typing.Union[collections.abc.Iterable[typing.Any], bool, NoneType]
       default: None
       description: 'which axes should be snaked, either ``False`` (do not snake any
         axes),
@@ -14287,12 +14127,18 @@ existing_plans:
     module: nbs_bl.plans.preprocessors
     name: nbs_spiral
     parameters:
-    - description: any 'settable' object (motor, temp controller, etc.)
+    - annotation:
+        type: __MOVABLE__
+      convert_device_names: true
+      description: any 'settable' object (motor, temp controller, etc.)
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: x_motor
-    - description: any 'settable' object (motor, temp controller, etc.)
+    - annotation:
+        type: __MOVABLE__
+      convert_device_names: true
+      description: any 'settable' object (motor, temp controller, etc.)
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
@@ -14488,12 +14334,18 @@ existing_plans:
     module: nbs_bl.plans.preprocessors
     name: nbs_spiral_fermat
     parameters:
-    - description: any 'settable' object (motor, temp controller, etc.)
+    - annotation:
+        type: __MOVABLE__
+      convert_device_names: true
+      description: any 'settable' object (motor, temp controller, etc.)
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: x_motor
-    - description: any 'settable' object (motor, temp controller, etc.)
+    - annotation:
+        type: __MOVABLE__
+      convert_device_names: true
+      description: any 'settable' object (motor, temp controller, etc.)
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
@@ -14688,12 +14540,18 @@ existing_plans:
     module: nbs_bl.plans.preprocessors
     name: nbs_spiral_square
     parameters:
-    - description: any 'settable' object (motor, temp controller, etc.)
+    - annotation:
+        type: __MOVABLE__
+      convert_device_names: true
+      description: any 'settable' object (motor, temp controller, etc.)
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: x_motor
-    - description: any 'settable' object (motor, temp controller, etc.)
+    - annotation:
+        type: __MOVABLE__
+      convert_device_names: true
+      description: any 'settable' object (motor, temp controller, etc.)
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
@@ -14996,31 +14854,6 @@ existing_plans:
       name: md
     properties:
       is_generator: false
-  open_shutter:
-    module: haxpes.plans.bl_op_plans
-    name: open_shutter
-    parameters:
-    - annotation:
-        type: str
-      default: '''default'''
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: shutter
-    properties:
-      is_generator: true
-  optimizeL1:
-    module: haxpes.tender.tender_ops
-    name: optimizeL1
-    parameters: []
-    properties:
-      is_generator: true
-  optimizeL2:
-    module: haxpes.tender.tender_ops
-    name: optimizeL2
-    parameters: []
-    properties:
-      is_generator: true
   outer_product_scan:
     description: Scan over a mesh; each motor is on an independent trajectory.
     module: bluesky.plans
@@ -15039,7 +14872,7 @@ existing_plans:
         value: 2
       name: args
     - annotation:
-        type: typing.Union[collections.abc.Iterable, bool, NoneType]
+        type: typing.Union[collections.abc.Iterable[typing.Any], bool, NoneType]
       default: None
       description: 'which axes should be snaked, either ``False`` (do not snake any
         axes),
@@ -15085,11 +14918,13 @@ existing_plans:
     properties:
       is_generator: false
   prepare:
-    description: Prepare a device.
+    description: Prepare a device ready for trigger or kickoff.
     module: bluesky.plan_stubs
     name: prepare
     parameters:
-    - description: Device with 'prepare' method
+    - annotation:
+        type: bluesky.protocols.Preparable
+      description: Device with 'prepare' method
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
@@ -15284,14 +15119,14 @@ existing_plans:
       name: motor
     - annotation:
         type: float
-      description: starting position of motor
+      description: starting position of motor, relative to the current position.
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: start
     - annotation:
         type: float
-      description: ending position of motor
+      description: ending position of motor, relative to the current position.
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
@@ -15305,7 +15140,7 @@ existing_plans:
       name: min_step
     - annotation:
         type: float
-      description: largest step for slow-chaning regions
+      description: largest step for slow-changing regions
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
@@ -15365,7 +15200,7 @@ existing_plans:
         value: 2
       name: args
     - annotation:
-        type: typing.Union[collections.abc.Iterable, bool, NoneType]
+        type: typing.Union[collections.abc.Iterable[typing.Any], bool, NoneType]
       default: None
       description: 'which axes should be snaked, either ``False`` (do not snake any
         axes),
@@ -15964,14 +15799,14 @@ existing_plans:
       name: motor
     - annotation:
         type: float
-      description: starting position of motor
+      description: starting position of motor, relative to the current position.
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: start
     - annotation:
         type: float
-      description: ending position of motor
+      description: ending position of motor, relative to the current position.
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
@@ -15985,7 +15820,7 @@ existing_plans:
       name: min_step
     - annotation:
         type: float
-      description: largest step for slow-chaning regions
+      description: largest step for slow-changing regions
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
@@ -16186,7 +16021,7 @@ existing_plans:
         value: 2
       name: args
     - annotation:
-        type: typing.Union[collections.abc.Iterable, bool, NoneType]
+        type: typing.Union[collections.abc.Iterable[typing.Any], bool, NoneType]
       default: None
       description: 'which axes should be snaked, either ``False`` (do not snake any
         axes),
@@ -16463,18 +16298,14 @@ existing_plans:
       name: md
     properties:
       is_generator: true
-  remove_filter:
-    module: haxpes.plans.bl_op_plans
-    name: remove_filter
-    parameters: []
-    properties:
-      is_generator: true
   remove_suspender:
     description: Remove a suspender during a plan.
     module: bluesky.plan_stubs
     name: remove_suspender
     parameters:
-    - description: The suspender to remove
+    - annotation:
+        type: bluesky.suspenders.SuspenderBase
+      description: The suspender to remove
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
@@ -16546,6 +16377,59 @@ existing_plans:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: duration
+    properties:
+      is_generator: true
+  repeat_plan_sequence_until_condition:
+    description: Repeat a sequence of plans until a condition plan returns True.
+    module: nbs_bl.plans.metaplans
+    name: repeat_plan_sequence_until_condition
+    parameters:
+    - annotation:
+        type: typing.List[__PLAN__]
+      convert_plan_names: true
+      description: List of plan names or callables to run in sequence.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: plans
+    - annotation:
+        type: typing.List[typing.List]
+      description: List of argument lists, one for each plan.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: plan_args_list
+    - annotation:
+        type: typing.List[typing.Dict]
+      description: List of kwargs dicts, one for each plan.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: plan_kwargs_list
+    - annotation:
+        type: __PLAN__
+      convert_plan_names: true
+      description: A plan that returns a boolean; controls loop continuation.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: condition
+    - annotation:
+        type: typing.List
+      default: None
+      description: Arguments for the condition plan.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: condition_args
+    - annotation:
+        type: typing.Dict
+      default: None
+      description: Keyword arguments for the condition plan.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: condition_kwargs
     properties:
       is_generator: true
   repeat_plan_sequence_while_condition:
@@ -16628,71 +16512,6 @@ existing_plans:
       name: kwargs
     properties:
       is_generator: false
-  reset_feedback:
-    description: Resets the latching permit.
-    module: haxpes.tender.funcs
-    name: reset_feedback
-    parameters: []
-    properties:
-      is_generator: true
-  run_XPS_soft:
-    module: haxpes.soft.soft_ops
-    name: wrapper
-    parameters:
-    - kind:
-        name: VAR_POSITIONAL
-        value: 2
-      name: args
-    - kind:
-        name: VAR_KEYWORD
-        value: 4
-      name: kwargs
-    properties:
-      is_generator: true
-  run_XPS_tender:
-    module: haxpes.tender.tender_ops
-    name: run_XPS_tender
-    parameters:
-    - kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: sample_list
-    - default: 'False'
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: close_shutter
-    properties:
-      is_generator: true
-  run_peakXPS_soft:
-    module: haxpes.soft.soft_ops
-    name: wrapper
-    parameters:
-    - kind:
-        name: VAR_POSITIONAL
-        value: 2
-      name: args
-    - kind:
-        name: VAR_KEYWORD
-        value: 4
-      name: kwargs
-    properties:
-      is_generator: true
-  run_peakXPS_tender:
-    module: haxpes.tender.tender_ops
-    name: run_peakXPS_tender
-    parameters:
-    - kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: sample_list
-    - default: 'False'
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: close_shutter
-    properties:
-      is_generator: true
   save:
     description: Close a bundle of readings and emit a completed Event document.
     module: bluesky.plan_stubs
@@ -16789,78 +16608,6 @@ existing_plans:
       name: md
     properties:
       is_generator: true
-  setL1:
-    module: haxpes.tender.tender_ops
-    name: setL1
-    parameters:
-    - kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: stripe
-    properties:
-      is_generator: true
-  setL2_plane:
-    module: haxpes.tender.tender_ops
-    name: setL2_plane
-    parameters:
-    - kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: stripe
-    properties:
-      is_generator: true
-  setL2_toroid:
-    module: haxpes.tender.tender_ops
-    name: setL2_toroid
-    parameters:
-    - kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: stripe
-    properties:
-      is_generator: true
-  set_FG:
-    module: haxpes.plans.bl_op_plans
-    name: set_FG
-    parameters:
-    - annotation:
-        type: float
-      default: '11'
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: energy
-    - annotation:
-        type: float
-      default: '75'
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: Vgrid
-    - annotation:
-        type: float
-      default: '10'
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: delay_seconds
-    properties:
-      is_generator: true
-  set_crystal:
-    module: haxpes.tender.tender_ops
-    name: set_crystal
-    parameters:
-    - kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: crystalSP
-    - default: '1'
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: roll_correct
-    properties:
-      is_generator: true
   set_exposure:
     description: Sets the exposure time for all active detectors
     module: nbs_bl.plans.plan_stubs
@@ -16880,86 +16627,6 @@ existing_plans:
       name: extra_dets
     properties:
       is_generator: true
-  set_feedback:
-    description: 'Turns feedback axis on. If find_new_sp is True, then it grabs the
-      current
-
-      value and sets setpoint.'
-    module: haxpes.tender.funcs
-    name: set_feedback
-    parameters:
-    - kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: axis
-    - default: 'True'
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: set_new_sp
-    properties:
-      is_generator: true
-  set_photon_energy:
-    description: 'Optimize the photon energy for the current beam mode. Automatically
-      determines
-
-      whether to use the soft or tender beam settings.'
-    module: haxpes.hax_ops
-    name: set_photon_energy
-    parameters:
-    - description: The photon energy to set in eV.
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: energy
-    - default: 'True'
-      description: Whether to set the optimal harmonic for the current beam mode.
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: use_optimal_harmonic
-    - default: 'True'
-      description: Whether to set the optimal crystal for the current beam mode.
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: use_optimal_crystal
-    properties:
-      is_generator: true
-  set_photon_energy_soft:
-    module: haxpes.soft.soft_ops
-    name: wrapper
-    parameters:
-    - kind:
-        name: VAR_POSITIONAL
-        value: 2
-      name: args
-    - kind:
-        name: VAR_KEYWORD
-        value: 4
-      name: kwargs
-    properties:
-      is_generator: true
-  set_photon_energy_tender:
-    module: haxpes.tender.tender_ops
-    name: set_photon_energy_tender
-    parameters:
-    - kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: energySP
-    - default: 'True'
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: use_optimal_harmonic
-    - default: 'True'
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: use_optimal_crystal
-    properties:
-      is_generator: true
   set_roi:
     module: nbs_bl.plans.plan_stubs
     name: set_roi
@@ -16976,45 +16643,6 @@ existing_plans:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: ulim
-    properties:
-      is_generator: true
-  set_sample:
-    description: Set the current sample without moving the sample holder.
-    module: nbs_bl.samples
-    name: set_sample
-    parameters:
-    - description: Identifier of the sample to select
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: sample_id
-    properties:
-      is_generator: true
-  setup_peakXAS:
-    description: setup peak analyzer in fixed mode for XAS
-    module: haxpes.plans.bl_op_plans
-    name: setup_peakXAS
-    parameters:
-    - annotation:
-        type: float
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: energy_center
-    - annotation:
-        type: int
-      default: '50'
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: pass_energy
-    - annotation:
-        type: str
-      default: '''Angular'''
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: lens_mode
     properties:
       is_generator: true
   sleep:
@@ -17043,12 +16671,18 @@ existing_plans:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: detectors
-    - description: any 'settable' object (motor, temp controller, etc.)
+    - annotation:
+        type: __MOVABLE__
+      convert_device_names: true
+      description: any 'settable' object (motor, temp controller, etc.)
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: x_motor
-    - description: any 'settable' object (motor, temp controller, etc.)
+    - annotation:
+        type: __MOVABLE__
+      convert_device_names: true
+      description: any 'settable' object (motor, temp controller, etc.)
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
@@ -17147,12 +16781,18 @@ existing_plans:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: detectors
-    - description: any 'settable' object (motor, temp controller, etc.)
+    - annotation:
+        type: __MOVABLE__
+      convert_device_names: true
+      description: any 'settable' object (motor, temp controller, etc.)
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: x_motor
-    - description: any 'settable' object (motor, temp controller, etc.)
+    - annotation:
+        type: __MOVABLE__
+      convert_device_names: true
+      description: any 'settable' object (motor, temp controller, etc.)
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
@@ -17250,12 +16890,18 @@ existing_plans:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: detectors
-    - description: any 'settable' object (motor, temp controller, etc.)
+    - annotation:
+        type: __MOVABLE__
+      convert_device_names: true
+      description: any 'settable' object (motor, temp controller, etc.)
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: x_motor
-    - description: any 'settable' object (motor, temp controller, etc.)
+    - annotation:
+        type: __MOVABLE__
+      convert_device_names: true
+      description: any 'settable' object (motor, temp controller, etc.)
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
@@ -17392,13 +17038,6 @@ existing_plans:
       name: obj
     properties:
       is_generator: false
-  stop_feedback:
-    description: Turns both feedbacks off.
-    module: haxpes.tender.funcs
-    name: stop_feedback
-    parameters: []
-    properties:
-      is_generator: true
   subscribe:
     description: Subscribe the stream of emitted documents.
     module: bluesky.plan_stubs
@@ -17642,7 +17281,10 @@ existing_plans:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: signal
-    - description: any 'settable' object (motor, temp controller, etc.)
+    - annotation:
+        type: __MOVABLE__
+      convert_device_names: true
+      description: any 'settable' object (motor, temp controller, etc.)
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
@@ -17705,12 +17347,6 @@ existing_plans:
       name: md
     properties:
       is_generator: true
-  tune_x2pitch:
-    module: haxpes.tender.tender_ops
-    name: tune_x2pitch
-    parameters: []
-    properties:
-      is_generator: true
   tweak:
     description: Move and motor and read a detector with an interactive prompt.
     module: bluesky.plans
@@ -17730,7 +17366,10 @@ existing_plans:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: target_field
-    - kind:
+    - annotation:
+        type: __MOVABLE__
+      convert_device_names: true
+      kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: motor
@@ -18014,6 +17653,17 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: error_on_timeout
+    - annotation:
+        type: collections.abc.Sequence[str]
+      default: ()
+      description: 'Additional groups to monitor while waiting for the primary group.
+        Raises an exception if any watched group
+
+        fails.'
+      kind:
+        name: KEYWORD_ONLY
+        value: 3
+      name: watch
     properties:
       is_generator: false
   wait_for:
@@ -18037,17 +17687,48 @@ existing_plans:
       name: kwargs
     properties:
       is_generator: false
-  withdraw_samplebar:
-    module: haxpes.plans.bl_op_plans
-    name: withdraw_samplebar
+  wait_for_condition:
+    description: Wait for a condition function to return True.
+    module: nbs_bl.plans.plan_stubs
+    name: wait_for_condition
     parameters:
-    - annotation:
-        type: float
-      default: '535'
+    - description: A condition function that returns a boolean.
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
-      name: y_out
+      name: condition
+    - annotation:
+        type: typing.List
+      default: None
+      description: Arguments for the condition function.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: condition_args
+    - annotation:
+        type: typing.Dict
+      default: None
+      description: Keyword arguments for the condition function.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: condition_kwargs
+    - annotation:
+        type: typing.Optional[float]
+      default: None
+      description: Maximum time to wait in seconds. If None, wait indefinitely.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: timeout
+    - annotation:
+        type: float
+      default: '10'
+      description: Time to sleep between checks in seconds. Default is 10.
+      kind:
+        name: POSITIONAL_OR_KEYWORD
+        value: 1
+      name: sleep_time
     properties:
       is_generator: true
   x2x_scan:
@@ -18063,12 +17744,18 @@ existing_plans:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: detectors
-    - description: The second motor will move half as much as the first
+    - annotation:
+        type: __MOVABLE__
+      convert_device_names: true
+      description: The second motor will move half as much as the first
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
       name: motor1
-    - description: The second motor will move half as much as the first
+    - annotation:
+        type: __MOVABLE__
+      convert_device_names: true
+      description: The second motor will move half as much as the first
       kind:
         name: POSITIONAL_OR_KEYWORD
         value: 1
@@ -18116,92 +17803,5 @@ existing_plans:
         name: KEYWORD_ONLY
         value: 3
       name: md
-    properties:
-      is_generator: true
-  xalign_fs4:
-    description: Tunes second crystal roll to align beam centroid at spx
-    module: haxpes.tender.funcs
-    name: xalign_fs4
-    parameters:
-    - default: '448'
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: spx
-    properties:
-      is_generator: true
-  xcoursealign_i0:
-    description: 'Aligns the beam on I0 using the second crystal roll motor with a
-      course
-
-      step.'
-    module: haxpes.tender.funcs
-    name: xcoursealign_i0
-    parameters:
-    - default: '1'
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: steptime
-    properties:
-      is_generator: true
-  xfinealign_i0:
-    description: 'Aligns the beam on I0 using the second crystal roll motor with a
-      fine step.
-
-      Assumes slits are in place.'
-    module: haxpes.tender.funcs
-    name: xfinealign_i0
-    parameters:
-    - default: '1'
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: steptime
-    properties:
-      is_generator: true
-  yalign_fs4_xps:
-    description: 'Tunes second crystal perpendicular offset to align beam centroid
-      at spy.
-
-      ONLY USE FOR PHOTOEMISSION. Motor will move to pre-defined position when
-
-      scanning energy'
-    module: haxpes.tender.funcs
-    name: yalign_fs4_xps
-    parameters:
-    - default: '326'
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: spy
-    properties:
-      is_generator: true
-  ycoursealign_i0:
-    description: 'Aligns the beam on I0 using the second crystal pitch motor.
-
-      Assumes slits are in place for photoemission.'
-    module: haxpes.tender.funcs
-    name: ycoursealign_i0
-    parameters:
-    - default: '1'
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: steptime
-    properties:
-      is_generator: true
-  yfinealign_i0:
-    description: 'Aligns the beam on I0 using the second crystal fine pitch piezomotor.
-
-      Assumes slits are in place for photoemission.'
-    module: haxpes.tender.funcs
-    name: yfinealign_i0
-    parameters:
-    - default: '1'
-      kind:
-        name: POSITIONAL_OR_KEYWORD
-        value: 1
-      name: steptime
     properties:
       is_generator: true

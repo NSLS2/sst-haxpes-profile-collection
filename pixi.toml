@@ -31,6 +31,30 @@ ophyd-async = ">=0.13.7,<0.14"
 pvxslibs = ">=1.3.2, <2"
 
 
+[feature.nbs.pypi-dependencies]
+nbs-bl = ">=0.2"
+sst-base = { git = "https://github.com/nsls-ii-sst/sst_base", rev = "v0.1.0" }
+nbs-gui = ">=0.1"
+haxpes = { git = "https://github.com/nsls-ii-sst/haxpes" }
+
+[feature.gui-base.dependencies]
+asteval = ">=1.0.6,<2"
+bluesky-widgets = ">=0.0.17,<0.0.18"
+bluesky-live = ">=0.0.8,<0.0.9"
+qt6-wayland = "*"
+pyside6 = "*"
+
+[feature.gui.pypi-dependencies]
+nbs-gui = ">=0.1"
+livetable = { git="https://github.com/xraygui/livetable" }
+qtconsole = "*"
+
+[feature.viewer.dependencies]
+pyqtgraph = ">=0.13.7,<0.14"
+
+[feature.viewer.pypi-dependencies]
+nbs-viewer = ">=0.3.4, <0.4"
+
 [feature.qs.dependencies]
 bluesky-queueserver = "*"
 bluesky-httpserver = "*"
@@ -42,6 +66,8 @@ bluesky-httpserver = "*"
 # systemd units
 qs-backend = "start-re-manager --profile-dir=."
 qs-server = "uvicorn --host localhost --port 60610 bluesky_httpserver.server:app"
+qs = "scripts/qs-start.sh"
+qs-dev = "scripts/qs-dev.sh"
 
 
 [feature.terminal.dependencies]
@@ -49,6 +75,14 @@ ipython = ">=9.5.0"
 pyside6 = "*"
 numpy = ">2"
 
+[feature.gui.tasks]
+gui = "scripts/gui-start.sh"
+gui-dev = "scripts/gui-dev.sh"
+
+
+[feature.viewer.tasks]
+viewer = "scripts/viewer-start.sh"
+viewer-dev = "scripts/viewer-dev.sh"
 
 [feature.terminal.tasks]
 start = "unset SESSION_MANAGER PYTHONPATH && MPLBACKEND=qtagg ipython --profile-dir=."
@@ -56,4 +90,6 @@ pvs = "ipython --profile-dir=. -c 'get_pv_types(); exit()'"
 
 [environments]
 terminal = {features=["profile", "terminal"], solve-group="profile"}
-qs = {features=["profile", "qs"], solve-group="profile"}
+qs = {features=["profile", "nbs", "qs"], solve-group="profile"}
+gui = {features=["profile", "nbs", "gui-base", "gui"], solve-group="profile"}
+viewer = {features=["profile", "gui-base", "viewer"], solve-group="profile"}
