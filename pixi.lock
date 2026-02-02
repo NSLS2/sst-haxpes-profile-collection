@@ -634,14 +634,12 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/linux-64/zstandard-0.25.0-py312h5253ce2_1.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/zstd-1.5.7-hb8e6e7a_2.conda
       - pypi: git+https://github.com/nsls-ii-sst/haxpes#d31b4e61df6756baffa02e980866162a37ece6f8
-      - pypi: git+https://github.com/xraygui/livetable#04456b1cf6c8b21559be8b5031858a67b448b84b
       - pypi: https://files.pythonhosted.org/packages/d7/74/f7de37a9a9592b395fb1030f96a383253684da1741105e6afbed5c45ee37/nbs_bl-0.2.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/9d/be/339b1eb92b77310d8f4524047af8d25c1373a4ca36a441b33dd75ea11110/nbs_core-0.1.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/e1/0b/1ac75645a53cd81178e5fa829796890cb59fc43241499dcc929bf88d0007/nbs_gui-0.1.2-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/67/d8/8af47ecca80c365d5ffcdce6fae78ec71921052189c1486ba9dbac7a36f4/pvxslibs-1.3.2-cp312-cp312-manylinux2014_x86_64.whl
-      - pypi: https://files.pythonhosted.org/packages/97/d2/3cb0980a6a4a2581facc4d47b2e7d99912a1f7065407f007f27419e19979/qtconsole-5.7.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/69/76/37c0ccd5ab968a6a438f9c623aeecc84c202ab2fabc6a8fd927580c15b5a/QtPy-2.4.3-py3-none-any.whl
-      - pypi: git+https://github.com/nsls-ii-sst/sst_base?rev=v0.1.0#c8b39aa520ca017007519e934f154d6b508d0208
+      - pypi: git+https://github.com/nsls-ii-sst/sst_base?branch=pol_spline#d4690b24ebafbb04c4a013512c2e2845323fad97
       - pypi: https://files.pythonhosted.org/packages/c7/18/c86eb8e0202e32dd3df50d43d7ff9854f8e0603945ff398974c1d91ac1ef/tomli_w-1.2.0-py3-none-any.whl
   qs:
     channels:
@@ -1279,7 +1277,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/e1/0b/1ac75645a53cd81178e5fa829796890cb59fc43241499dcc929bf88d0007/nbs_gui-0.1.2-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/67/d8/8af47ecca80c365d5ffcdce6fae78ec71921052189c1486ba9dbac7a36f4/pvxslibs-1.3.2-cp312-cp312-manylinux2014_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/69/76/37c0ccd5ab968a6a438f9c623aeecc84c202ab2fabc6a8fd927580c15b5a/QtPy-2.4.3-py3-none-any.whl
-      - pypi: git+https://github.com/nsls-ii-sst/sst_base?rev=v0.1.0#c8b39aa520ca017007519e934f154d6b508d0208
+      - pypi: git+https://github.com/nsls-ii-sst/sst_base?branch=pol_spline#d4690b24ebafbb04c4a013512c2e2845323fad97
       - pypi: https://files.pythonhosted.org/packages/c7/18/c86eb8e0202e32dd3df50d43d7ff9854f8e0603945ff398974c1d91ac1ef/tomli_w-1.2.0-py3-none-any.whl
   terminal:
     channels:
@@ -7681,14 +7679,6 @@ packages:
   purls: []
   size: 168074
   timestamp: 1607309189989
-- pypi: git+https://github.com/xraygui/livetable#04456b1cf6c8b21559be8b5031858a67b448b84b
-  name: livetable
-  version: 0.1.0
-  requires_dist:
-  - qtpy
-  - bluesky-kafka>=0.10.0
-  - bluesky-widgets>=0.0.16
-  - nslsii
 - conda: https://conda.anaconda.org/conda-forge/linux-64/llvmlite-0.45.1-py312h7424e68_0.conda
   sha256: 6650dcb6d813e0b09a0d0e4705f6642077795f45da3877f173cd51b89d06fb52
   md5: 1937051f88c829482f07f11bf39c6a79
@@ -9804,25 +9794,6 @@ packages:
   purls: []
   size: 1600625
   timestamp: 1759303398114
-- pypi: https://files.pythonhosted.org/packages/97/d2/3cb0980a6a4a2581facc4d47b2e7d99912a1f7065407f007f27419e19979/qtconsole-5.7.0-py3-none-any.whl
-  name: qtconsole
-  version: 5.7.0
-  sha256: 42ff0734269a77129097131ce96059f97dc864e6e061d7ed919609ccfe18dd22
-  requires_dist:
-  - traitlets!=5.2.1,!=5.2.2
-  - jupyter-core
-  - jupyter-client>=4.1
-  - pygments
-  - ipykernel>=4.1
-  - ipython-pygments-lexers
-  - qtpy>=2.4.0
-  - packaging
-  - flaky ; extra == 'test'
-  - pytest ; extra == 'test'
-  - pytest-qt ; extra == 'test'
-  - pytest-asyncio ; extra == 'test'
-  - sphinx>=1.3 ; extra == 'doc'
-  requires_python: '>=3.9'
 - pypi: https://files.pythonhosted.org/packages/69/76/37c0ccd5ab968a6a438f9c623aeecc84c202ab2fabc6a8fd927580c15b5a/QtPy-2.4.3-py3-none-any.whl
   name: qtpy
   version: 2.4.3
@@ -10518,9 +10489,9 @@ packages:
   - pkg:pypi/sqlalchemy?source=hash-mapping
   size: 3586589
   timestamp: 1760114623445
-- pypi: git+https://github.com/nsls-ii-sst/sst_base?rev=v0.1.0#c8b39aa520ca017007519e934f154d6b508d0208
+- pypi: git+https://github.com/nsls-ii-sst/sst_base?branch=pol_spline#d4690b24ebafbb04c4a013512c2e2845323fad97
   name: sst-base
-  version: 0.1.0
+  version: 0.1.1.dev7+gd4690b24e
   requires_dist:
   - bluesky
   - ophyd

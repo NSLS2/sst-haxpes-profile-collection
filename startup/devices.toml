@@ -25,7 +25,8 @@ name = "K2600_current"
 [Idm1]
 _target = "nbs_bl.devices.ophScalar"
 _group = "detectors"
-_defer_loading = true
+# _defer_loading = true
+_modes = ["Tender"]
 prefix = "XF:07ID-BI{DM3:F4}Cur:I2-I"
 name = "DM1 Photodiode"
 
@@ -46,7 +47,8 @@ name = "DM4 Photodiode"
 [M4Adrain]
 _target = "nbs_bl.devices.ophScalar"
 _group = "detectors"
-_defer_loading = true
+# _defer_loading = true
+_modes = ["Soft"]
 prefix = "XF:07ID-BI{DM7:I400-1}:IC1_MON"
 name="M4A Drain Current"
 
@@ -54,6 +56,7 @@ name="M4A Drain Current"
 _target = "sst_base.srs570.SRSADCFactory"
 _group = "detectors"
 _role = "intensity_detector"
+_modes = ["Tender"]
 prefix = "XF:07ID-BI[ADC:4-Ch:2]"
 srs_prefix = "XF:07ID-ES{SR570:15}SR1:"
 name = "I1 ADC"
@@ -182,6 +185,7 @@ name = "ring_current"
 [dm1]
 _target = "sst_base.motors.PrettyMotor"
 _group = "motors"
+_modes = ["Tender"]
 prefix = "XF:07ID6-BI{Diag:01-Ax:Y}Mtr"
 name = "DM1"
 
@@ -194,12 +198,14 @@ name = "DM3"
 [dm4]
 _target = "sst_base.motors.PrettyMotor"
 _group = "motors"
+_modes = ["Soft"]
 prefix = "XF:07ID5-BI{Diag:04-Ax:Y}Mtr"
 name = "DM4"
 
 [nBPM]
 _target = "sst_base.motors.PrettyMotor"
 _group = ["motors", "blconf"]
+_modes = ["Tender"]
 prefix = "XF:07ID6-BI{BPM:1-Ax:Y}Mtr"
 name = "nBPM Filter"
 
@@ -263,6 +269,7 @@ kind = "hinted"
 _target = "ophyd.EpicsMotor"
 _group = ["motors", "blconf"]
 _role = "slits"
+_modes = ["Soft"]
 prefix = "XF:07ID3-OP{Slt:06-Ax:YGap}Mtr"
 name = "Exit Slit AB"
 kind = "hinted"
@@ -277,6 +284,7 @@ string = true
 [beamselection]
 _target = "ophyd.EpicsSignal"
 _group = ["signals", "blconf"]
+_role = "mode"
 prefix = "XF:07ID2-HAXMonitor:beamselect"
 name = "beam_selection"
 string = true

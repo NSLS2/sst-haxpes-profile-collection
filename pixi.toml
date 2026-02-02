@@ -33,7 +33,7 @@ pvxslibs = ">=1.3.2, <2"
 
 [feature.nbs.pypi-dependencies]
 nbs-bl = ">=0.2"
-sst-base = { git = "https://github.com/nsls-ii-sst/sst_base", rev = "v0.1.0" }
+sst-base = { git = "https://github.com/nsls-ii-sst/sst_base", branch = "pol_spline" }
 nbs-gui = ">=0.1"
 haxpes = { git = "https://github.com/nsls-ii-sst/haxpes" }
 
@@ -46,8 +46,6 @@ pyside6 = "*"
 
 [feature.gui.pypi-dependencies]
 nbs-gui = ">=0.1"
-livetable = { git="https://github.com/xraygui/livetable" }
-qtconsole = "*"
 
 [feature.viewer.dependencies]
 pyqtgraph = ">=0.13.7,<0.14"
