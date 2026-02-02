@@ -13,7 +13,7 @@ reference = ""
 [devices]
 
 [settings]
-modules = ["haxpes.startup"]
+startup_modules = ["haxpes.startup"]
 beamline = ["sst2", "sst1"]
 suspenders = ["haxpes-suspenders"]
 plan_decorators = ["haxpes-shutter"]
@@ -29,5 +29,5 @@ prefix = "haxpes-"
 [settings.redis.info]
 host = "info.sst.nsls2.bnl.gov"
 prefix = "haxpes-"
-port = 60737
+# port = 60737
 db = 6

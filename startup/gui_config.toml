@@ -29,6 +29,7 @@ psh5 = { visible = false}
 psh1 = { view_only = true }
 FEsh1 = { view_only = true }
 enpostender = { "_role" = "energy", "load_order" = 1 }
+beamselection = { "_target" = "nbs_gui.models.mode.ModeModel" }
 
 [loaders]
 "EnPosFactory" = "sst_base.qt.models.energy.SST1EnergyModel"

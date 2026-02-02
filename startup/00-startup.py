@@ -63,6 +63,7 @@ nslsii.configure_base(
 
 configure_kafka_publisher(RE, beamline_name="haxpes")
 
+
 #RE.md = RedisJSONDict(redis.Redis("info.sst.nsls2.bnl.gov"), prefix="haxpes-")
 
 print("After configure_base")
