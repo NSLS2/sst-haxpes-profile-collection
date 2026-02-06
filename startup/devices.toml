@@ -79,7 +79,7 @@ name = "haxpes_manipulator"
 _target = "haxpes.devices.energy_tender.energypos"
 _group = ["source", "blconf"]
 _modes = ["Tender"]
-prefix = ""
+prefix = "SR:C07-ID:G1A{SST2:1}"
 name = "SST2 Energy"
 
 [en]
@@ -244,12 +244,12 @@ prefix = "XF:07ID2-HAXMonitor:L2_type"
 name = "L2_mirror_type"
 string = true
 
-[M3AB]
-_target = "sst_base.mirrors.FMBHexapodMirror"
-_group = "mirrors"
-prefix = "XF:07ID1-OP{Mir:M3ABC"
-name = "M3AB"
-kind = "hinted"
+#[M3AB]
+#_target = "sst_base.mirrors.FMBHexapodMirror"
+#_group = "mirrors"
+#prefix = "XF:07ID1-OP{Mir:M3ABC"
+#name = "M3AB"
+#kind = "hinted"
 
 [M4A]
 _target = "sst_base.mirrors.FMBHexapodMirror"
