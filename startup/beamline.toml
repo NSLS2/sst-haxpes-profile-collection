@@ -13,7 +13,7 @@ reference = ""
 [devices]
 
 [settings]
-startup_modules = ["haxpes.startup"]
+startup_modules = ["nbs_bl.startup", "haxpes.startup"]
 beamline = ["sst2", "sst1"]
 suspenders = ["haxpes-suspenders"]
 plan_decorators = ["haxpes-shutter"]

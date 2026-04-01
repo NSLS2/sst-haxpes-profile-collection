@@ -26,7 +26,7 @@ loader = "nbs_bl.qt.models.beamline.SSTBeamlineModel"
 [devices]
 psh4 = { visible = false, view_only = true }
 psh5 = { visible = false}
-psh1 = { view_only = true }
+psh1 = { _target = "nbs_gui.models.misc.GVModelConfirmation" }
 FEsh1 = { view_only = true }
 enpostender = { "_role" = "energy", "load_order" = 1 }
 beamselection = { "_target" = "nbs_gui.models.mode.ModeModel" }

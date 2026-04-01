@@ -1,7 +1,7 @@
 # Define your beamline-specific devices here
 [I0]
 _target = "sst_base.srs570.SRSADCFactory"
-_group = "detectors"
+_group = ["detectors"]
 _role = "intensity_detector"
 prefix = "XF:07ID-BI[ADC:4-Ch:1]"
 srs_prefix = "XF:07ID-ES{SR570:14}SR1:"
@@ -34,6 +34,7 @@ name = "DM1 Photodiode"
 _target = "nbs_bl.devices.ophScalar"
 _group = "detectors"
 _defer_loading = true
+_modes = ["Soft"]
 prefix = "XF:07ID-BI{DM3:F4}Cur:I0-I"
 name = "DM3 Photodiode"
 
@@ -41,12 +42,13 @@ name = "DM3 Photodiode"
 _target = "nbs_bl.devices.ophScalar"
 _group = "detectors"
 _defer_loading = true
+_modes = ["Soft"]
 prefix = "XF:07ID-BI{DM5:F4}Cur:I1-I"
 name = "DM4 Photodiode"
 
 [M4Adrain]
 _target = "nbs_bl.devices.ophScalar"
-_group = "detectors"
+_group = ["detectors"]
 # _defer_loading = true
 _modes = ["Soft"]
 prefix = "XF:07ID-BI{DM7:I400-1}:IC1_MON"
@@ -80,6 +82,7 @@ _target = "haxpes.devices.energy_tender.energypos"
 _group = ["source", "blconf"]
 _modes = ["Tender"]
 prefix = "SR:C07-ID:G1A{SST2:1}"
+#prefix = ""
 name = "SST2 Energy"
 
 [en]
@@ -123,7 +126,7 @@ _alias = "enpostender.mono.bragg"
 
 [enpossoft]
 _target = "sst_base.energy.EnPosFactory"
-_group = "source"
+_group = ["source", "blconf"]
 _load_order = 2
 _defer_loading = true
 _modes = ["Soft"]
@@ -132,7 +135,7 @@ name = "en"
 
 [ensoft]
 _alias = "enpossoft.energy"
-_group = ['motors', 'blconf']
+_group = 'motors'
 _load_order = 2
 _role = "energy"
 
@@ -173,6 +176,7 @@ _target = "sst_base.slits.QuadSlits"
 prefix = "XF:07ID6-OP{Slt:03-Ax:"
 name = "DM1_slits"
 kind = "hinted"
+_modes = ["Tender"]
 concurrent = 1
 
 [ring_current]
@@ -193,6 +197,7 @@ name = "DM1"
 _target = "sst_base.motors.PrettyMotor"
 _group = "motors"
 prefix = "XF:07ID3-BI{Diag:03-Ax:Y}Mtr"
+_modes = ["Soft"]
 name = "DM3"
 
 [dm4]
@@ -212,6 +217,7 @@ name = "nBPM Filter"
 [L1]
 _target = "sst_base.mirrors.FMBHexapodMirror"
 _group = "mirrors"
+_modes = ["Tender"]
 prefix = "XF:07IDA-OP{Mir:L1"
 name = "L1"
 kind = "hinted"
@@ -219,6 +225,7 @@ kind = "hinted"
 [L1stripe]
 _target = "ophyd.EpicsSignal"
 _group = "blconf"
+_modes = ["Tender"]
 prefix = "XF:07ID2-HAXMonitor:L1_stripe"
 name = "L1_stripe"
 string = true
@@ -226,6 +233,7 @@ string = true
 [L2AB]
 _target = "sst_base.mirrors.FMBHexapodMirror"
 _group = "mirrors"
+_modes = ["Tender"]
 prefix = "XF:07IDA6-OP{Mir:L2AB"
 name = "L2AB"
 kind = "hinted"
@@ -233,6 +241,7 @@ kind = "hinted"
 [L2stripe]
 _target = "ophyd.EpicsSignal"
 _group = "blconf"
+_modes = ["Tender"]
 prefix = "XF:07ID2-HAXMonitor:L2_stripe"
 name = "L2_stripe"
 string = true
@@ -240,20 +249,23 @@ string = true
 [L2type]
 _target = "ophyd.EpicsSignal"
 _group = "blconf"
+_modes = ["Tender"]
 prefix = "XF:07ID2-HAXMonitor:L2_type"
 name = "L2_mirror_type"
 string = true
 
-#[M3AB]
-#_target = "sst_base.mirrors.FMBHexapodMirror"
-#_group = "mirrors"
-#prefix = "XF:07ID1-OP{Mir:M3ABC"
-#name = "M3AB"
-#kind = "hinted"
+[M3AB]
+_target = "sst_base.mirrors.FMBHexapodMirror"
+_group = "mirrors"
+_modes = ["Soft"]
+prefix = "XF:07ID1-OP{Mir:M3ABC"
+name = "M3AB"
+kind = "hinted"
 
 [M4A]
 _target = "sst_base.mirrors.FMBHexapodMirror"
 _group = "mirrors"
+_modes = ["Soft"]
 prefix = "XF:07ID3-OP{Mir:M4A"
 name = "M4A"
 kind = "hinted"
@@ -261,6 +273,7 @@ kind = "hinted"
 [L2wedge]
 _target = "ophyd.EpicsMotor"
 _group = "motors"
+_modes = ["Tender"]
 prefix = "XF:07IDA6-OP{Mir:L2AB-Ax:Y2}Mtr"
 name = "L2 Wedge"
 kind = "hinted"
@@ -308,6 +321,7 @@ string = true
 _target = "sst_base.shutters.EPS_Shutter"
 _group = "shutters"
 shutter_type = "PH"
+_modes = ["Tender"]
 openval = 0
 closeval = 1
 prefix = "XF:07IDA-PPS{PSh:1}"
@@ -316,6 +330,7 @@ name = "SST-2 Branch Shutter"
 [psh2]
 _target = "sst_base.shutters.EPS_Shutter"
 _group = "shutters"
+_modes = ["Tender"]
 shutter_type = "PH"
 openval = 0
 closeval = 1
@@ -325,6 +340,7 @@ name = "Shutter 2"
 [psh4]
 _target = "sst_base.shutters.EPS_Shutter"
 _group = "shutters"
+_modes = ["Soft"]
 shutter_type = "PH"
 openval = 0
 closeval = 1
@@ -337,6 +353,7 @@ _group = "shutters"
 shutter_type = "PH"
 openval = 0
 closeval = 1
+_modes = ["Soft"]
 prefix = "XF:07IDA-PPS{PSh:5}"
 name = "Shutter 5"
 
@@ -362,6 +379,7 @@ name = "downstream GV"
 [fs4]
 _target = "sst_base.shutters.EPS_Shutter"
 _group = "shutters"
+_modes = ["Tender"]
 shutter_type = "PH"
 openval = 1
 closeval = 0
@@ -396,11 +414,13 @@ _alias = "haxslt.vsize"
 [fbhor]
 _target = "haxpes.devices.pid_feedback.pid"
 prefix = "XF:07ID6-OP{Mono:DCM1-Fb:PF2}"
+_modes = ["Tender"]
 name = "horizontal feedback"
 
 [fbvert]
 _target = "haxpes.devices.pid_feedback.pid"
 prefix = "XF:07ID6-OP{Mono:DCM1-Fb:RF2}"
+_modes = ["Tender"]
 name = "vertical feedback"
 
 [peak_analyzer]
@@ -433,17 +453,20 @@ _group = "motors"
 [dcm_crystal]
 _target = "ophyd.EpicsSignalRO"
 prefix = "XF:07ID6-OP{Mono:DCM1-Ax::XTAL_SEL"
+_modes = ["Tender"]
 
 [gonilateral]
 _target = "sst_base.motors.PrettyMotor"
 _group = "motors"
 prefix = "XF:07ID6-OP{Mono:DCM1-Ax:X}Mtr"
 name = "DCM goniometer lateral"
+_modes = ["Tender"]
 
 [BPM4cent]
 _target = "haxpes.devices.hax_cam.simpleBPM"
 prefix = "XF:07ID-BI{BPM:4}"
 name  = "BPM4 Centroid"
+_modes = ["Tender"]
 
 [exposureMotor]
 _target = "ophyd.positioner.SoftPositioner"
@@ -456,3 +479,4 @@ kind = "hinted"
 _target = "ophyd.EpicsSignalRO"
 _group = "detectors"
 prefix = "XF:07ID6-OP{Mono:DCM1-Ax::ENERGY_MON"
+_modes = ["Tender"]
