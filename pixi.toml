@@ -53,6 +53,12 @@ pyqtgraph = ">=0.13.7,<0.14"
 [feature.viewer.pypi-dependencies]
 nbs-viewer = ">=0.3.4, <0.4"
 
+[feature.sim.dependencies]
+pyzmq = ">=27.1.0,<28"
+
+[feature.sim.pypi-dependencies]
+nbs-sim = { git = "https://github.com/xraygui/nbs-sim", rev = "v0.1.0" }
+
 [feature.qs.dependencies]
 bluesky-queueserver = "*"
 bluesky-httpserver = "*"
@@ -86,8 +92,13 @@ viewer-dev = "scripts/viewer-dev.sh"
 start = "unset SESSION_MANAGER PYTHONPATH && MPLBACKEND=qtagg ipython --profile-dir=."
 pvs = "ipython --profile-dir=. -c 'get_pv_types(); exit()'"
 
+[feature.sim.tasks]
+sim = "scripts/sim-start.sh"
+sim-dev = "scripts/sim-dev.sh"
+
 [environments]
 terminal = {features=["profile", "terminal"], solve-group="profile"}
 qs = {features=["profile", "nbs", "qs"], solve-group="profile"}
 gui = {features=["profile", "nbs", "gui-base", "gui"], solve-group="profile"}
+sim = {features=["profile", "sim", "nbs"]}
 viewer = {features=["profile", "gui-base", "viewer"], solve-group="profile"}
