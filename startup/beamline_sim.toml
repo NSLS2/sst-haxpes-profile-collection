@@ -15,8 +15,11 @@ __merge__ = "replace"
 enabled = true
 method = "nslsii"
 
-[settings.run_engine.tiled_writer]
+[settings.tiled_writer]
 __merge__ = "replace"
 enabled = true
 profile = "nbs"
 subscribe_method = "post_document"
+
+[settings.kafka]
+name = "nbs"

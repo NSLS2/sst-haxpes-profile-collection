@@ -21,6 +21,8 @@
 "EpicsSignalRO" = "nbs_sim.devices.signals.ConstantSignal"
 "EpicsSignal" = "nbs_sim.devices.signals.ConstantSignal"
 "pid" = "nbs_sim.devices.pid.PIDGroup"
+"SMU" = "nbs_sim.devices.k2600b.K2600B"
+"RBDFactory" = "nbs_sim.devices.rbd9103.RBD9103"
 
 [devices]
 haxslt = {trans_min = 0, trans_max = 40, _group="apertures", _role="slits", user_limits=[0, 40]}

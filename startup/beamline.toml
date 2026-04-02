@@ -31,3 +31,12 @@ host = "info.sst.nsls2.bnl.gov"
 prefix = "haxpes-"
 # port = 60737
 db = 6
+
+[settings.tiled_writer]
+enabled = true
+profile = "nsls2"
+api_key_env = "TILED_BLUESKY_WRITING_API_KEY_HAXPES"
+subscribe_method = "post_document"
+
+[settings.kafka]
+name = "haxpes"

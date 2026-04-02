@@ -54,4 +54,4 @@ beamselection = { "_target" = "nbs_gui.models.mode.ModeModel" }
 
 [kafka]
 config_file = "/etc/bluesky/kafka.yml"
-bl_acronym = "haxpes"
+bl_acronym = "nbs"
