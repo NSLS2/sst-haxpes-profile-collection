@@ -36,6 +36,7 @@ db = 6
 enabled = true
 profile = "nsls2"
 api_key_env = "TILED_BLUESKY_WRITING_API_KEY_HAXPES"
+catalog_path = ["haxpes", "raw"]
 subscribe_method = "post_document"
 
 [settings.kafka]

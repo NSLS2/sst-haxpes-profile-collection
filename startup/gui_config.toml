@@ -53,5 +53,5 @@ beamselection = { "_target" = "nbs_gui.models.mode.ModeModel" }
 "QuadSlitsLimitFactory" = "sst_base.qt.models.quadSlits.QuadSlitsModel"
 
 [kafka]
+bl_acronym = "haxpes"
 config_file = "/etc/bluesky/kafka.yml"
-bl_acronym = "nbs"
