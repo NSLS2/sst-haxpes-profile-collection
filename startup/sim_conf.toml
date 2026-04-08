@@ -32,3 +32,4 @@ enpostender = {_role="energy", _load_order=1, prefix="" }
 beamselection = {_target = "nbs_sim.devices.signals.ModeControl"}
 beamon = {_target = "nbs_sim.devices.signals.ConstantSignal", value = 1}
 softbeamenable = {_target = "nbs_sim.devices.signals.EndstationControl", value = "HAXPES"}
+dcm_crystal = {_target = "IGNORE"}

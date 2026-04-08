@@ -1,6 +1,6 @@
 # Define your beamline-specific devices here
 [I0]
-_target = "sst_base.srs570.SRSADCFactory"
+_target = "sst_base.devices.SRSADCFactory"
 _group = ["detectors"]
 _role = "intensity_detector"
 prefix = "XF:07ID-BI[ADC:4-Ch:1]"
@@ -9,7 +9,7 @@ name = "I0 ADC"
 
 ###
 [Idrain]
-_target = "sst_base.srs570.SRSADCFactory"
+_target = "sst_base.devices.SRSADCFactory"
 _group = "detectors"
 _role = "intensity_detector"
 prefix = "XF:07ID-BI[ADC:4-Ch:0]"
@@ -55,7 +55,7 @@ prefix = "XF:07ID-BI{DM7:I400-1}:IC1_MON"
 name="M4A Drain Current"
 
 [I1]
-_target = "sst_base.srs570.SRSADCFactory"
+_target = "sst_base.devices.SRSADCFactory"
 _group = "detectors"
 _role = "intensity_detector"
 _modes = ["Tender"]
@@ -64,7 +64,7 @@ srs_prefix = "XF:07ID-ES{SR570:15}SR1:"
 name = "I1 ADC"
 
 [PEY]
-_target = "sst_base.rbd9103.RBDFactory"
+_target = "sst_base.devices.RBDFactory"
 _group = "detectors"
 prefix = "XF:07ID1-ES{RBD9103:01}"
 rescale = -1
@@ -476,7 +476,6 @@ name = "Exposure"
 kind = "hinted"
 
 [dcm_energy_rbv]
-_target = "ophyd.EpicsSignalRO"
+_alias = "enpostender.mono_en.readback"
 _group = "detectors"
-prefix = "XF:07ID6-OP{Mono:DCM1-Ax::ENERGY_MON"
 _modes = ["Tender"]
