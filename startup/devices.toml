@@ -78,7 +78,7 @@ prefix = "XF:07ID1-BI{HAX-Ax:"
 name = "haxpes_manipulator"
 
 [enpostender]
-_target = "haxpes.devices.energy_tender.energypos"
+_target = "sst_base.energy.EnergyTender"
 _group = ["source", "blconf"]
 _modes = ["Tender"]
 prefix = "SR:C07-ID:G1A{SST2:1}"
@@ -86,7 +86,7 @@ prefix = "SR:C07-ID:G1A{SST2:1}"
 name = "SST2 Energy"
 
 [en]
-_alias = "enpostender.energy"
+_alias = "enpostender.flycontrol"
 _group = "motors"
 _role = "energy"
 
@@ -125,7 +125,7 @@ _alias = "enpostender.mono.x2fineroll"
 _alias = "enpostender.mono.bragg"
 
 [enpossoft]
-_target = "sst_base.energy.EnPosFactory"
+_target = "sst_base.energy.EnergySoftFactory"
 _group = ["source", "blconf"]
 _load_order = 2
 _defer_loading = true
@@ -476,6 +476,6 @@ name = "Exposure"
 kind = "hinted"
 
 [dcm_energy_rbv]
-_alias = "enpostender.mono_en.readback"
+_alias = "enpostender.monoen.readback"
 _group = "detectors"
 _modes = ["Tender"]
