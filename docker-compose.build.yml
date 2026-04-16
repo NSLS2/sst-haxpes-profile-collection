@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  bluesky:
+    build:
+      context: .
+      dockerfile: images/bluesky/Containerfile
+      args:
+        BASE_IMAGE: ghcr.io/xraygui/nbs-pods/bluesky:latest
+    image: haxpes-bluesky:latest
+
+  queueserver:
+    build:
+      context: .
+      dockerfile: images/queueserver/Containerfile
+      args:
+        BASE_IMAGE: haxpes-bluesky:latest
+    image: haxpes-queueserver:latest
+    depends_on:
+      - bluesky
+
+  gui:
+    build:
+      context: .
+      dockerfile: images/gui/Containerfile
+      args:
+        BASE_IMAGE: haxpes-bluesky:latest
+    image: haxpes-gui:latest
+    depends_on:
+      - bluesky
+
+  sim:
+    build:
+      context: .
+      dockerfile: images/sim/Containerfile
+      args:
+        BASE_IMAGE: haxpes-bluesky:latest
+    image: haxpes-sim:latest
+    depends_on:
+      - bluesky
