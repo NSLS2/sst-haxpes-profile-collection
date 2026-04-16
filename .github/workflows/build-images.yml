@@ -1,0 +1,137 @@
+name: Build and Push HAXPES Container Images
+
+on:
+  push:
+    tags: [ 'v*' ]
+  workflow_dispatch:
+
+env:
+  REGISTRY: ghcr.io
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set IMAGE_NAME for GHCR
+      shell: bash
+      run: echo "IMAGE_NAME=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')" >> "$GITHUB_ENV"
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Log in to Container Registry
+      uses: docker/login-action@v3
+      with:
+        registry: ${{ env.REGISTRY }}
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Docker meta for haxpes-bluesky
+      id: meta-haxpes-bluesky
+      uses: docker/metadata-action@v5
+      with:
+        images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/haxpes-bluesky
+        tags: |
+          type=raw,value=latest
+          type=ref,event=branch
+          type=ref,event=pr
+          type=semver,pattern={{version}}
+          type=semver,pattern={{major}}.{{minor}}
+          type=sha
+
+    - name: Build and push haxpes-bluesky image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        file: ./images/bluesky/Containerfile
+        push: true
+        tags: ${{ steps.meta-haxpes-bluesky.outputs.tags }}
+        labels: ${{ steps.meta-haxpes-bluesky.outputs.labels }}
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+
+    - name: Docker meta for haxpes-queueserver
+      id: meta-haxpes-queueserver
+      uses: docker/metadata-action@v5
+      with:
+        images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/haxpes-queueserver
+        tags: |
+          type=raw,value=latest
+          type=ref,event=branch
+          type=ref,event=pr
+          type=semver,pattern={{version}}
+          type=semver,pattern={{major}}.{{minor}}
+          type=sha
+
+    - name: Build and push haxpes-queueserver image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        file: ./images/queueserver/Containerfile
+        push: true
+        tags: ${{ steps.meta-haxpes-queueserver.outputs.tags }}
+        labels: ${{ steps.meta-haxpes-queueserver.outputs.labels }}
+        build-args: |
+          BASE_IMAGE=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/haxpes-bluesky:latest
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+
+    - name: Docker meta for haxpes-gui
+      id: meta-haxpes-gui
+      uses: docker/metadata-action@v5
+      with:
+        images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/haxpes-gui
+        tags: |
+          type=raw,value=latest
+          type=ref,event=branch
+          type=ref,event=pr
+          type=semver,pattern={{version}}
+          type=semver,pattern={{major}}.{{minor}}
+          type=sha
+
+    - name: Build and push haxpes-gui image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        file: ./images/gui/Containerfile
+        push: true
+        tags: ${{ steps.meta-haxpes-gui.outputs.tags }}
+        labels: ${{ steps.meta-haxpes-gui.outputs.labels }}
+        build-args: |
+          BASE_IMAGE=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/haxpes-bluesky:latest
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+
+    - name: Docker meta for haxpes-sim
+      id: meta-haxpes-sim
+      uses: docker/metadata-action@v5
+      with:
+        images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/haxpes-sim
+        tags: |
+          type=raw,value=latest
+          type=ref,event=branch
+          type=ref,event=pr
+          type=semver,pattern={{version}}
+          type=semver,pattern={{major}}.{{minor}}
+          type=sha
+
+    - name: Build and push haxpes-sim image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        file: ./images/sim/Containerfile
+        push: true
+        tags: ${{ steps.meta-haxpes-sim.outputs.tags }}
+        labels: ${{ steps.meta-haxpes-sim.outputs.labels }}
+        build-args: |
+          BASE_IMAGE=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/haxpes-bluesky:latest
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+

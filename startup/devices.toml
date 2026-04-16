@@ -1,6 +1,6 @@
 # Define your beamline-specific devices here
 [I0]
-_target = "sst_base.srs570.SRSADCFactory"
+_target = "sst_base.devices.SRSADCFactory"
 _group = ["detectors"]
 _role = "intensity_detector"
 prefix = "XF:07ID-BI[ADC:4-Ch:1]"
@@ -9,7 +9,7 @@ name = "I0 ADC"
 
 ###
 [Idrain]
-_target = "sst_base.srs570.SRSADCFactory"
+_target = "sst_base.devices.SRSADCFactory"
 _group = "detectors"
 _role = "intensity_detector"
 prefix = "XF:07ID-BI[ADC:4-Ch:0]"
@@ -55,7 +55,7 @@ prefix = "XF:07ID-BI{DM7:I400-1}:IC1_MON"
 name="M4A Drain Current"
 
 [I1]
-_target = "sst_base.srs570.SRSADCFactory"
+_target = "sst_base.devices.SRSADCFactory"
 _group = "detectors"
 _role = "intensity_detector"
 _modes = ["Tender"]
@@ -64,7 +64,7 @@ srs_prefix = "XF:07ID-ES{SR570:15}SR1:"
 name = "I1 ADC"
 
 [PEY]
-_target = "sst_base.rbd9103.RBDFactory"
+_target = "sst_base.devices.RBDFactory"
 _group = "detectors"
 prefix = "XF:07ID1-ES{RBD9103:01}"
 rescale = -1
@@ -78,7 +78,7 @@ prefix = "XF:07ID1-BI{HAX-Ax:"
 name = "haxpes_manipulator"
 
 [enpostender]
-_target = "haxpes.devices.energy_tender.energypos"
+_target = "sst_base.energy.EnergyTender"
 _group = ["source", "blconf"]
 _modes = ["Tender"]
 prefix = "SR:C07-ID:G1A{SST2:1}"
@@ -86,7 +86,7 @@ prefix = "SR:C07-ID:G1A{SST2:1}"
 name = "SST2 Energy"
 
 [en]
-_alias = "enpostender.energy"
+_alias = "enpostender.flycontrol"
 _group = "motors"
 _role = "energy"
 
@@ -125,7 +125,7 @@ _alias = "enpostender.mono.x2fineroll"
 _alias = "enpostender.mono.bragg"
 
 [enpossoft]
-_target = "sst_base.energy.EnPosFactory"
+_target = "sst_base.energy.EnergySoftFactory"
 _group = ["source", "blconf"]
 _load_order = 2
 _defer_loading = true
@@ -476,7 +476,6 @@ name = "Exposure"
 kind = "hinted"
 
 [dcm_energy_rbv]
-_target = "ophyd.EpicsSignalRO"
+_alias = "enpostender.monoen.readback"
 _group = "detectors"
-prefix = "XF:07ID6-OP{Mono:DCM1-Ax::ENERGY_MON"
 _modes = ["Tender"]
