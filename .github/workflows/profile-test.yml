@@ -29,6 +29,10 @@ jobs:
         run: |
           set -euo pipefail
 
+          echo "==== Host memory before pods smoke test ===="
+          free -h || true
+          cat /proc/meminfo | sed -n '1,20p' || true
+
           mkdir -p "${NBS_COLLECTION_PACKAGES}"
 
           pixi run -e pods pods -- --help
@@ -41,6 +45,9 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+
+          echo "==== Host memory before bluesky-services start ===="
+          free -h || true
 
           podman --version
           podman info --debug || true
@@ -66,6 +73,9 @@ jobs:
         run: |
           set -euo pipefail
 
+          echo "==== Host memory before sim start ===="
+          free -h || true
+
           pixi run -e pods pods-start --dev sim
 
           for _ in $(seq 1 60); do
@@ -85,6 +95,9 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+
+          echo "==== Host memory before queueserver start ===="
+          free -h || true
 
           pixi run -e pods pods-start --dev queueserver
 
@@ -106,10 +119,29 @@ jobs:
         run: |
           set -euo pipefail
 
+          echo "==== Host memory before qs-pytest ===="
+          free -h || true
+          vmstat 1 5 || true
+          echo "==== Podman stats before qs-pytest ===="
+          podman stats --no-stream || true
+
           QS_CONTAINER="$(podman ps --format '{{.Names}}' | grep -m1 'acq_qs')"
           echo "Using queueserver container: ${QS_CONTAINER}"
 
           podman exec "${QS_CONTAINER}" bash -lc 'cd /home/xf07id1/.ipython/profile_collection && pixi run -e qs qs-pytest'
+
+      - name: Capture OOM diagnostics on failure
+        if: ${{ failure() }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "==== Host memory after failure ===="
+          free -h || true
+          cat /proc/meminfo | sed -n '1,40p' || true
+          echo "==== Podman stats after failure ===="
+          podman stats --no-stream || true
+          echo "==== Kernel messages (OOM hints) ===="
+          dmesg | rg -i "out of memory|oom|killed process" || true
 
       - name: Tear down minimal pods
         if: ${{ always() }}
