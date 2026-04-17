@@ -71,7 +71,7 @@ pytest = "*"
 podman-compose = "*"
 
 [feature.pods.pypi-dependencies]
-nbs-pods = { git = "https://github.com/xraygui/nbs-pods.git"}
+nbs-pods = ">=0.2.2"
 
 [feature.pods.tasks]
 pods = "scripts/pods.sh"
