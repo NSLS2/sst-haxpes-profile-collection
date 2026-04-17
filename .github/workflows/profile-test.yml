@@ -140,8 +140,20 @@ jobs:
           cat /proc/meminfo | sed -n '1,40p' || true
           echo "==== Podman stats after failure ===="
           podman stats --no-stream || true
-          echo "==== Kernel messages (OOM hints) ===="
-          dmesg | rg -i "out of memory|oom|killed process" || true
+          echo "==== Running containers after failure ===="
+          podman ps -a || true
+          echo "==== Queueserver container logs ===="
+          QS_CONTAINER="$(podman ps -a --format '{{.Names}}' | grep -m1 'acq_qs' || true)"
+          if [ -n "${QS_CONTAINER}" ]; then
+            podman logs --tail 400 "${QS_CONTAINER}" || true
+          else
+            echo "queueserver container not found"
+          fi
+          echo "==== Last logs from all containers ===="
+          for cid in $(podman ps -aq); do
+            echo "---- logs for ${cid} ----"
+            podman logs --tail 120 "${cid}" || true
+          done
 
       - name: Tear down minimal pods
         if: ${{ always() }}
