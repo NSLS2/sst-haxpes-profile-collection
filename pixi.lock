@@ -1244,7 +1244,7 @@ environments:
       - pypi: git+https://github.com/nsls-ii-sst/haxpes#dedb5178c2c4b412e0aa5efedb53ea99b6a0f4e9
       - pypi: https://files.pythonhosted.org/packages/49/d1/098b8c3d237a7f0a7e89a74a65896e1677ad6c4667009e1de98a881d186f/nbs_bl-0.3.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/a7/aa/a1ef22fd3450c91f037ebd2a601a9955d693479d2fedf191cac309fe3b28/nbs_core-0.2.0-py3-none-any.whl
-      - pypi: https://files.pythonhosted.org/packages/88/cf/8d4185aa519bf7f67b99fa96bd08d3f3f0c8022cc8814bfb8d72493a625f/nbs_pods-0.2.2-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/d2/ca/ff5e26dac91d85e252e3ccda8772052022671335a5a263b9c70ed790d744/nbs_pods-0.2.3-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/67/d8/8af47ecca80c365d5ffcdce6fae78ec71921052189c1486ba9dbac7a36f4/pvxslibs-1.3.2-cp312-cp312-manylinux2014_x86_64.whl
       - pypi: git+https://github.com/nsls-ii-sst/sst-base?rev=v0.2.0#07551de8b792601f59ea1dd1d530cf2562a5c5ff
   qs:
@@ -9327,10 +9327,10 @@ packages:
   - nslsii
   - qtpy
   requires_python: '>=3.8'
-- pypi: https://files.pythonhosted.org/packages/88/cf/8d4185aa519bf7f67b99fa96bd08d3f3f0c8022cc8814bfb8d72493a625f/nbs_pods-0.2.2-py3-none-any.whl
+- pypi: https://files.pythonhosted.org/packages/d2/ca/ff5e26dac91d85e252e3ccda8772052022671335a5a263b9c70ed790d744/nbs_pods-0.2.3-py3-none-any.whl
   name: nbs-pods
-  version: 0.2.2
-  sha256: 7dab69c046d19aad8efff02f89b3803f250331662f5ca6b524370f1d79854c80
+  version: 0.2.3
+  sha256: 97cf46ccd5c445c50c0122c65386416a07d63173610d75a8a2e799bdbe99975a
   requires_python: '>=3.8'
 - pypi: https://files.pythonhosted.org/packages/66/2b/f5d4205ae14109c792028bc633625203c1e984c38ff1046afaff645a10f2/nbs_sim-0.2.2-py3-none-any.whl
   name: nbs-sim
