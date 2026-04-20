@@ -71,7 +71,7 @@ pytest = "*"
 podman-compose = "*"
 
 [feature.pods.pypi-dependencies]
-nbs-pods = ">=0.2.2"
+nbs-pods = ">=0.2.3"
 
 [feature.pods.tasks]
 pods = "scripts/pods.sh"
