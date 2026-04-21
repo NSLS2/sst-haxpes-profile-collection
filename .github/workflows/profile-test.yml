@@ -82,7 +82,7 @@ jobs:
 
           for _ in $(seq 1 60); do
             timeout 10s podman ps --format '{{.Names}}' | tee podman-ps.txt
-            if grep -q "sim_main" podman-ps.txt; then
+            if grep -q "sim_sim" podman-ps.txt; then
               exit 0
             fi
             sleep 2
