@@ -23,14 +23,15 @@ xps = ["xps_regions.toml"]
 xas = ["xas_regions.toml"]
 
 [settings.redis.md]
-host = "info.sst.nsls2.bnl.gov"
-prefix = "haxpes-"
+host = "xf07id1-haxpes-redis1.nsls2.bnl.gov"
+port=6380
+ssl=true
 
 [settings.redis.info]
-host = "info.sst.nsls2.bnl.gov"
-prefix = "haxpes-"
-# port = 60737
-db = 6
+host = "xf07id1-haxpes-redis1.nsls2.bnl.gov"
+port=6380
+ssl=true
+db=1
 
 [settings.tiled_writer]
 enabled = true
