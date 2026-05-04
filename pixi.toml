@@ -67,7 +67,7 @@ pytest = "*"
 
 
 [feature.pods.dependencies]
-podman-compose = "*"
+podman-compose = ">=1.5.0,<2"
 
 [feature.pods.pypi-dependencies]
 #nbs-pods = ">=0.2.5"
