@@ -462,6 +462,14 @@ prefix = "XF:07ID6-OP{Mono:DCM1-Ax:X}Mtr"
 name = "DCM goniometer lateral"
 _modes = ["Tender"]
 
+[bpm16_cam] 
+_target = "sst_base.cameras.StandardProsilicawstatsFactory"
+prefix = "XF:07ID-BI{BPM:16}"
+name = "BPM16Cam"
+camera_name = "bpm16_cam-1"
+date_template = "%Y/%m"
+read_attrs = ['tiff','stats5']
+
 [BPM4cent]
 _target = "haxpes.devices.hax_cam.simpleBPM"
 prefix = "XF:07ID-BI{BPM:4}"
