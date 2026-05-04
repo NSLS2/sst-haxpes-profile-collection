@@ -2,7 +2,7 @@ name: Build and Push HAXPES Container Images
 
 on:
   push:
-    tags: [ 'v*' ]
+    branches: [ build ]
   workflow_dispatch:
 
 env:
@@ -42,8 +42,6 @@ jobs:
           type=raw,value=latest
           type=ref,event=branch
           type=ref,event=pr
-          type=semver,pattern={{version}}
-          type=semver,pattern={{major}}.{{minor}}
           type=sha
 
     - name: Build and push haxpes-bluesky image
@@ -66,8 +64,6 @@ jobs:
           type=raw,value=latest
           type=ref,event=branch
           type=ref,event=pr
-          type=semver,pattern={{version}}
-          type=semver,pattern={{major}}.{{minor}}
           type=sha
 
     - name: Build and push haxpes-queueserver image
@@ -92,8 +88,6 @@ jobs:
           type=raw,value=latest
           type=ref,event=branch
           type=ref,event=pr
-          type=semver,pattern={{version}}
-          type=semver,pattern={{major}}.{{minor}}
           type=sha
 
     - name: Build and push haxpes-gui image
@@ -118,8 +112,6 @@ jobs:
           type=raw,value=latest
           type=ref,event=branch
           type=ref,event=pr
-          type=semver,pattern={{version}}
-          type=semver,pattern={{major}}.{{minor}}
           type=sha
 
     - name: Build and push haxpes-sim image
