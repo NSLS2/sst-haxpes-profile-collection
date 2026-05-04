@@ -82,7 +82,7 @@ jobs:
 
           for _ in $(seq 1 60); do
             timeout 10s podman ps --format '{{.Names}}' | tee podman-ps.txt
-            if grep -q "adsim_adsim" podman-ps.txt; then
+            if grep -q "adsim" podman-ps.txt; then
               exit 0
             fi
             sleep 2
@@ -92,7 +92,7 @@ jobs:
           podman ps -a || true
           podman logs --tail 200 $(podman ps -aq) || true
           exit 1
-          
+
       - name: Start sim
         shell: bash
         run: |
