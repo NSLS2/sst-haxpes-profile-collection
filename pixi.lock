@@ -1246,9 +1246,9 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/linux-64/zstandard-0.25.0-py312h5253ce2_1.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/zstd-1.5.7-hb78ec9c_6.conda
       - pypi: git+https://github.com/nsls-ii-sst/haxpes#dedb5178c2c4b412e0aa5efedb53ea99b6a0f4e9
+      - pypi: git+https://github.com/xraygui/nbs-pods#50a5b670c3af83cfcf0899b08259ba6399040da9
       - pypi: https://files.pythonhosted.org/packages/3d/39/827b565b3f4ad5d7676b162424ee072abc29bda82c92d18cde859c997764/nbs_bl-0.3.2-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/a7/aa/a1ef22fd3450c91f037ebd2a601a9955d693479d2fedf191cac309fe3b28/nbs_core-0.2.0-py3-none-any.whl
-      - pypi: https://files.pythonhosted.org/packages/90/52/72a2658f67f629871fe71f41097065b1c7b92192ecf46193b87729258f6f/nbs_pods-0.2.5-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/67/d8/8af47ecca80c365d5ffcdce6fae78ec71921052189c1486ba9dbac7a36f4/pvxslibs-1.3.2-cp312-cp312-manylinux2014_x86_64.whl
       - pypi: git+https://github.com/nsls-ii-sst/sst-base?rev=v0.2.3#ee4f1b2bda314025c5f3d9233ef12a6a26499afd
   qs:
@@ -9309,10 +9309,9 @@ packages:
   - nslsii
   - qtpy
   requires_python: '>=3.8'
-- pypi: https://files.pythonhosted.org/packages/90/52/72a2658f67f629871fe71f41097065b1c7b92192ecf46193b87729258f6f/nbs_pods-0.2.5-py3-none-any.whl
+- pypi: git+https://github.com/xraygui/nbs-pods#50a5b670c3af83cfcf0899b08259ba6399040da9
   name: nbs-pods
-  version: 0.2.5
-  sha256: 4c7fdab9868ab0df14dbb10697b5fcc65de9bb28daa82c3480eab19e4e3c6365
+  version: 0.2.6.dev2+g50a5b670c
   requires_python: '>=3.8'
 - pypi: https://files.pythonhosted.org/packages/3a/e6/4ad1dd469a8e5b4f5e1da7c22bc13d6de263a5a0031460363e89020d069a/nbs_sim-0.2.3-py3-none-any.whl
   name: nbs-sim
