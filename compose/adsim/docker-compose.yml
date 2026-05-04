@@ -1,0 +1,19 @@
+version: '3'
+
+x-proposals-volume:
+  &proposals-volume
+  - /tmp/proposals:/nsls2/data/sst/proposals
+
+networks:
+  bluesky-services_bluesky:
+    external: true
+
+services:
+  bpm16:
+    image: docker.io/prjemian/synapps:latest
+    environment:
+      - PREFIX='XF:07ID-BI{BPM:16}'
+    command: bash -c "/root/bin/adsim.sh start && tail -f /dev/null"
+    volumes: *proposals-volume
+    networks:
+      - bluesky-services_bluesky
