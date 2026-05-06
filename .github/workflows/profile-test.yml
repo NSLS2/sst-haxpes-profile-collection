@@ -13,6 +13,7 @@ jobs:
       contents: read
     env:
       NBS_COLLECTION_PACKAGES: ${{ github.workspace }}/collection_packages
+      NBS_PROFILE_USE_LOCKED_PACKAGES: "1"
 
     steps:
       - name: Checkout repository
@@ -36,18 +37,6 @@ jobs:
 
           pixi run -e pods pods-list | tee pods-list.txt
           grep -q "Available services" pods-list.txt
-
-      - name: Prepare collection_packages for containers
-        shell: bash
-        run: |
-          set -euo pipefail
-
-          mkdir -p "${NBS_COLLECTION_PACKAGES}"
-          if [ ! -d "${NBS_COLLECTION_PACKAGES}/haxpes/.git" ]; then
-            git clone https://github.com/nsls-ii-sst/haxpes.git "${NBS_COLLECTION_PACKAGES}/haxpes"
-          else
-            git -C "${NBS_COLLECTION_PACKAGES}/haxpes" pull --ff-only
-          fi
 
       - name: Start bluesky-services
         shell: bash
