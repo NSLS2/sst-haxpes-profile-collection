@@ -1,11 +1,8 @@
 [workspace]
 channels = ["conda-forge"]
 name = "sst-haxpes-profile-collection"
-platforms = ["linux-64"]
+platforms = [{ platform = "linux-64", glibc = "2.17" }]
 version = "2026.2.0"
-
-[system-requirements]
-libc = "2.17"
 
 [feature.profile.dependencies]
 bluesky-base = "==1.15.0"
@@ -68,12 +65,13 @@ bluesky-queueserver = "*"
 bluesky-httpserver = "*"
 pytest = "*"
 
-
 [feature.pods.dependencies]
 podman-compose = ">=1.5.0,<2"
 
 [feature.pods.pypi-dependencies]
-nbs-pods = ">=0.2.6, <0.3"
+nbs-pods = ">=0.2.8, <0.3"
+#nbs-pods = { git = "https://github.com/xraygui/nbs-pods", branch = "local_flag_fix" }
+
 
 [feature.pods.tasks]
 pods = "scripts/pods.sh"
@@ -96,7 +94,6 @@ qs-dev = "scripts/qs-dev.sh"
 zmq-proxy = "bluesky-0MQ-proxy 5577 5578"
 qs-pytest = "scripts/test-profile.sh"
 
-
 [feature.terminal.dependencies]
 ipython = ">=9.5.0"
 pyside6 = "*"
@@ -105,7 +102,6 @@ numpy = ">2"
 [feature.gui.tasks]
 gui = "scripts/gui-start.sh"
 gui-dev = "scripts/gui-dev.sh"
-
 
 [feature.viewer.tasks]
 viewer = "scripts/viewer-start.sh"

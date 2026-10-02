@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: images/bluesky/Containerfile
       args:
-        BASE_IMAGE: ghcr.io/xraygui/nbs-pods/bluesky:latest
+        BASE_IMAGE: ghcr.io/xraygui/nbs-pods/bluesky:0.2.8
     image: haxpes-bluesky:latest
 
   queueserver:
