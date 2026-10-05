@@ -128,7 +128,6 @@ _alias = "enpostender.mono.bragg"
 _target = "sst_base.energy.EnergySoftFactory"
 _group = ["source", "blconf"]
 _load_order = 2
-_defer_loading = true
 _modes = ["Soft"]
 prefix = ""
 name = "en"
@@ -175,6 +174,7 @@ concurrent = 1
 _target = "sst_base.slits.QuadSlits"
 prefix = "XF:07ID6-OP{Slt:03-Ax:"
 name = "DM1_slits"
+_group = ['motors']
 kind = "hinted"
 _modes = ["Tender"]
 concurrent = 1
@@ -427,6 +427,7 @@ name = "vertical feedback"
 _target = "haxpes.devices.peak_analyzer.PeakAnalyzer"
 _group = "detectors"
 name = "PeakAnalyzer"
+peak_url = "http://xf07id-ws29-713.nsls2.bnl.gov:8087"
 _defer_loading = true
 
 [ses]

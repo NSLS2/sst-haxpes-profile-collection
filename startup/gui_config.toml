@@ -15,7 +15,8 @@ include = [
     "manual-sample-move",
     "haxpes-respes-custom",
     "haxpes-xps",
-    "haxpes-xps-custom"
+    "haxpes-xps-custom",
+    "sst-gui-energy-flyscan"
 ]
 
 [models.beamline]
@@ -29,6 +30,7 @@ psh5 = { visible = false}
 psh1 = { _target = "nbs_gui.models.misc.GVModelConfirmation" }
 FEsh1 = { view_only = true }
 enpostender = { "_role" = "energy", "load_order" = 1 }
+enpossoft = { "_role" = "energy", "load_order" = 1 }
 beamselection = { "_target" = "nbs_gui.models.mode.ModeModel" }
 
 [loaders]
