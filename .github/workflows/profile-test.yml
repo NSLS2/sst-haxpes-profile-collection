@@ -3,7 +3,7 @@ name: HAXPES Bluesky Profile Testing
 on:
   pull_request:
   push:
-    branches: [ "main", "master", "develop" ]
+    branches: [ "main", "master" ]
   workflow_dispatch:
     inputs:
       image_tag:
