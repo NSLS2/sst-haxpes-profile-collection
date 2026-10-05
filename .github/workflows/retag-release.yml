@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       source_tag:
-        description: 'Existing image tag to re-tag from'
+        description: 'Existing image tag to re-tag from (prefer sha-<full-commit>; latest for emergencies)'
         required: false
         default: 'latest'
       version:
@@ -44,7 +44,7 @@ jobs:
         else
           TAG="${{ github.ref_name }}"
           VERSION="${TAG#v}"
-          echo "source_tag=latest" >> "$GITHUB_OUTPUT"
+          echo "source_tag=sha-${{ github.sha }}" >> "$GITHUB_OUTPUT"
         fi
         echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
         echo "major_minor=${VERSION%.*}" >> "$GITHUB_OUTPUT"
