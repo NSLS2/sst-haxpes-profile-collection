@@ -2,7 +2,7 @@
 channels = ["conda-forge"]
 name = "sst-haxpes-profile-collection"
 platforms = [{ platform = "linux-64", glibc = "2.17" }]
-version = "2026.2.0"
+version = "2026.3.0"
 
 [feature.profile.dependencies]
 bluesky-base = "==1.15.0"
