@@ -37,6 +37,12 @@ jobs:
           set -euo pipefail
           if [[ -n "${{ inputs.image_tag }}" ]]; then
             TAG="${{ inputs.image_tag }}"
+          elif [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            if [[ "${{ github.head_ref }}" == "develop" || "${{ github.base_ref }}" == "develop" ]]; then
+              TAG="develop"
+            else
+              TAG="latest"
+            fi
           elif [[ "${{ github.ref }}" == "refs/heads/develop" ]]; then
             TAG="develop"
           else
