@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       source_tag:
-        description: 'Source image tag (sha-<full>, develop, main). Empty = auto (sha then develop)'
+        description: 'Source image tag (sha-<full>, build, develop). Empty = auto (sha then build)'
         required: false
         default: ''
       version:
@@ -71,7 +71,7 @@ jobs:
           echo "No image found for ${PROBE}:${sha_tag}" >&2
           echo "Images are only published when image inputs change (path-filtered builds)." >&2
 
-          for candidate in develop main; do
+          for candidate in build develop; do
             if docker buildx imagetools inspect "${PROBE}:${candidate}" >/dev/null 2>&1; then
               echo "Falling back to :${candidate}" >&2
               echo "${candidate}"
@@ -79,7 +79,7 @@ jobs:
             fi
           done
 
-          echo "None of ${sha_tag}, develop, or main exist for ${PROBE}" >&2
+          echo "None of ${sha_tag}, build, or develop exist for ${PROBE}" >&2
           exit 1
         }
 

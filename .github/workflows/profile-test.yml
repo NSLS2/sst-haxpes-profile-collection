@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
     inputs:
       image_tag:
-        description: "NBS_IMAGE_TAG override (e.g. develop, latest, main)"
+        description: "NBS_IMAGE_TAG override (e.g. build, develop, latest, or a version)"
         required: false
         default: ""
 
@@ -94,17 +94,17 @@ jobs:
           if [[ -n "${{ inputs.image_tag }}" ]]; then
             TAG="${{ inputs.image_tag }}"
           elif [[ "${{ github.event_name }}" == "workflow_run" ]]; then
-            TAG="${{ github.event.workflow_run.head_branch }}"
+            TAG="sha-${{ github.event.workflow_run.head_sha }}"
           elif [[ "${{ github.event_name }}" == "pull_request" ]]; then
             if [[ "${{ github.head_ref }}" == "develop" || "${{ github.base_ref }}" == "develop" ]]; then
               TAG="develop"
             else
-              TAG="latest"
+              TAG="build"
             fi
           elif [[ "${{ github.ref }}" == "refs/heads/develop" ]]; then
             TAG="develop"
           else
-            TAG="latest"
+            TAG="build"
           fi
           echo "NBS_IMAGE_TAG=${TAG}" >> "$GITHUB_ENV"
           echo "Using NBS_IMAGE_TAG=${TAG}"
