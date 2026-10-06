@@ -1,0 +1,28 @@
+ARG BASE_IMAGE=ghcr.io/xraygui/nbs-pods/bluesky:0.2.8
+FROM ${BASE_IMAGE}
+
+RUN mkdir -p /usr/local/share/ipython/profile_collection \
+        /home/xf07id1/.ipython \
+        /home/xf07id1/collection_packages \
+        /home/xf07id1/Documents/UserFiles/live/LiveData \
+    && ln -sf /usr/local/share/ipython/profile_collection /home/xf07id1/.ipython/profile_collection
+
+WORKDIR /usr/local/share/ipython/profile_collection
+
+COPY pixi.toml pixi.lock ./
+
+RUN HAXPES_REV="$(grep -oE 'nsls-ii-sst/haxpes\?[^#]*#[0-9a-f]{40}' pixi.lock | head -n 1 | cut -d '#' -f 2)" \
+    && test -n "${HAXPES_REV}" \
+    && git clone https://github.com/nsls-ii-sst/haxpes.git /home/xf07id1/collection_packages/haxpes \
+    && git -C /home/xf07id1/collection_packages/haxpes checkout --detach "${HAXPES_REV}"
+
+ARG PIXI_ENV
+RUN test -n "${PIXI_ENV}" \
+    && pixi install -e "${PIXI_ENV}" \
+    && rm -rf ~/.cache/rattler
+
+COPY scripts/ scripts/
+COPY startup/ startup/
+
+ENV PIXI_ENV=${PIXI_ENV}
+CMD exec pixi run "${PIXI_ENV}"

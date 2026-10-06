@@ -4,17 +4,8 @@ on:
   push:
     tags: [ 'v*' ]
   workflow_dispatch:
-    inputs:
-      source_tag:
-        description: 'Source image tag (sha-<full>, develop, main). Empty = auto (sha then develop)'
-        required: false
-        default: ''
-      version:
-        description: 'Release version to apply (e.g. 2026.5.0) — omit leading v'
-        required: true
 
-env:
-  REGISTRY: ghcr.io
+permissions: {}
 
 jobs:
   retag:
@@ -24,83 +15,58 @@ jobs:
       packages: write
 
     steps:
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v4
+    - name: Checkout repository
+      uses: actions/checkout@v6
 
     - name: Log in to Container Registry
       uses: docker/login-action@v4
       with:
-        registry: ${{ env.REGISTRY }}
+        registry: ghcr.io
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Set IMAGE_NAME for GHCR
+    - name: Resolve version and image tag
+      id: resolve
       shell: bash
-      run: echo "IMAGE_NAME=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')" >> "$GITHUB_ENV"
-
-    - name: Resolve version and source tag
-      id: version
       run: |
         set -euo pipefail
-        REPO="${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}"
-        PROBE="${REPO}/haxpes-bluesky"
-
-        if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
-          VERSION="${{ inputs.version }}"
-          REQUESTED="${{ inputs.source_tag }}"
-        else
-          TAG="${{ github.ref_name }}"
-          VERSION="${TAG#v}"
-          REQUESTED=""
-        fi
-
-        resolve_source() {
-          local requested="$1"
-          local sha_tag="sha-${{ github.sha }}"
-
-          if [[ -n "${requested}" ]]; then
-            echo "${requested}"
-            return
-          fi
-
-          if docker buildx imagetools inspect "${PROBE}:${sha_tag}" >/dev/null 2>&1; then
-            echo "${sha_tag}"
-            return
-          fi
-
-          echo "No image found for ${PROBE}:${sha_tag}" >&2
-          echo "Images are only published when image inputs change (path-filtered builds)." >&2
-
-          for candidate in develop main; do
-            if docker buildx imagetools inspect "${PROBE}:${candidate}" >/dev/null 2>&1; then
-              echo "Falling back to :${candidate}" >&2
-              echo "${candidate}"
-              return
-            fi
-          done
-
-          echo "None of ${sha_tag}, develop, or main exist for ${PROBE}" >&2
+        VERSION="$(sed -n 's/^version *= *"\(.*\)"/\1/p' pixi.toml | head -n 1)"
+        if [[ -z "${VERSION}" ]]; then
+          echo "Could not read version from pixi.toml" >&2
           exit 1
-        }
-
-        SOURCE="$(resolve_source "${REQUESTED}")"
-        echo "Using source tag: ${SOURCE}"
-        echo "source_tag=${SOURCE}" >> "$GITHUB_OUTPUT"
+        fi
+        if [[ "${GITHUB_REF_TYPE}" == "tag" && "${GITHUB_REF_NAME#v}" != "${VERSION}" ]]; then
+          echo "Git tag ${GITHUB_REF_NAME} does not match pixi.toml version ${VERSION}" >&2
+          exit 1
+        fi
+        TAG="$(ci/image-tag.sh)"
+        echo "Releasing env tag ${TAG} as ${VERSION}"
+        echo "repo=ghcr.io/${GITHUB_REPOSITORY,,}" >> "$GITHUB_OUTPUT"
+        echo "source_tag=${TAG}" >> "$GITHUB_OUTPUT"
         echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
         echo "major_minor=${VERSION%.*}" >> "$GITHUB_OUTPUT"
 
     - name: Re-tag images as release
+      shell: bash
       run: |
         set -euo pipefail
-        REPO="${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}"
-        SOURCE="${{ steps.version.outputs.source_tag }}"
-        VERSION="${{ steps.version.outputs.version }}"
-        MAJOR_MINOR="${{ steps.version.outputs.major_minor }}"
+        REPO="${{ steps.resolve.outputs.repo }}"
+        SOURCE="${{ steps.resolve.outputs.source_tag }}"
+        VERSION="${{ steps.resolve.outputs.version }}"
+        MAJOR_MINOR="${{ steps.resolve.outputs.major_minor }}"
+        IMAGES=(queueserver gui sim)
 
-        for image in haxpes-bluesky haxpes-queueserver haxpes-gui haxpes-sim; do
+        for image in "${IMAGES[@]}"; do
+          if ! docker buildx imagetools inspect "${REPO}/haxpes-${image}:${SOURCE}" >/dev/null 2>&1; then
+            echo "Missing ${REPO}/haxpes-${image}:${SOURCE}; has CI built this commit?" >&2
+            exit 1
+          fi
+        done
+
+        for image in "${IMAGES[@]}"; do
           docker buildx imagetools create \
-            --tag "${REPO}/${image}:${VERSION}" \
-            --tag "${REPO}/${image}:${MAJOR_MINOR}" \
-            --tag "${REPO}/${image}:latest" \
-            "${REPO}/${image}:${SOURCE}"
+            --tag "${REPO}/haxpes-${image}:${VERSION}" \
+            --tag "${REPO}/haxpes-${image}:${MAJOR_MINOR}" \
+            --tag "${REPO}/haxpes-${image}:latest" \
+            "${REPO}/haxpes-${image}:${SOURCE}"
         done
