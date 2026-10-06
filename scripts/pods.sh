@@ -8,7 +8,11 @@ export BEAMLINE_PODS_DIR
 export BEAMLINE_NAME="haxpes"
 
 if [[ -z "${NBS_IMAGE_REG:-}" ]]; then
-  export NBS_IMAGE_REG="ghcr.io/nsls2/sst-"${BEAMLINE_NAME}"-profile-collection/"${BEAMLINE_NAME}"-"
+  export NBS_IMAGE_REG="ghcr.io/nsls2/sst-${BEAMLINE_NAME}-profile-collection/${BEAMLINE_NAME}-"
+fi
+
+if [[ -z "${NBS_IMAGE_TAG:-}" && -n "${PIXI_PROJECT_VERSION:-}" ]]; then
+  export NBS_IMAGE_TAG="${PIXI_PROJECT_VERSION}"
 fi
 
 if [[ $# -eq 0 ]]; then
@@ -16,4 +20,3 @@ if [[ $# -eq 0 ]]; then
 fi
 
 exec nbs-pods "$@"
-

@@ -6,9 +6,9 @@ on:
   workflow_dispatch:
     inputs:
       source_tag:
-        description: 'Existing image tag to re-tag from (prefer sha-<full-commit>; latest for emergencies)'
+        description: 'Source image tag (sha-<full>, develop, main). Empty = auto (sha then develop)'
         required: false
-        default: 'latest'
+        default: ''
       version:
         description: 'Release version to apply (e.g. 2026.5.0) — omit leading v'
         required: true
@@ -24,6 +24,9 @@ jobs:
       packages: write
 
     steps:
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v4
+
     - name: Log in to Container Registry
       uses: docker/login-action@v4
       with:
@@ -35,22 +38,60 @@ jobs:
       shell: bash
       run: echo "IMAGE_NAME=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')" >> "$GITHUB_ENV"
 
-    - name: Extract version from tag
+    - name: Resolve version and source tag
       id: version
       run: |
+        set -euo pipefail
+        REPO="${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}"
+        PROBE="${REPO}/haxpes-bluesky"
+
         if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
           VERSION="${{ inputs.version }}"
-          echo "source_tag=${{ inputs.source_tag }}" >> "$GITHUB_OUTPUT"
+          REQUESTED="${{ inputs.source_tag }}"
         else
           TAG="${{ github.ref_name }}"
           VERSION="${TAG#v}"
-          echo "source_tag=sha-${{ github.sha }}" >> "$GITHUB_OUTPUT"
+          REQUESTED=""
         fi
+
+        resolve_source() {
+          local requested="$1"
+          local sha_tag="sha-${{ github.sha }}"
+
+          if [[ -n "${requested}" ]]; then
+            echo "${requested}"
+            return
+          fi
+
+          if docker buildx imagetools inspect "${PROBE}:${sha_tag}" >/dev/null 2>&1; then
+            echo "${sha_tag}"
+            return
+          fi
+
+          echo "No image found for ${PROBE}:${sha_tag}" >&2
+          echo "Images are only published when image inputs change (path-filtered builds)." >&2
+
+          for candidate in develop main; do
+            if docker buildx imagetools inspect "${PROBE}:${candidate}" >/dev/null 2>&1; then
+              echo "Falling back to :${candidate}" >&2
+              echo "${candidate}"
+              return
+            fi
+          done
+
+          echo "None of ${sha_tag}, develop, or main exist for ${PROBE}" >&2
+          exit 1
+        }
+
+        SOURCE="$(resolve_source "${REQUESTED}")"
+        echo "Using source tag: ${SOURCE}"
+        echo "source_tag=${SOURCE}" >> "$GITHUB_OUTPUT"
         echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
         echo "major_minor=${VERSION%.*}" >> "$GITHUB_OUTPUT"
 
     - name: Re-tag images as release
       run: |
+        set -euo pipefail
         REPO="${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}"
         SOURCE="${{ steps.version.outputs.source_tag }}"
         VERSION="${{ steps.version.outputs.version }}"
@@ -60,5 +101,6 @@ jobs:
           docker buildx imagetools create \
             --tag "${REPO}/${image}:${VERSION}" \
             --tag "${REPO}/${image}:${MAJOR_MINOR}" \
+            --tag "${REPO}/${image}:latest" \
             "${REPO}/${image}:${SOURCE}"
         done

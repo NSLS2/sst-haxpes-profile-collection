@@ -51,7 +51,6 @@ jobs:
       with:
         images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/haxpes-bluesky
         tags: |
-          type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
           type=ref,event=branch
           type=sha,format=long,prefix=sha-
 
@@ -72,7 +71,6 @@ jobs:
       with:
         images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/haxpes-queueserver
         tags: |
-          type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
           type=ref,event=branch
           type=sha,format=long,prefix=sha-
 
@@ -95,7 +93,6 @@ jobs:
       with:
         images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/haxpes-gui
         tags: |
-          type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
           type=ref,event=branch
           type=sha,format=long,prefix=sha-
 
@@ -118,7 +115,6 @@ jobs:
       with:
         images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/haxpes-sim
         tags: |
-          type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
           type=ref,event=branch
           type=sha,format=long,prefix=sha-
 
