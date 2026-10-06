@@ -5,6 +5,8 @@ on:
     tags: [ 'v*' ]
   workflow_dispatch:
 
+permissions: {}
+
 jobs:
   retag:
     runs-on: ubuntu-latest
