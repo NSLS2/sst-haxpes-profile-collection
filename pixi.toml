@@ -81,6 +81,8 @@ pods-demo = "scripts/pods.sh demo"
 pods-list = "scripts/pods.sh list"
 pods-restart = "scripts/pods.sh restart"
 pods-build-local = "scripts/build-images.sh"
+image-tag = "ci/image-tag.sh"
+smoke-test = "ci/smoke-test.sh"
 
 [feature.qs.tasks]
 # This section needs some development work to understand the best way to

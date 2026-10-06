@@ -11,7 +11,6 @@ COMPOSE_FILE="${ROOT_DIR}/docker-compose.build.yml"
 PODMAN_BUILD_ARGS="--ulimit nofile=65536:65536"
 
 IMAGES=(
-  bluesky
   queueserver
   gui
   sim
@@ -24,7 +23,7 @@ usage() {
   echo "Images are built one at a time. Parallel builds from the same base"
   echo "image often fail in podman when committing large pixi layers."
   echo ""
-  echo "If no images are specified, all are built (bluesky first)."
+  echo "If no images are specified, all are built."
   echo ""
   echo "Available images:"
   for image in "${IMAGES[@]}"; do
