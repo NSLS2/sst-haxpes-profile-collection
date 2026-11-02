@@ -190,7 +190,8 @@ _alias = "enpossoft.offset_gap"
 _load_order = 2
 
 [haxslt]
-_desc = "HAXPES quad slits in mm (gap -1 to 40, centre -20 to 20). Not an exit slit."
+_node = "haxpes_slits"
+_desc = "HAXPES quad slits at the chamber entrance, before I0, in mm (gap -1 to 40, centre -20 to 20). Not an exit slit."
 _target = "sst_base.slits.QuadSlitsLimitFactory"
 prefix = "XF:07ID2-OP{Slt:12-Ax:"
 _role = "slits"

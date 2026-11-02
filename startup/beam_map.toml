@@ -132,8 +132,12 @@ desc = "Gate valve GV9."
 upstream = "gv9"
 desc = "Gate valve GV9A."
 
-[nodes.i0]
+[nodes.haxpes_slits]
 upstream = "gv9a"
+desc = "HAXPES slits at the entrance to the chamber, before I0. Gaps in mm; not an exit slit."
+
+[nodes.i0]
+upstream = "haxpes_slits"
 desc = "I0 aluminium foil, just upstream of the HAXPES chamber."
 
 [nodes.haxpes]
