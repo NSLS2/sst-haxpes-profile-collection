@@ -1,5 +1,7 @@
 # Define your beamline-specific devices here
 [I0]
+_node = "i0"
+_desc = "Intensity monitor: aluminium foil just upstream of the HAXPES chamber (SR570 + ADC)."
 _target = "sst_base.devices.SRSADCFactory"
 _group = ["detectors"]
 _role = "intensity_detector"
@@ -9,6 +11,8 @@ name = "I0 ADC"
 
 ###
 [Idrain]
+_node = "haxpes"
+_desc = "Sample drain current (SR570 + ADC). It varies a lot and the sample is often not connected, so zero can be normal."
 _target = "sst_base.devices.SRSADCFactory"
 _group = "detectors"
 _role = "intensity_detector"
@@ -17,12 +21,16 @@ srs_prefix = "XF:07ID-ES{SR570:16}SR1:"
 name = "Sample Drain Current"
 
 [IK2600]
+_node = "haxpes"
+_desc = "Current readback of the Keithley 2601B on the sample bias line. Bias is not used in standard operation."
 _target = "nbs_bl.devices.ophScalar"
 _group = "detectors"
 prefix = "XF:07ID1{K2601B:1}RB-MeasI"
 name = "K2600_current"
 
 [Idm1]
+_node = "dm1"
+_desc = "DM1 photodiode current (the PV says DM3, but it is DM1's diode). Reads beam only with the DM1 paddle at the photodiode (32)."
 _target = "nbs_bl.devices.ophScalar"
 _group = "detectors"
 # _defer_loading = true
@@ -55,6 +63,8 @@ prefix = "XF:07ID-BI{DM7:I400-1}:IC1_MON"
 name="M4A Drain Current"
 
 [I1]
+_node = "i1"
+_desc = "Photodiode just downstream of the HAXPES chamber (SR570 + ADC), tender only."
 _target = "sst_base.devices.SRSADCFactory"
 _group = "detectors"
 _role = "intensity_detector"
@@ -64,6 +74,8 @@ srs_prefix = "XF:07ID-ES{SR570:15}SR1:"
 name = "I1 ADC"
 
 [PEY]
+_node = "haxpes"
+_desc = "Partial electron yield detector in the HAXPES chamber (RBD 9103, sign flipped). Reads only when the detector is on and in use."
 _target = "sst_base.devices.RBDFactory"
 _group = "detectors"
 prefix = "XF:07ID1-ES{RBD9103:01}"
@@ -71,6 +83,8 @@ rescale = -1
 name = "PEY"
 
 [manipulator]
+_node = "haxpes"
+_desc = "HAXPES sample manipulator. x and z in mm (about -18 to 18), y in mm (5 to 170 in use, 535 withdrawn), r in degrees (-190 to 280). To withdraw: x, z, r to 0, then y to 535."
 _target = "sst_base.manipulator.ManipulatorBuilder"
 _group = "manipulators"
 _role = "primary_sampleholder"
@@ -78,6 +92,8 @@ prefix = "XF:07ID1-BI{HAX-Ax:"
 name = "haxpes_manipulator"
 
 [enpostender]
+_node = "dcm"
+_desc = "Tender energy: U42 undulator and DCM moved together."
 _target = "sst_base.energy.EnergyTender"
 _group = ["source", "blconf"]
 _modes = ["Tender"]
@@ -86,42 +102,55 @@ prefix = "SR:C07-ID:G1A{SST2:1}"
 name = "SST2 Energy"
 
 [en]
+_desc = "Tender photon energy in eV (DCM and U42 together). Move this to change energy."
 _alias = "enpostender.flycontrol"
 _group = "motors"
 _role = "energy"
 
 [mono]
+_desc = "DCM energy alone in eV, without the undulator."
 _alias = "enpostender.mono"
 
 [dcm]
+_desc = "DCM energy alone in eV, without the undulator."
 _alias = "enpostender.mono"
 
 [h]
+_desc = "U42 harmonic used at the current energy."
 _alias = "enpostender.harmonic"
 
 [U42]
+_node = "u42"
+_desc = "U42 undulator gap."
 _alias = "enpostender.u42"
 _group = "motors"
 
 [gapoffset]
+_desc = "Offset added to the U42 gap from the energy table."
 _alias = "enpostender.offset_gap"
 
 [x2pitch]
+_desc = "DCM second-crystal pitch, for alignment."
 _alias = "enpostender.mono.x2pitch"
 
 [x2roll]
+_desc = "DCM second-crystal roll, for alignment."
 _alias = "enpostender.mono.x2roll"
 
 [x2perp]
+_desc = "DCM second-crystal perpendicular translation. Staff only: users never move it."
 _alias = "enpostender.mono.x2perp"
 
 [x2finepitch]
+_desc = "DCM second-crystal fine pitch, for alignment; driven by the vertical feedback when it is on."
 _alias = "enpostender.mono.x2finepitch"
 
 [x2fineroll]
+_desc = "DCM second-crystal fine roll, for alignment; driven by the horizontal feedback when it is on."
 _alias = "enpostender.mono.x2fineroll"
 
 [bragg]
+_desc = "DCM Bragg angle."
 _alias = "enpostender.mono.bragg"
 
 [enpossoft]
@@ -161,6 +190,7 @@ _alias = "enpossoft.offset_gap"
 _load_order = 2
 
 [haxslt]
+_desc = "HAXPES quad slits in mm (gap -1 to 40, centre -20 to 20). Not an exit slit."
 _target = "sst_base.slits.QuadSlitsLimitFactory"
 prefix = "XF:07ID2-OP{Slt:12-Ax:"
 _role = "slits"
@@ -171,6 +201,8 @@ limits = { "vcenter" = [-20, 20], "vsize" = [-1, 40], "hcenter" = [-20, 20], "hs
 concurrent = 1
 
 [slt_dm1]
+_node = "dm1_slits"
+_desc = "DM1 slits, just upstream of DM1."
 _target = "sst_base.slits.QuadSlits"
 prefix = "XF:07ID6-OP{Slt:03-Ax:"
 name = "DM1_slits"
@@ -180,6 +212,7 @@ _modes = ["Tender"]
 concurrent = 1
 
 [ring_current]
+_desc = "Storage-ring current in mA. Any stored current can mean beam for users."
 _target = "ophyd.EpicsSignalRO"
 _group = ["signals", "blconf"]
 _role = "beam_current"
@@ -187,6 +220,8 @@ prefix = "SR:OPS-BI{DCCT:1}I:Real-I"
 name = "ring_current"
 
 [dm1]
+_node = "dm1"
+_desc = "DM1 diagnostic paddle: 60 is out, 32 the photodiode, 0 the fluorescent screen. Blocks the beam unless out."
 _target = "sst_base.motors.PrettyMotor"
 _group = "motors"
 _modes = ["Tender"]
@@ -208,6 +243,8 @@ prefix = "XF:07ID5-BI{Diag:04-Ax:Y}Mtr"
 name = "DM4"
 
 [nBPM]
+_node = "nanobpm"
+_desc = "NanoBPM filter: 16 is out, 0 is in and strongly attenuates; some positions between may block."
 _target = "sst_base.motors.PrettyMotor"
 _group = ["motors", "blconf"]
 _modes = ["Tender"]
@@ -215,6 +252,8 @@ prefix = "XF:07ID6-BI{BPM:1-Ax:Y}Mtr"
 name = "nBPM Filter"
 
 [L1]
+_node = "l1"
+_desc = "L1 tender mirror (hexapod). Set during alignment only."
 _target = "sst_base.mirrors.FMBHexapodMirror"
 _group = "mirrors"
 _modes = ["Tender"]
@@ -223,6 +262,8 @@ name = "L1"
 kind = "hinted"
 
 [L1stripe]
+_node = "l1"
+_desc = "L1 coating stripe in use."
 _target = "ophyd.EpicsSignal"
 _group = "blconf"
 _modes = ["Tender"]
@@ -231,6 +272,8 @@ name = "L1_stripe"
 string = true
 
 [L2AB]
+_node = "l2"
+_desc = "L2 mirror hexapod: L2A toroidal focusing mirror or L2B plane mirror (see L2_type). Set during alignment only."
 _target = "sst_base.mirrors.FMBHexapodMirror"
 _group = "mirrors"
 _modes = ["Tender"]
@@ -239,6 +282,8 @@ name = "L2AB"
 kind = "hinted"
 
 [L2stripe]
+_node = "l2"
+_desc = "L2 coating stripe in use."
 _target = "ophyd.EpicsSignal"
 _group = "blconf"
 _modes = ["Tender"]
@@ -247,6 +292,8 @@ name = "L2_stripe"
 string = true
 
 [L2type]
+_node = "l2"
+_desc = "Which L2 mirror is in place: L2A (toroidal, focusing) or L2B (plane)."
 _target = "ophyd.EpicsSignal"
 _group = "blconf"
 _modes = ["Tender"]
@@ -271,6 +318,8 @@ name = "M4A"
 kind = "hinted"
 
 [L2wedge]
+_node = "l2"
+_desc = "Extra vertical motion of L2, mainly to switch between L2A and L2B."
 _target = "ophyd.EpicsMotor"
 _group = "motors"
 _modes = ["Tender"]
@@ -295,6 +344,7 @@ kind = "config"
 string = true
 
 [beamselection]
+_desc = "Which beam HAXPES is set up for: Tender, Soft or None. Written by the HAXPES beam-mode functions."
 _target = "ophyd.EpicsSignal"
 _group = ["signals", "blconf"]
 _role = "mode"
@@ -303,6 +353,7 @@ name = "beam_selection"
 string = true
 
 [beamon]
+_desc = "Beam status from the DCM feedback. Combines ring mode and upstream photon shutters, not gate valves. Scans pause while it is off."
 _target = "ophyd.EpicsSignalRO"
 _group = "signals"
 prefix = "XF:07ID6-OP{Mono:DCM1-Fb:PF2}Beam-Sts"
@@ -310,6 +361,7 @@ kind = "hinted"
 name = "beam on"
 
 [ring_status]
+_desc = "NSLS-II operating mode. Operations, and sometimes Studies, mean beam for users."
 _target = "ophyd.EpicsSignalRO"
 _group = "signals"
 _role = "beam_status"
@@ -318,6 +370,8 @@ name = "NSLS-II Status"
 string = true
 
 [psh1]
+_node = "s1"
+_desc = "SST-2 branch photon shutter S1."
 _target = "sst_base.shutters.EPS_Shutter"
 _group = "shutters"
 shutter_type = "PH"
@@ -328,6 +382,8 @@ prefix = "XF:07IDA-PPS{PSh:1}"
 name = "SST-2 Branch Shutter"
 
 [psh2]
+_node = "s2"
+_desc = "Photon shutter S2."
 _target = "sst_base.shutters.EPS_Shutter"
 _group = "shutters"
 _modes = ["Tender"]
@@ -358,6 +414,8 @@ prefix = "XF:07IDA-PPS{PSh:5}"
 name = "Shutter 5"
 
 [FEsh1]
+_node = "fe_s1"
+_desc = "Front-end shutter FE:S1, shared by SST-1 and SST-2."
 _target = "sst_base.shutters.EPS_Shutter"
 _group = "shutters"
 shutter_type = "FE"
@@ -368,6 +426,8 @@ name = "Front-End Shutter"
 
 
 [gv10]
+_node = "gv10"
+_desc = "Gate valve GV10, downstream of the HAXPES chamber. Closes automatically when the sample bar is withdrawn."
 _target = "sst_base.shutters.EPS_Shutter"
 _group = "gatevalves"
 shutter_type = "GV"
@@ -377,6 +437,8 @@ prefix = "XF:07IDB-VA:1{HAXPES-GV:1}"
 name = "downstream GV"
 
 [fs4]
+_node = "fs4a"
+_desc = "FS:4A fluorescent screen. Blocks the beam when in; plans close it between measurements as a fast shutter."
 _target = "sst_base.shutters.EPS_Shutter"
 _group = "shutters"
 _modes = ["Tender"]
@@ -387,43 +449,56 @@ prefix = "XF:07IDB-VA:1{FS:4A}"
 name = "FS 4"
 
 [floodgun]
+_node = "haxpes"
+_desc = "Flood gun for samples that charge. Energy under 25 eV, grid about 75 V, emission current 50 to 350 uA."
 _target = "haxpes.devices.floodgun.FloodGun"
 prefix = "XF:07ID-EGPS:1:"
 _group = "blconf"
 name = "FloodGun"
 
 [sampx]
+_desc = "Sample x in mm, about -18 to 18."
 _alias = "manipulator.x"
 _group = 'motors'
 
 [sampy]
+_desc = "Sample y in mm: 5 to 170 in use, 535 withdrawn. Set x, z and r to 0 before withdrawing."
 _alias = "manipulator.y"
 _group = 'motors'
 
 [sampz]
+_desc = "Sample z in mm, about -18 to 18."
 _alias = "manipulator.z"
 _group = 'motors'
 
 [sampr]
+_desc = "Sample rotation in degrees, -190 to 280."
 _alias = "manipulator.r"
 _group = 'motors'
 
 [eslit]
+_desc = "HAXPES slit vertical gap in mm. Not an exit slit."
 _alias = "haxslt.vsize"
 
 [fbhor]
+_node = "dcm"
+_desc = "DCM horizontal feedback: locks on slit-blade currents, drives x2fineroll. On for XPS with the focusing mirror; may be off otherwise."
 _target = "haxpes.devices.pid_feedback.pid"
 prefix = "XF:07ID6-OP{Mono:DCM1-Fb:PF2}"
 _modes = ["Tender"]
 name = "horizontal feedback"
 
 [fbvert]
+_node = "dcm"
+_desc = "DCM vertical feedback: locks on slit-blade currents, drives x2finepitch. On for XPS with the focusing mirror; may be off otherwise."
 _target = "haxpes.devices.pid_feedback.pid"
 prefix = "XF:07ID6-OP{Mono:DCM1-Fb:RF2}"
 _modes = ["Tender"]
 name = "vertical feedback"
 
 [peak_analyzer]
+_node = "haxpes"
+_desc = "Electron analyzer controlled through PeakAnalyzer. Same analyzer as ses; xps_analyzer says which route is in use."
 _target = "haxpes.devices.peak_analyzer.PeakAnalyzer"
 _group = "detectors"
 name = "PeakAnalyzer"
@@ -431,6 +506,8 @@ peak_url = "http://xf07id-ws29-713.nsls2.bnl.gov:8087"
 _defer_loading = true
 
 [ses]
+_node = "haxpes"
+_desc = "Electron analyzer controlled through SES. Same analyzer as peak_analyzer; xps_analyzer says which route is in use."
 _target = "haxpes.devices.ses.SES"
 _group = "detectors"
 prefix = "XF:07ID-ES-SES"
@@ -438,25 +515,34 @@ name = "SES"
 _defer_loading = true
 
 [xps_analyzer]
+_node = "haxpes"
+_desc = "Which analyzer software Bluesky talks to: PeakAnalyzer or SES."
 _target = "ophyd.EpicsSignal"
 prefix = "XF:07ID2-HAXMonitor:xps_analyzer"
 
 [haxSMU]
+_node = "haxpes"
+_desc = "Keithley 2601B source-measure unit for sample bias. Not used in standard operation."
 _target = "haxpes.devices.k2600b.SMU"
 prefix = "XF:07ID1{K2601B:1}"
 _group = "blconf"
 name = "K2601B"
 
 [sample_bias]
+_desc = "Sample bias voltage in V (Keithley 2601B). Not used in standard operation."
 _alias = "haxSMU.VSource"
 _group = "motors"
 
 [dcm_crystal]
+_node = "dcm"
+_desc = "DCM crystal pair in use: Si(111), Si(220) or Si(333)."
 _target = "ophyd.EpicsSignalRO"
 prefix = "XF:07ID6-OP{Mono:DCM1-Ax::XTAL_SEL"
 _modes = ["Tender"]
 
 [gonilateral]
+_node = "dcm"
+_desc = "DCM goniometer lateral: switches between the crystal pairs. Staff operation."
 _target = "sst_base.motors.PrettyMotor"
 _group = "motors"
 prefix = "XF:07ID6-OP{Mono:DCM1-Ax:X}Mtr"
@@ -464,6 +550,8 @@ name = "DCM goniometer lateral"
 _modes = ["Tender"]
 
 [bpm16_cam] 
+_node = "haxpes"
+_desc = "Camera looking at the sample in the HAXPES chamber."
 _target = "sst_base.cameras.StandardProsilicawstatsFactory"
 prefix = "XF:07ID-BI{BPM:16}"
 name = "BPM16Cam"
@@ -472,6 +560,8 @@ date_template = "%Y/%m"
 read_attrs = ['tiff','stats5']
 
 [BPM4cent]
+_node = "fs4a"
+_desc = "Beam centroid from the FS4 camera, for coarse beam alignment."
 _target = "haxpes.devices.hax_cam.simpleBPM"
 prefix = "XF:07ID-BI{BPM:4}"
 name  = "BPM4 Centroid"
@@ -485,6 +575,15 @@ name = "Exposure"
 kind = "hinted"
 
 [dcm_energy_rbv]
+_desc = "DCM energy readback in eV."
 _alias = "enpostender.monoen.readback"
 _group = "detectors"
 _modes = ["Tender"]
+
+# Beam map (startup/beam_map.toml), served by nbs-map-ioc. Needs an nbs-bl with
+# nbs_bl.beam_map; enable once that is released and the IOC is running.
+# [beam_map]
+# _target = "nbs_bl.beam_map.BeamMapFactory"
+# _role = "beam_map"
+# map_file = "beam_map.toml"
+# endstation = "haxpes"

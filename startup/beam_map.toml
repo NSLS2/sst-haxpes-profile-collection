@@ -1,0 +1,150 @@
+# Beam map of HAXPES on SST-2 (7-ID-2), tender branch only, for the beam map IOC.
+#
+# The map IOC (nbs-map-ioc) reads this file, watches the PVs named in the
+# conditions, and serves four read-only status PVs per node:
+#   {prefix}{node}:Blocking      this node stops the beam
+#   {prefix}{node}:PathClear     nothing upstream of this node blocks
+#   {prefix}{node}:BeamExpected  path clear, not blocking, and beam on
+#   {prefix}{node}:Reason        why not: the closest blocker, or "" with beam
+# nbs-bl reads the same file for the node tree only (nbs_bl.beam_map), and
+# devices.toml places devices on nodes with `_node`.
+#
+# Node keys: upstream, desc, blocked_when, selected_when. A condition is
+# { pv = "...", <op> = number } with op one of eq ne lt le gt ge, or
+# between = [lo, hi] (inclusive). A list of blocked_when conditions blocks if
+# any holds.
+#
+# Path from the beamline staff (Nov 2026). Gate valves are placeholder nodes
+# for now: no conditions until their PVs are added. The soft branch (SST-1
+# through M3AB, M4A and transfer line A) is not mapped yet.
+
+[map]
+name = "haxpes"
+prefix = "XF:07ID2-HAXMap:"
+desc = "HAXPES tender beam: U42 undulator, SST-2 optics and the DCM to the HAXPES chamber"
+
+[beam]
+# Any stored current can mean beam for users.
+on_when = { pv = "SR:OPS-BI{DCCT:1}I:Real-I", gt = 1 }
+
+[nodes.u42]
+desc = "U42 undulator, the SST-2 source. A fully open gap gives practically no useful beam."
+
+[nodes.fe_s1]
+upstream = "u42"
+desc = "Front-end shutter FE:S1, shared by SST-1 and SST-2."
+blocked_when = { pv = "XF:07ID-PPS{Sh:FE}Pos-Sts", ne = 0 }
+
+[nodes.fe_gv2]
+upstream = "fe_s1"
+desc = "Front-end gate valve FE:GV2, shared by SST-1 and SST-2."
+
+[nodes.gv1]
+upstream = "fe_gv2"
+desc = "Gate valve GV1, shared by SST-1 and SST-2."
+
+[nodes.l1]
+upstream = "gv1"
+desc = "L1 tender mirror. The tender beam passes M1 (SST-1's mirror) at every M1 position."
+
+[nodes.gv2]
+upstream = "l1"
+desc = "Gate valve GV2, shared by SST-1 and SST-2."
+
+[nodes.wbs]
+upstream = "gv2"
+desc = "White-beam stop. Fixed, with no PV."
+
+[nodes.wb_slits]
+upstream = "wbs"
+desc = "White-beam slits."
+
+[nodes.gv3]
+upstream = "wb_slits"
+desc = "Gate valve GV3."
+
+[nodes.l2]
+upstream = "gv3"
+desc = "L2 mirror: L2A toroidal focusing mirror or L2B plane mirror."
+
+[nodes.fs2]
+upstream = "l2"
+desc = "Fluorescent screen FS2."
+
+[nodes.s1]
+upstream = "fs2"
+desc = "SST-2 branch photon shutter S1 (PSh:1)."
+blocked_when = { pv = "XF:07IDA-PPS{PSh:1}Pos-Sts", ne = 0 }
+
+[nodes.gv4]
+upstream = "s1"
+desc = "Gate valve GV4."
+
+[nodes.gv4a]
+upstream = "gv4"
+desc = "Gate valve GV4A."
+
+[nodes.dcm]
+upstream = "gv4a"
+desc = "Double-crystal monochromator: Si(111), Si(220) or Si(333)."
+
+[nodes.gv6]
+upstream = "dcm"
+desc = "Gate valve GV6."
+
+[nodes.dm1_slits]
+upstream = "gv6"
+desc = "DM1 slits, just upstream of DM1."
+
+[nodes.dm1]
+upstream = "dm1_slits"
+desc = "DM1/FS3 diagnostic: paddle with a fluorescent screen (0) and a photodiode (32); 60 is out."
+blocked_when = { pv = "XF:07ID6-BI{Diag:01-Ax:Y}Mtr.RBV", lt = 55 }
+
+[nodes.gv7]
+upstream = "dm1"
+desc = "Gate valve GV7."
+
+[nodes.gv8]
+upstream = "gv7"
+desc = "Gate valve GV8."
+
+[nodes.s2]
+upstream = "gv8"
+desc = "Photon shutter S2 (PSh:2)."
+blocked_when = { pv = "XF:07IDA-PPS{PSh:2}Pos-Sts", ne = 0 }
+
+[nodes.nanobpm]
+upstream = "s2"
+desc = "NanoBPM filter: 16 is out, 0 is in and strongly attenuates; some positions between may block."
+blocked_when = { pv = "XF:07ID6-BI{BPM:1-Ax:Y}Mtr.RBV", lt = 15 }
+
+[nodes.fs4a]
+upstream = "nanobpm"
+desc = "FS:4A fluorescent screen, viewed by the BPM4 camera. Plans close it between measurements as a fast shutter, so closed between scans is normal."
+blocked_when = { pv = "XF:07IDB-VA:1{FS:4A}Pos-Sts", ne = 1 }
+
+[nodes.gv9]
+upstream = "fs4a"
+desc = "Gate valve GV9."
+
+[nodes.gv9a]
+upstream = "gv9"
+desc = "Gate valve GV9A."
+
+[nodes.i0]
+upstream = "gv9a"
+desc = "I0 aluminium foil, just upstream of the HAXPES chamber."
+
+[nodes.haxpes]
+upstream = "i0"
+desc = "HAXPES chamber: sample, electron analyzer, PEY detector and flood gun."
+
+[nodes.gv10]
+upstream = "haxpes"
+desc = "Gate valve GV10, downstream of the chamber. It closes automatically when the sample bar is withdrawn."
+blocked_when = { pv = "XF:07IDB-VA:1{HAXPES-GV:1}Pos-Sts", ne = 1 }
+
+[nodes.i1]
+upstream = "gv10"
+desc = "I1 photodiode, downstream of the HAXPES chamber."
