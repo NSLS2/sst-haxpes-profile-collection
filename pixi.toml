@@ -62,7 +62,8 @@ nbs-viewer = ">=0.3.4, <0.4"
 pyzmq = ">=27.1.0,<28"
 
 [feature.sim.pypi-dependencies]
-nbs-sim = ">=0.2.3"
+#nbs-sim = ">=0.2.3"
+nbs-sim = { git = "https://github.com/xraygui/nbs-sim", branch = "per-sample-spectra"}
 
 [feature.qs.dependencies]
 bluesky-queueserver = "*"

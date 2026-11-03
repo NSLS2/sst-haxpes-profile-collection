@@ -631,7 +631,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/zipp-3.23.1-pyhcf101f3_0.conda
       - pypi: git+https://github.com/nsls-ii-sst/haxpes?rev=master#dedb5178c2c4b412e0aa5efedb53ea99b6a0f4e9
       - pypi: git+https://github.com/nsls-ii-sst/sst-base?branch=develop#885d0638712814134d0413203c28a83272fa25ac
-      - pypi: git+https://github.com/xraygui/nbs-bl?branch=develop#f50630f5d3d324c317b567b9c331626c4f204825
+      - pypi: git+https://github.com/xraygui/nbs-bl?branch=develop#69a1cd60d67826bcfa2398eae5dac88fbd24f842
       - pypi: git+https://github.com/xraygui/nbs-gui?branch=develop#6225e26660bb9f95c3bc7e003ae8bc33630e1620
       - pypi: https://files.pythonhosted.org/packages/67/d8/8af47ecca80c365d5ffcdce6fae78ec71921052189c1486ba9dbac7a36f4/pvxslibs-1.3.2-cp312-cp312-manylinux2014_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/69/76/37c0ccd5ab968a6a438f9c623aeecc84c202ab2fabc6a8fd927580c15b5a/QtPy-2.4.3-py3-none-any.whl
@@ -1255,7 +1255,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/zipp-3.23.1-pyhcf101f3_0.conda
       - pypi: git+https://github.com/nsls-ii-sst/haxpes?rev=master#dedb5178c2c4b412e0aa5efedb53ea99b6a0f4e9
       - pypi: git+https://github.com/nsls-ii-sst/sst-base?branch=develop#885d0638712814134d0413203c28a83272fa25ac
-      - pypi: git+https://github.com/xraygui/nbs-bl?branch=develop#f50630f5d3d324c317b567b9c331626c4f204825
+      - pypi: git+https://github.com/xraygui/nbs-bl?branch=develop#69a1cd60d67826bcfa2398eae5dac88fbd24f842
       - pypi: https://files.pythonhosted.org/packages/34/50/51f676fd604b6795b083ef6076c62fd7ae24be7d8dfd85b3089d9b830b29/nbs_pods-0.2.8-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/67/d8/8af47ecca80c365d5ffcdce6fae78ec71921052189c1486ba9dbac7a36f4/pvxslibs-1.3.2-cp312-cp312-manylinux2014_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/a7/aa/a1ef22fd3450c91f037ebd2a601a9955d693479d2fedf191cac309fe3b28/nbs_core-0.2.0-py3-none-any.whl
@@ -1880,7 +1880,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/zipp-3.23.1-pyhcf101f3_0.conda
       - pypi: git+https://github.com/nsls-ii-sst/haxpes?rev=master#dedb5178c2c4b412e0aa5efedb53ea99b6a0f4e9
       - pypi: git+https://github.com/nsls-ii-sst/sst-base?branch=develop#885d0638712814134d0413203c28a83272fa25ac
-      - pypi: git+https://github.com/xraygui/nbs-bl?branch=develop#f50630f5d3d324c317b567b9c331626c4f204825
+      - pypi: git+https://github.com/xraygui/nbs-bl?branch=develop#69a1cd60d67826bcfa2398eae5dac88fbd24f842
       - pypi: https://files.pythonhosted.org/packages/67/d8/8af47ecca80c365d5ffcdce6fae78ec71921052189c1486ba9dbac7a36f4/pvxslibs-1.3.2-cp312-cp312-manylinux2014_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/a7/aa/a1ef22fd3450c91f037ebd2a601a9955d693479d2fedf191cac309fe3b28/nbs_core-0.2.0-py3-none-any.whl
   sim:
@@ -2497,8 +2497,8 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/zipp-3.23.1-pyhcf101f3_0.conda
       - pypi: git+https://github.com/nsls-ii-sst/haxpes?rev=master#dedb5178c2c4b412e0aa5efedb53ea99b6a0f4e9
       - pypi: git+https://github.com/nsls-ii-sst/sst-base?branch=develop#885d0638712814134d0413203c28a83272fa25ac
-      - pypi: git+https://github.com/xraygui/nbs-bl?branch=develop#f50630f5d3d324c317b567b9c331626c4f204825
-      - pypi: https://files.pythonhosted.org/packages/3a/e6/4ad1dd469a8e5b4f5e1da7c22bc13d6de263a5a0031460363e89020d069a/nbs_sim-0.2.3-py3-none-any.whl
+      - pypi: git+https://github.com/xraygui/nbs-bl?branch=develop#69a1cd60d67826bcfa2398eae5dac88fbd24f842
+      - pypi: git+https://github.com/xraygui/nbs-sim?branch=per-sample-spectra#00ef46d994da64d5d11d538a549ea59dd62f1848
       - pypi: https://files.pythonhosted.org/packages/67/d8/8af47ecca80c365d5ffcdce6fae78ec71921052189c1486ba9dbac7a36f4/pvxslibs-1.3.2-cp312-cp312-manylinux2014_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/a7/aa/a1ef22fd3450c91f037ebd2a601a9955d693479d2fedf191cac309fe3b28/nbs_core-0.2.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/de/8b/65dccc36873290e89c0d1d3c1121f161ff28c37201e0d008cfa664d606b5/bluesky_live-0.0.8-py3-none-any.whl
@@ -3117,7 +3117,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/zipp-3.23.1-pyhcf101f3_0.conda
       - pypi: git+https://github.com/nsls-ii-sst/haxpes?rev=master#dedb5178c2c4b412e0aa5efedb53ea99b6a0f4e9
       - pypi: git+https://github.com/nsls-ii-sst/sst-base?branch=develop#885d0638712814134d0413203c28a83272fa25ac
-      - pypi: git+https://github.com/xraygui/nbs-bl?branch=develop#f50630f5d3d324c317b567b9c331626c4f204825
+      - pypi: git+https://github.com/xraygui/nbs-bl?branch=develop#69a1cd60d67826bcfa2398eae5dac88fbd24f842
       - pypi: https://files.pythonhosted.org/packages/67/d8/8af47ecca80c365d5ffcdce6fae78ec71921052189c1486ba9dbac7a36f4/pvxslibs-1.3.2-cp312-cp312-manylinux2014_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/a7/aa/a1ef22fd3450c91f037ebd2a601a9955d693479d2fedf191cac309fe3b28/nbs_core-0.2.0-py3-none-any.whl
   viewer:
@@ -12824,9 +12824,9 @@ packages:
   - numpy
   - ophyd
   requires_python: '>=3.9'
-- pypi: git+https://github.com/xraygui/nbs-bl?branch=develop#f50630f5d3d324c317b567b9c331626c4f204825
+- pypi: git+https://github.com/xraygui/nbs-bl?branch=develop#69a1cd60d67826bcfa2398eae5dac88fbd24f842
   name: nbs-bl
-  version: 0.3.3.dev3+gf50630f5d
+  version: 0.3.3.dev21+g69a1cd60d
   requires_dist:
   - bluesky
   - bluesky-live
@@ -12859,6 +12859,21 @@ packages:
   - tomli-w
   - tomli ; python_full_version < '3.11'
   requires_python: '>=3.8'
+- pypi: git+https://github.com/xraygui/nbs-sim?branch=per-sample-spectra#00ef46d994da64d5d11d538a549ea59dd62f1848
+  name: nbs-sim
+  version: 0.2.1.dev25+g00ef46d99
+  requires_dist:
+  - caproto
+  - nbs-bl
+  - nbs-core
+  - numpy
+  - scipy
+  - black ; extra == 'dev'
+  - flake8 ; extra == 'dev'
+  - mypy ; extra == 'dev'
+  - pytest ; extra == 'dev'
+  - pytest-asyncio ; extra == 'dev'
+  requires_python: '>=3.8'
 - pypi: https://files.pythonhosted.org/packages/34/50/51f676fd604b6795b083ef6076c62fd7ae24be7d8dfd85b3089d9b830b29/nbs_pods-0.2.8-py3-none-any.whl
   name: nbs-pods
   version: 0.2.8
@@ -12881,22 +12896,6 @@ packages:
   - bluesky-tiled-plugins>=2.0.0b59
   - asteval
   - tomli>=2.0.0 ; python_full_version < '3.11'
-- pypi: https://files.pythonhosted.org/packages/3a/e6/4ad1dd469a8e5b4f5e1da7c22bc13d6de263a5a0031460363e89020d069a/nbs_sim-0.2.3-py3-none-any.whl
-  name: nbs-sim
-  version: 0.2.3
-  sha256: 5952efcccc8dfae85268d26385792e4bc955b052ca8b1f422dda31a6298070c0
-  requires_dist:
-  - caproto
-  - nbs-bl
-  - nbs-core
-  - numpy
-  - scipy
-  - black ; extra == 'dev'
-  - flake8 ; extra == 'dev'
-  - mypy ; extra == 'dev'
-  - pytest ; extra == 'dev'
-  - pytest-asyncio ; extra == 'dev'
-  requires_python: '>=3.8'
 - pypi: https://files.pythonhosted.org/packages/67/d8/8af47ecca80c365d5ffcdce6fae78ec71921052189c1486ba9dbac7a36f4/pvxslibs-1.3.2-cp312-cp312-manylinux2014_x86_64.whl
   name: pvxslibs
   version: 1.3.2
