@@ -1,0 +1,7 @@
+services:
+  queueserver:
+    # RE Manager control (zmq) and console output, so nbs-cli and the
+    # sst-assistant runner can reach the queueserver from the host
+    ports:
+      - 60615:60615
+      - 60625:60625

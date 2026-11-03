@@ -1,0 +1,6 @@
+services:
+  redisInfo:
+    # Beamline info redis (status dicts, BEAM_MAP, agent log), for nbs-cli and
+    # the sst-assistant runner on the host
+    ports:
+      - 60737:60737
