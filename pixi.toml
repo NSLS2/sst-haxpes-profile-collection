@@ -120,6 +120,7 @@ pvs = "ipython --profile-dir=. -c 'get_pv_types(); exit()'"
 [feature.sim.tasks]
 sim = "scripts/sim-start.sh"
 sim-dev = "scripts/sim-dev.sh"
+map-ioc = "scripts/map-ioc-start.sh"
 
 [environments.viewer]
 features = ["profile", "gui-base", "viewer"]

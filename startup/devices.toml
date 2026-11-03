@@ -581,8 +581,8 @@ _alias = "enpostender.monoen.readback"
 _group = "detectors"
 _modes = ["Tender"]
 
-# Beam map (startup/beam_map.toml), served by nbs-map-ioc. Needs an nbs-bl with
-# nbs_bl.beam_map; enable once that is released and the IOC is running.
+# Beam map (startup/beam_map.toml), served by nbs-map-ioc. Enabled in simulation
+# by devices_sim.toml; enable here once the IOC runs at the beamline.
 # [beam_map]
 # _target = "nbs_bl.beam_map.BeamMapFactory"
 # _role = "beam_map"
