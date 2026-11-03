@@ -1,10 +1,10 @@
-ARG BASE_IMAGE=ghcr.io/xraygui/nbs-pods/bluesky:0.2.8
+ARG BASE_IMAGE=ghcr.io/xraygui/nbs-pods/bluesky:0.2.9
 FROM ${BASE_IMAGE}
 
 RUN mkdir -p /usr/local/share/ipython/profile_collection \
-        /home/xf07id1/.ipython \
-        /home/xf07id1/collection_packages \
-        /home/xf07id1/Documents/UserFiles/live/LiveData \
+    /home/xf07id1/.ipython \
+    /home/xf07id1/collection_packages \
+    /home/xf07id1/Documents/UserFiles/live/LiveData \
     && ln -sf /usr/local/share/ipython/profile_collection /home/xf07id1/.ipython/profile_collection
 
 WORKDIR /usr/local/share/ipython/profile_collection
