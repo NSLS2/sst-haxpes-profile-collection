@@ -27,9 +27,41 @@ desc = "HAXPES tender beam: U42 undulator, SST-2 optics and the DCM to the HAXPE
 # Any stored current can mean beam for users.
 on_when = { pv = "SR:OPS-BI{DCCT:1}I:Real-I", gt = 1 }
 
-[status]
-# PVs nbs-cli reads directly for the assistant, whatever the map says.
-ring_status = "SR-OPS{}Mode-Sts"
+[status.ring_status]
+pv = "SR-OPS{}Mode-Sts"
+desc = "Beam operation status"
+
+[status.shutter_status]
+pv = "XF:07ID{Hu:A}Sts:GblEnbl-Sts"
+desc = "Are any beamline allowed to open their Front-End Shutter"
+
+[status.hutch_status]
+pv = "XF:07ID{Hu:A}Sts:Enbl-Sts"
+desc = "Are we allowed to open the SST Front-End shutter"
+
+[status.dcm_energy]
+pv = "XF:07ID6-OP{Mono:DCM1-Ax::ENERGY_MON"
+desc = "DCM Energy Setpoint"
+
+[status.dcm_crystal_select]
+pv = "XF:07ID6-OP{Mono:DCM1-Ax::XTAL_SEL"
+desc = "Which DCM Crystal is Selected"
+
+[status.dcm_crystal_status]
+pv = "XF:07ID6-OP{Mono:DCM1-Ax::XTAL_STS"
+desc = "Is the DCM Crystal in position"
+
+[status.l1_mirror_stripe]
+pv = "XF:07ID2-HAXMonitor:L1_stripe"
+desc = "Selected L1 Mirror Stripe"
+
+[status.l2_mirror_type]
+pv = "XF:07ID2-HAXMonitor:L2_type"
+desc = "L2 Mirror selected (focusing or plane)"
+
+[status.l2_mirror_stripe]
+pv = "XF:07ID2-HAXMonitor:L2_stripe"
+desc = "Selected L2 Mirror Stripe"
 
 [nodes.u42]
 desc = "U42 undulator, the SST-2 source. A fully open gap gives practically no useful beam."

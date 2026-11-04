@@ -583,8 +583,8 @@ _modes = ["Tender"]
 
 # Beam map (startup/beam_map.toml), served by nbs-map-ioc. Enabled in simulation
 # by devices_sim.toml; enable here once the IOC runs at the beamline.
-# [beam_map]
-# _target = "nbs_bl.beam_map.BeamMapFactory"
-# _role = "beam_map"
-# map_file = "beam_map.toml"
-# endstation = "haxpes"
+[beam_map]
+_target = "nbs_bl.beam_map.BeamMapFactory"
+_role = "beam_map"
+map_file = "beam_map.toml"
+endstation = "haxpes"
