@@ -23,3 +23,9 @@ subscribe_method = "post_document"
 
 [settings.kafka]
 name = "nbs"
+
+[settings.zmq]
+hostname = "zmq_proxy2"
+port = 5577
+out_port = 5578
+start_proxy = false

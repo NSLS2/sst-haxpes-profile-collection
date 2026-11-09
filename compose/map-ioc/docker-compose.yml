@@ -1,0 +1,17 @@
+networks:
+  bluesky-services_bluesky:
+    external: true
+
+# Beam map IOC: serves node status PVs from startup/beam_map.toml. Uses the
+# sim image, which has caproto and nbs-sim, but runs apart from the sim.
+services:
+  map-ioc:
+    image: ${NBS_IMAGE_REG:-ghcr.io/xraygui/nbs-pods/}sim:${NBS_IMAGE_TAG:-latest}
+    working_dir: /usr/local/share/ipython/profile_collection
+    environment:
+      - NBS_SIM_MODE=1
+    command: pixi run map-ioc
+    dns:
+      - 10.89.0.1
+    networks:
+      - bluesky-services_bluesky

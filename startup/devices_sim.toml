@@ -1,0 +1,9 @@
+# Merged over devices.toml in simulation (NBS_SIM_MODE=1).
+
+[beam_map]
+# Node tree and live beam status from the beam map IOC (compose/map-ioc,
+# startup/beam_map.toml).
+_target = "nbs_bl.beam_map.BeamMapFactory"
+_role = "beam_map"
+map_file = "beam_map.toml"
+endstation = "haxpes"

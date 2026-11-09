@@ -62,7 +62,8 @@ nbs-viewer = ">=0.3.4, <0.4"
 pyzmq = ">=27.1.0,<28"
 
 [feature.sim.pypi-dependencies]
-nbs-sim = ">=0.2.3"
+#nbs-sim = ">=0.2.3"
+nbs-sim = { git = "https://github.com/xraygui/nbs-sim", branch = "per-sample-spectra"}
 
 [feature.qs.dependencies]
 bluesky-queueserver = "*"
@@ -120,6 +121,7 @@ pvs = "ipython --profile-dir=. -c 'get_pv_types(); exit()'"
 [feature.sim.tasks]
 sim = "scripts/sim-start.sh"
 sim-dev = "scripts/sim-dev.sh"
+map-ioc = "scripts/map-ioc-start.sh"
 
 [environments.viewer]
 features = ["profile", "gui-base", "viewer"]
